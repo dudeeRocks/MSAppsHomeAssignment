@@ -7,11 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FA0D05542C8AEDBF007C5847 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0D05532C8AEDBF007C5847 /* CoreDataStack.swift */; };
+		FAA1B3D52C8A616400234C20 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA1B3D42C8A616400234C20 /* User.swift */; };
+		FAA1B3D72C8A6C0600234C20 /* UsersManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA1B3D62C8A6C0600234C20 /* UsersManager.swift */; };
 		FAC6B96A2C89974A00986F44 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC6B9692C89974A00986F44 /* AppDelegate.swift */; };
 		FAC6B96C2C89974A00986F44 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC6B96B2C89974A00986F44 /* SceneDelegate.swift */; };
 		FAC6B96E2C89974A00986F44 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC6B96D2C89974A00986F44 /* ViewController.swift */; };
 		FAC6B9712C89974A00986F44 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = FAC6B9702C89974A00986F44 /* Base */; };
-		FAC6B9742C89974A00986F44 /* MSAppsHomeAssignment.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FAC6B9722C89974A00986F44 /* MSAppsHomeAssignment.xcdatamodeld */; };
+		FAC6B9742C89974A00986F44 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FAC6B9722C89974A00986F44 /* DataModel.xcdatamodeld */; };
 		FAC6B9762C89974A00986F44 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FAC6B9752C89974A00986F44 /* Assets.xcassets */; };
 		FAC6B9792C89974A00986F44 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = FAC6B9782C89974A00986F44 /* Base */; };
 		FAC6B9812C89AAE400986F44 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC6B9802C89AAE400986F44 /* LoginViewController.swift */; };
@@ -19,6 +22,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FA0D05532C8AEDBF007C5847 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		FAA1B3D42C8A616400234C20 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		FAA1B3D62C8A6C0600234C20 /* UsersManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersManager.swift; sourceTree = "<group>"; };
 		FAC6B9662C89974A00986F44 /* MSAppsHomeAssignment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MSAppsHomeAssignment.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAC6B9692C89974A00986F44 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FAC6B96B2C89974A00986F44 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -43,6 +49,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FA0D05522C8AEDA9007C5847 /* CodeDataStack */ = {
+			isa = PBXGroup;
+			children = (
+				FA0D05532C8AEDBF007C5847 /* CoreDataStack.swift */,
+				FAC6B9722C89974A00986F44 /* DataModel.xcdatamodeld */,
+			);
+			path = CodeDataStack;
+			sourceTree = "<group>";
+		};
 		FAC6B95D2C89974A00986F44 = {
 			isa = PBXGroup;
 			children = (
@@ -71,7 +86,6 @@
 				FAC6B9752C89974A00986F44 /* Assets.xcassets */,
 				FAC6B9772C89974A00986F44 /* LaunchScreen.storyboard */,
 				FAC6B97A2C89974A00986F44 /* Info.plist */,
-				FAC6B9722C89974A00986F44 /* MSAppsHomeAssignment.xcdatamodeld */,
 			);
 			path = MSAppsHomeAssignment;
 			sourceTree = "<group>";
@@ -79,7 +93,10 @@
 		FAC6B9822C89BDB300986F44 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				FA0D05522C8AEDA9007C5847 /* CodeDataStack */,
 				FAC6B9832C89BDCA00986F44 /* AuthManager.swift */,
+				FAA1B3D42C8A616400234C20 /* User.swift */,
+				FAA1B3D62C8A6C0600234C20 /* UsersManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -156,11 +173,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				FAC6B96E2C89974A00986F44 /* ViewController.swift in Sources */,
-				FAC6B9742C89974A00986F44 /* MSAppsHomeAssignment.xcdatamodeld in Sources */,
+				FAC6B9742C89974A00986F44 /* DataModel.xcdatamodeld in Sources */,
+				FAA1B3D72C8A6C0600234C20 /* UsersManager.swift in Sources */,
 				FAC6B96A2C89974A00986F44 /* AppDelegate.swift in Sources */,
 				FAC6B9812C89AAE400986F44 /* LoginViewController.swift in Sources */,
 				FAC6B96C2C89974A00986F44 /* SceneDelegate.swift in Sources */,
+				FA0D05542C8AEDBF007C5847 /* CoreDataStack.swift in Sources */,
 				FAC6B9842C89BDCA00986F44 /* AuthManager.swift in Sources */,
+				FAA1B3D52C8A616400234C20 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -385,13 +405,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		FAC6B9722C89974A00986F44 /* MSAppsHomeAssignment.xcdatamodeld */ = {
+		FAC6B9722C89974A00986F44 /* DataModel.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
 				FAC6B9732C89974A00986F44 /* MSAppsHomeAssignment.xcdatamodel */,
 			);
 			currentVersion = FAC6B9732C89974A00986F44 /* MSAppsHomeAssignment.xcdatamodel */;
-			path = MSAppsHomeAssignment.xcdatamodeld;
+			path = DataModel.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

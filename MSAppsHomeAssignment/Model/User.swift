@@ -1,8 +1,12 @@
-//
-//  User.swift
-//  MSAppsHomeAssignment
-//
-//  Created by David Katsman on 06/09/2024.
-//
+// Abstract: An object that represents a user.
 
 import Foundation
+
+struct User: Codable {
+    let id: Int
+    let firstName: String
+    let lastName: String
+    let email: String
+    let gender: String
+    let avatar: String
+}

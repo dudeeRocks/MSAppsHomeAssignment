@@ -95,7 +95,3 @@ enum AuthError: Error {
     }
 }
 
-enum UserDefaultsKeys: String {
-    case userName, password, isLoggedIn
-}
-
