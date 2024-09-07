@@ -53,5 +53,35 @@ class CoreDataStack {
         print(#function)
     }
     
+    // MARK: - Methods
+    
+    func loadData() async {
+        do {
+            let users = try await UsersFetcher.shared.fetchUsers()
+            
+            try await persistentContainer.performBackgroundTask { context in
+                try users.forEach { user in
+                    try self.makeUserEntityRecord(for: user, in: context)
+                }
+            }
+        } catch {
+            print(error)
+        }
+    }
+    
+    func makeUserEntityRecord(for user: User, in context: NSManagedObjectContext) throws {
+        let userEntity = UserEntity(context: context)
+        userEntity.id = Int64(user.id)
+        userEntity.firstName = user.firstName
+        userEntity.lastName = user.lastName
+        userEntity.email = user.email
+        userEntity.gender = user.gender
+        userEntity.avatar = user.avatar
+        
+        try context.save()
+    }
+    
+    // MARK: - Initializers
+    
     private init() { }
 }

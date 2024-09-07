@@ -8,8 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		FA0D05542C8AEDBF007C5847 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0D05532C8AEDBF007C5847 /* CoreDataStack.swift */; };
+		FA0D055B2C8B274F007C5847 /* UsersListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0D055A2C8B274F007C5847 /* UsersListViewController.swift */; };
+		FA0D055D2C8B4F0B007C5847 /* UsersListViewController+NSFetchedResultsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0D055C2C8B4F0B007C5847 /* UsersListViewController+NSFetchedResultsController.swift */; };
+		FA0D055F2C8C7110007C5847 /* UsersFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0D055E2C8C7110007C5847 /* UsersFetcher.swift */; };
 		FAA1B3D52C8A616400234C20 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA1B3D42C8A616400234C20 /* User.swift */; };
-		FAA1B3D72C8A6C0600234C20 /* UsersManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA1B3D62C8A6C0600234C20 /* UsersManager.swift */; };
 		FAC6B96A2C89974A00986F44 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC6B9692C89974A00986F44 /* AppDelegate.swift */; };
 		FAC6B96C2C89974A00986F44 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC6B96B2C89974A00986F44 /* SceneDelegate.swift */; };
 		FAC6B96E2C89974A00986F44 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC6B96D2C89974A00986F44 /* ViewController.swift */; };
@@ -23,8 +25,10 @@
 
 /* Begin PBXFileReference section */
 		FA0D05532C8AEDBF007C5847 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		FA0D055A2C8B274F007C5847 /* UsersListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersListViewController.swift; sourceTree = "<group>"; };
+		FA0D055C2C8B4F0B007C5847 /* UsersListViewController+NSFetchedResultsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UsersListViewController+NSFetchedResultsController.swift"; sourceTree = "<group>"; };
+		FA0D055E2C8C7110007C5847 /* UsersFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersFetcher.swift; sourceTree = "<group>"; };
 		FAA1B3D42C8A616400234C20 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		FAA1B3D62C8A6C0600234C20 /* UsersManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersManager.swift; sourceTree = "<group>"; };
 		FAC6B9662C89974A00986F44 /* MSAppsHomeAssignment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MSAppsHomeAssignment.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAC6B9692C89974A00986F44 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FAC6B96B2C89974A00986F44 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -58,6 +62,17 @@
 			path = CodeDataStack;
 			sourceTree = "<group>";
 		};
+		FA0D05592C8B271C007C5847 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				FAC6B96D2C89974A00986F44 /* ViewController.swift */,
+				FA0D055A2C8B274F007C5847 /* UsersListViewController.swift */,
+				FA0D055C2C8B4F0B007C5847 /* UsersListViewController+NSFetchedResultsController.swift */,
+				FAC6B9802C89AAE400986F44 /* LoginViewController.swift */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
 		FAC6B95D2C89974A00986F44 = {
 			isa = PBXGroup;
 			children = (
@@ -79,8 +94,7 @@
 			children = (
 				FAC6B9692C89974A00986F44 /* AppDelegate.swift */,
 				FAC6B96B2C89974A00986F44 /* SceneDelegate.swift */,
-				FAC6B96D2C89974A00986F44 /* ViewController.swift */,
-				FAC6B9802C89AAE400986F44 /* LoginViewController.swift */,
+				FA0D05592C8B271C007C5847 /* View Controllers */,
 				FAC6B9822C89BDB300986F44 /* Model */,
 				FAC6B96F2C89974A00986F44 /* Main.storyboard */,
 				FAC6B9752C89974A00986F44 /* Assets.xcassets */,
@@ -96,7 +110,7 @@
 				FA0D05522C8AEDA9007C5847 /* CodeDataStack */,
 				FAC6B9832C89BDCA00986F44 /* AuthManager.swift */,
 				FAA1B3D42C8A616400234C20 /* User.swift */,
-				FAA1B3D62C8A6C0600234C20 /* UsersManager.swift */,
+				FA0D055E2C8C7110007C5847 /* UsersFetcher.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -174,10 +188,12 @@
 			files = (
 				FAC6B96E2C89974A00986F44 /* ViewController.swift in Sources */,
 				FAC6B9742C89974A00986F44 /* DataModel.xcdatamodeld in Sources */,
-				FAA1B3D72C8A6C0600234C20 /* UsersManager.swift in Sources */,
+				FA0D055B2C8B274F007C5847 /* UsersListViewController.swift in Sources */,
 				FAC6B96A2C89974A00986F44 /* AppDelegate.swift in Sources */,
 				FAC6B9812C89AAE400986F44 /* LoginViewController.swift in Sources */,
 				FAC6B96C2C89974A00986F44 /* SceneDelegate.swift in Sources */,
+				FA0D055D2C8B4F0B007C5847 /* UsersListViewController+NSFetchedResultsController.swift in Sources */,
+				FA0D055F2C8C7110007C5847 /* UsersFetcher.swift in Sources */,
 				FA0D05542C8AEDBF007C5847 /* CoreDataStack.swift in Sources */,
 				FAC6B9842C89BDCA00986F44 /* AuthManager.swift in Sources */,
 				FAA1B3D52C8A616400234C20 /* User.swift in Sources */,

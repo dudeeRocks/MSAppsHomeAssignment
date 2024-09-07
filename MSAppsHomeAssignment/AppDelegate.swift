@@ -13,9 +13,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        if !UserDefaults.standard.bool(forKey: UserDefaultsKeys.hasLoadedData.rawValue) {
-            // TODO: Load data
-        }
         return true
     }
 
@@ -40,3 +37,14 @@ enum UserDefaultsKeys: String {
     case userName, password, isLoggedIn, hasLoadedData
 }
 
+extension AppDelegate {
+    var hasLoadedData: Bool { UserDefaults.standard.bool(forKey: UserDefaultsKeys.hasLoadedData.rawValue) }
+    
+    func loadData() {
+        guard !hasLoadedData else { return }
+        
+        Task(priority: .high) {
+            await CoreDataStack.shared.loadData()
+        }
+    }
+}
