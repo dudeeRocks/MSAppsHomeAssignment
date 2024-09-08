@@ -25,14 +25,14 @@ extension UIViewController {
             return
         }
         
-        navigationController?.tabBarItem.title = title
+        tabBarItem.title = title
         
         if let image = UIImage(systemName: unselectedImageName) {
-            navigationController?.tabBarItem.image = image
+            tabBarItem.image = image
         }
         
         if let selectedImage = UIImage(systemName: selectedImageName) {
-            navigationController?.tabBarItem.selectedImage = selectedImage
+            tabBarItem.selectedImage = selectedImage
         }
     }
 }
