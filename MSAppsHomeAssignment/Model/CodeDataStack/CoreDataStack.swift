@@ -57,11 +57,11 @@ class CoreDataStack {
     
     func loadData() async {
         do {
-            let users = try await UsersFetcher.shared.fetchUsers()
+            let users = try await WebAPICaller.shared.fetchUsers()
             
             try await persistentContainer.performBackgroundTask { context in
                 try users.forEach { user in
-                    try self.makeUserEntityRecord(for: user, in: context)
+                    try self.saveUserEntity(for: user, in: context)
                 }
                 print("Loaded data.")
             }
@@ -70,17 +70,24 @@ class CoreDataStack {
         }
     }
     
-    func makeUserEntityRecord(for user: User, in context: NSManagedObjectContext) throws {
+    func saveUserEntity(for user: User, in context: NSManagedObjectContext) throws {
         let userEntity = UserEntity(context: context)
         userEntity.id = Int64(user.id)
         userEntity.firstName = user.firstName
         userEntity.lastName = user.lastName
         userEntity.email = user.email
         userEntity.gender = user.gender
-        userEntity.avatar = user.avatar
+        userEntity.avatarURL = user.avatar
         
         try context.save()
         print("Made user entity record for: \(userEntity.fullName)")
+    }
+    
+    func saveUserAvatar(for user: UserEntity, in context: NSManagedObjectContext) throws {
+        let avatarEntity = UserAvatar(entity: user.entity, insertInto: context)
+        avatarEntity.url = user.avatarURL
+        avatarEntity.imageData = nil // TODO: Load image data here
+        
     }
     
     // MARK: - Initializers

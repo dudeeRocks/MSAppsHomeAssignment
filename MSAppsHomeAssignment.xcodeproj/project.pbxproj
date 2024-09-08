@@ -10,7 +10,7 @@
 		FA0D05542C8AEDBF007C5847 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0D05532C8AEDBF007C5847 /* CoreDataStack.swift */; };
 		FA0D055B2C8B274F007C5847 /* UsersListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0D055A2C8B274F007C5847 /* UsersListViewController.swift */; };
 		FA0D055D2C8B4F0B007C5847 /* UsersListViewController+NSFetchedResultsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0D055C2C8B4F0B007C5847 /* UsersListViewController+NSFetchedResultsController.swift */; };
-		FA0D055F2C8C7110007C5847 /* UsersFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0D055E2C8C7110007C5847 /* UsersFetcher.swift */; };
+		FA0D055F2C8C7110007C5847 /* WebAPICaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0D055E2C8C7110007C5847 /* WebAPICaller.swift */; };
 		FA0D05612C8CE739007C5847 /* UserEntity+Unwrapped.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0D05602C8CE739007C5847 /* UserEntity+Unwrapped.swift */; };
 		FA0D05632C8D698E007C5847 /* UserDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0D05622C8D698E007C5847 /* UserDetailsViewController.swift */; };
 		FA0D05662C8D7286007C5847 /* UIStoryboard+ControllerGetter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0D05652C8D7286007C5847 /* UIStoryboard+ControllerGetter.swift */; };
@@ -31,7 +31,7 @@
 		FA0D05532C8AEDBF007C5847 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		FA0D055A2C8B274F007C5847 /* UsersListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersListViewController.swift; sourceTree = "<group>"; };
 		FA0D055C2C8B4F0B007C5847 /* UsersListViewController+NSFetchedResultsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UsersListViewController+NSFetchedResultsController.swift"; sourceTree = "<group>"; };
-		FA0D055E2C8C7110007C5847 /* UsersFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersFetcher.swift; sourceTree = "<group>"; };
+		FA0D055E2C8C7110007C5847 /* WebAPICaller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebAPICaller.swift; sourceTree = "<group>"; };
 		FA0D05602C8CE739007C5847 /* UserEntity+Unwrapped.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserEntity+Unwrapped.swift"; sourceTree = "<group>"; };
 		FA0D05622C8D698E007C5847 /* UserDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailsViewController.swift; sourceTree = "<group>"; };
 		FA0D05652C8D7286007C5847 /* UIStoryboard+ControllerGetter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStoryboard+ControllerGetter.swift"; sourceTree = "<group>"; };
@@ -138,7 +138,7 @@
 				FA0D05522C8AEDA9007C5847 /* CodeDataStack */,
 				FAC6B9832C89BDCA00986F44 /* AuthManager.swift */,
 				FAA1B3D42C8A616400234C20 /* User.swift */,
-				FA0D055E2C8C7110007C5847 /* UsersFetcher.swift */,
+				FA0D055E2C8C7110007C5847 /* WebAPICaller.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -224,7 +224,7 @@
 				FA0D055D2C8B4F0B007C5847 /* UsersListViewController+NSFetchedResultsController.swift in Sources */,
 				FA0D05632C8D698E007C5847 /* UserDetailsViewController.swift in Sources */,
 				FA0D056B2C8D8B60007C5847 /* UserTableCell.swift in Sources */,
-				FA0D055F2C8C7110007C5847 /* UsersFetcher.swift in Sources */,
+				FA0D055F2C8C7110007C5847 /* WebAPICaller.swift in Sources */,
 				FA0D05542C8AEDBF007C5847 /* CoreDataStack.swift in Sources */,
 				FAC6B9842C89BDCA00986F44 /* AuthManager.swift in Sources */,
 				FAA1B3D52C8A616400234C20 /* User.swift in Sources */,
