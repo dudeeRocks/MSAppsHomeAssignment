@@ -33,7 +33,17 @@ class NoteDetailsController: UIViewController {
     // MARK: - Actions
     
     @objc func saveNote() {
+        guard let text = textField.text else {
+            return
+        }
         
+        let location = mapView.centerCoordinate
+        
+        do {
+            try CoreDataStack.shared.saveNote(withText: text, at: location)
+        } catch {
+            fatalError("Failed to save a note. Error: \(error.localizedDescription)")// TODO: Handle errors here
+        }
     }
 
 }
