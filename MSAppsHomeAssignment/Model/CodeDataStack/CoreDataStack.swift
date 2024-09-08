@@ -63,9 +63,10 @@ class CoreDataStack {
                 try users.forEach { user in
                     try self.makeUserEntityRecord(for: user, in: context)
                 }
+                print("Loaded data.")
             }
         } catch {
-            print(error)
+            fatalError("Failed to load data.")
         }
     }
     
@@ -79,6 +80,7 @@ class CoreDataStack {
         userEntity.avatar = user.avatar
         
         try context.save()
+        print("Made user entity record for: \(userEntity.fullName)")
     }
     
     // MARK: - Initializers

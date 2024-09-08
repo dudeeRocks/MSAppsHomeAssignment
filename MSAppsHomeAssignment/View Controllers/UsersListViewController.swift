@@ -15,6 +15,8 @@ class UsersListViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         createFetchResultsController()
+        setUpNavigationItem()
+        setTabBarItem(for: .usersList)
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -38,10 +40,17 @@ class UsersListViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let user = fetchResultsController.object(at: indexPath)
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath)
-        var cellConfiguration = cell.defaultContentConfiguration()
+        let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath) as! UserTableCell
+        cell.userName = user.fullName
+        cell.avatar = UIImage(systemName: "person.fill")
 
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let selectedUser = fetchResultsController.object(at: indexPath)
+        // TODO: transition to selected user details screen
+        
     }
     
     /*
@@ -81,12 +90,37 @@ class UsersListViewController: UITableViewController {
 
     /*
     // MARK: - Navigation
-
+     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
     }
     */
+    
+    private func setUpNavigationItem() {
+        let rightButton = UIBarButtonItem(title: "Log out", style: .plain, target: self, action: #selector(logOut))
+        navigationItem.rightBarButtonItem = rightButton
+    }
+    
+    @objc private func logOut() {
+        
+        
+        AuthManager.isLoggedIn = false
+        
+        let loginViewController = UIStoryboard.getViewController(withIdentifier: .login)
+        
+        guard let windowScene = UIApplication.shared.connectedScenes.first(where: {$0 is UIWindowScene}) as? UIWindowScene else {
+            fatalError("No UIWindowScene")
+        }
+        
+        guard let window = windowScene.windows.first else {
+            fatalError("no window found")
+        }
+        
+        UIView.transition(with: window, duration: 0.5, options: .transitionFlipFromLeft, animations: {
+            window.rootViewController = loginViewController
+        })
+    }
 
 }

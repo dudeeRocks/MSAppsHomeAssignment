@@ -25,6 +25,8 @@ class UsersFetcher {
                     
             let fetchedUsers = try decoder.decode([User].self, from: data)
             
+            print("Successfully fetch users.")
+            
             return fetchedUsers
         } catch {
             throw FetchError.invalidData
@@ -36,4 +38,15 @@ class UsersFetcher {
 
 enum FetchError: Error {
     case invalidURL, invalidResponse, invalidData
+    
+    var localizedDescription: String {
+        switch self {
+        case .invalidURL:
+            return "Invalid URL"
+        case .invalidResponse:
+            return "Invalid server response."
+        case .invalidData:
+            return "Failed to decode the data."
+        }
+    }
 }
