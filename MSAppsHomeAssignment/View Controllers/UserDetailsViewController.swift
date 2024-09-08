@@ -24,7 +24,7 @@ class UserDetailsViewController: UIViewController {
     private func populateUserDetailsView() {
         guard let user = user else { return }
         
-        avatar.image = UIImage(systemName: "person.fill") // TODO: Display relevant avatar
+        avatar.loadImage(for: user)
         fullName.text = user.fullName
         email.text = user.email
         gender.text = user.gender

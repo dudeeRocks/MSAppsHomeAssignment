@@ -159,7 +159,7 @@
                                 <connections>
                                     <outlet property="avatarView" destination="qPT-ST-QFc" id="VUA-HR-IQT"/>
                                     <outlet property="userNameLabel" destination="8rU-6G-FHY" id="hdD-Zx-JLv"/>
-                                    <segue destination="TqQ-ab-WtG" kind="show" id="lz1-wx-oNz"/>
+                                    <segue destination="TqQ-ab-WtG" kind="show" identifier="showUserDetail" id="lz1-wx-oNz"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
