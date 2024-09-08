@@ -19,9 +19,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let _ = (scene as? UIWindowScene) else { return }
         
         if AuthManager.isLoggedIn {
-            window?.rootViewController = UIStoryboard.getViewController(withIdentifier: .main)
+            window?.rootViewController = .getViewController(withIdentifier: .main)
         } else {
-            window?.rootViewController = UIStoryboard.getViewController(withIdentifier: .login)
+            window?.rootViewController = .getViewController(withIdentifier: .login)
         }
     }
 

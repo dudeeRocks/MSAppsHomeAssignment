@@ -80,7 +80,7 @@ class LoginViewController: UIViewController {
     }
     
     private func showMainScreen() {
-        let mainScreen = UIStoryboard.getViewController(withIdentifier: .main)
+        let mainScreen: UIViewController = .getViewController(withIdentifier: .main)
         
         guard let windowScene = UIApplication.shared.connectedScenes.first(where: {$0 is UIWindowScene}) as? UIWindowScene else {
             fatalError("No UIWindowScene")

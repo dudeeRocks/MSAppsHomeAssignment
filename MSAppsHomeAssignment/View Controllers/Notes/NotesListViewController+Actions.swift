@@ -3,7 +3,13 @@
 import UIKit
 
 extension NotesListViewController {
-    @objc func createNote() {
-        performSegue(withIdentifier: "notePush", sender: nil)
+    @objc func createNewNote() {
+        navigationController?.pushViewController(.getViewController(withIdentifier: .noteDetails), animated: true)
     }
 }
+
+enum NoteEditingReason: Sendable {
+    case createNewNote, editExistingNote(Note)
+}
+
+extension Note: @unchecked Sendable { }

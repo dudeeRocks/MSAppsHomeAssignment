@@ -13,7 +13,7 @@ class NoteDetailsController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        setTextFieldDelegate()
     }
     
     // MARK: - Navigation
@@ -45,5 +45,4 @@ class NoteDetailsController: UIViewController {
             fatalError("Failed to save a note. Error: \(error.localizedDescription)")// TODO: Handle errors here
         }
     }
-
 }

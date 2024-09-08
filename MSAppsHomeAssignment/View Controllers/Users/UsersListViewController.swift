@@ -54,7 +54,7 @@ class UsersListViewController: UITableViewController {
     @objc private func logOut() {
         AuthManager.isLoggedIn = false
         
-        let loginViewController = UIStoryboard.getViewController(withIdentifier: .login)
+        let loginViewController: UIViewController = .getViewController(withIdentifier: .login)
         
         guard let windowScene = UIApplication.shared.connectedScenes.first(where: {$0 is UIWindowScene}) as? UIWindowScene else {
             fatalError("No UIWindowScene")

@@ -26,7 +26,7 @@ extension NotesListViewController {
         button.configuration?.buttonSize = .large
         button.contentHorizontalAlignment = .center
         button.contentVerticalAlignment = .center
-        button.addTarget(self, action: #selector(createNote), for: .touchUpInside)
+        button.addTarget(self, action: #selector(createNewNote), for: .touchUpInside)
         
         let stack = UIStackView(arrangedSubviews: [title, subtitle, button])
         stack.axis = .vertical
