@@ -6,14 +6,12 @@ import CoreData
 class NotesListViewController: UITableViewController {
     
     var fetchResultsController: NSFetchedResultsController<Note>!
-    var emptyStateView: NotesEmptyState?
+    var emptyStateView: UIView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         createFetchResultsController()
         setTabBarItem(for: .notesList)
-        self.clearsSelectionOnViewWillAppear = false
-        self.navigationItem.rightBarButtonItem = self.editButtonItem
         setUpEmptyStateView()
         checkIfNotesExist()
     }

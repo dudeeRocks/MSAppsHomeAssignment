@@ -20,8 +20,6 @@
 		FA0D05732C8DC401007C5847 /* UIImageView+Loader.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0D05722C8DC401007C5847 /* UIImageView+Loader.swift */; };
 		FA0D05752C8DD3A3007C5847 /* NotesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0D05742C8DD3A3007C5847 /* NotesListViewController.swift */; };
 		FA0D057F2C8DD688007C5847 /* NotesListViewController+EmptyState.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0D057E2C8DD688007C5847 /* NotesListViewController+EmptyState.swift */; };
-		FA0D05812C8DDF85007C5847 /* NotesEmptyState.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA0D05802C8DDF85007C5847 /* NotesEmptyState.xib */; };
-		FA0D05832C8DE5B4007C5847 /* NotesEmptyState.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0D05822C8DE5B4007C5847 /* NotesEmptyState.swift */; };
 		FA0D05852C8DE7DC007C5847 /* NotesListViewController+Fetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0D05842C8DE7DB007C5847 /* NotesListViewController+Fetcher.swift */; };
 		FA0D05872C8DEBFC007C5847 /* NoteTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0D05862C8DEBFC007C5847 /* NoteTableCell.swift */; };
 		FA0D05892C8DF317007C5847 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0D05882C8DF317007C5847 /* TabBarViewController.swift */; };
@@ -52,8 +50,6 @@
 		FA0D05722C8DC401007C5847 /* UIImageView+Loader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Loader.swift"; sourceTree = "<group>"; };
 		FA0D05742C8DD3A3007C5847 /* NotesListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesListViewController.swift; sourceTree = "<group>"; };
 		FA0D057E2C8DD688007C5847 /* NotesListViewController+EmptyState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NotesListViewController+EmptyState.swift"; sourceTree = "<group>"; };
-		FA0D05802C8DDF85007C5847 /* NotesEmptyState.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = NotesEmptyState.xib; path = MSAppsHomeAssignment/Views/NotesEmptyState.xib; sourceTree = SOURCE_ROOT; };
-		FA0D05822C8DE5B4007C5847 /* NotesEmptyState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesEmptyState.swift; sourceTree = "<group>"; };
 		FA0D05842C8DE7DB007C5847 /* NotesListViewController+Fetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NotesListViewController+Fetcher.swift"; sourceTree = "<group>"; };
 		FA0D05862C8DEBFC007C5847 /* NoteTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteTableCell.swift; sourceTree = "<group>"; };
 		FA0D05882C8DF317007C5847 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
@@ -126,8 +122,6 @@
 			children = (
 				FA0D056A2C8D8B60007C5847 /* UserTableCell.swift */,
 				FA0D05862C8DEBFC007C5847 /* NoteTableCell.swift */,
-				FA0D05822C8DE5B4007C5847 /* NotesEmptyState.swift */,
-				FA0D05802C8DDF85007C5847 /* NotesEmptyState.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -235,7 +229,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				FAC6B9762C89974A00986F44 /* Assets.xcassets in Resources */,
-				FA0D05812C8DDF85007C5847 /* NotesEmptyState.xib in Resources */,
 				FAC6B9792C89974A00986F44 /* Base in Resources */,
 				FAC6B9712C89974A00986F44 /* Base in Resources */,
 			);
@@ -253,7 +246,6 @@
 				FAC6B9742C89974A00986F44 /* DataModel.xcdatamodeld in Sources */,
 				FA0D05712C8DC1D5007C5847 /* CoreDataStack+Error.swift in Sources */,
 				FA0D05752C8DD3A3007C5847 /* NotesListViewController.swift in Sources */,
-				FA0D05832C8DE5B4007C5847 /* NotesEmptyState.swift in Sources */,
 				FA0D05872C8DEBFC007C5847 /* NoteTableCell.swift in Sources */,
 				FA0D057F2C8DD688007C5847 /* NotesListViewController+EmptyState.swift in Sources */,
 				FA0D058B2C8DFE24007C5847 /* NotesListViewController+Actions.swift in Sources */,

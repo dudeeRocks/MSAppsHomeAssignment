@@ -4,6 +4,6 @@ import UIKit
 
 extension NotesListViewController {
     @objc func createNote() {
-        
+        print("Button tapped")
     }
 }
