@@ -39,13 +39,21 @@ enum UserDefaultsKeys: String {
 }
 
 extension AppDelegate {
-    var hasLoadedData: Bool { UserDefaults.standard.bool(forKey: UserDefaultsKeys.hasLoadedData.rawValue) }
+    var hasLoadedData: Bool {
+        get {
+            UserDefaults.standard.bool(forKey: UserDefaultsKeys.hasLoadedData.rawValue)
+        }
+        set {
+            UserDefaults.standard.setValue(newValue, forKey: UserDefaultsKeys.hasLoadedData.rawValue)
+        }
+    }
     
     func loadData() {
         guard !hasLoadedData else { return }
         
         Task(priority: .high) {
             await CoreDataStack.shared.loadData()
+            hasLoadedData = true
         }
     }
 }

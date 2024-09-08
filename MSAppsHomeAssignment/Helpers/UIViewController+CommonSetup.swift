@@ -11,16 +11,16 @@ extension UIViewController {
         switch identifier {
         case .usersList:
             title = "Users"
-            unselectedImageName = "person.3.fill"
-            selectedImageName = "person.3"
+            unselectedImageName = "person.3"
+            selectedImageName = "person.3.fill"
         case .notesList:
             title = "Notes"
             unselectedImageName = "note.text"
             selectedImageName = "note.text"
         case .map:
             title = "Map"
-            unselectedImageName = "map.fill"
-            selectedImageName = "map"
+            unselectedImageName = "map"
+            selectedImageName = "map.fill"
         default:
             return
         }

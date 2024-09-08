@@ -39,10 +39,10 @@ class UsersListViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let user = fetchResultsController.object(at: indexPath)
-        
         let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath) as! UserTableCell
+        
         cell.userName = user.fullName
-        cell.avatar = UIImage(systemName: "person.fill")
+        cell.avatar = UIImage(systemName: "person.fill") // TODO: Add proper image
 
         return cell
     }
@@ -101,6 +101,7 @@ class UsersListViewController: UITableViewController {
     private func setUpNavigationItem() {
         let rightButton = UIBarButtonItem(title: "Log out", style: .plain, target: self, action: #selector(logOut))
         navigationItem.rightBarButtonItem = rightButton
+        navigationItem.title = "Users"
     }
     
     @objc private func logOut() {
@@ -122,5 +123,4 @@ class UsersListViewController: UITableViewController {
             window.rootViewController = loginViewController
         })
     }
-
 }
