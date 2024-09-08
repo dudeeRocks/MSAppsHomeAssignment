@@ -18,6 +18,8 @@ extension CoreDataStack {
         note.dateModified = Date.now
         note.location = noteLocation
         
+        noteLocation.note = note
+        
         do {
             try context.save()
             print("Saved note: \(note.body?.prefix(10)), last modified \(note.dateModified?.dayAndTimeText).")

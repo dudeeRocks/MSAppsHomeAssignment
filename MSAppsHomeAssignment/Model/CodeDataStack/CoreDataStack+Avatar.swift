@@ -10,6 +10,7 @@ extension CoreDataStack {
         
         avatarEntity.url = user.avatarURL
         avatarEntity.imageData = data
+        avatarEntity.user = user
         user.image = avatarEntity
         
         do {

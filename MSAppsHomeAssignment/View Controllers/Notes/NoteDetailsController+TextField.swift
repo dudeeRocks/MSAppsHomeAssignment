@@ -8,7 +8,7 @@ extension NoteDetailsController: UITextFieldDelegate {
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        print(#function)
+        navigationItem.rightBarButtonItem = doneButton
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
@@ -17,6 +17,6 @@ extension NoteDetailsController: UITextFieldDelegate {
     }
     
     func textFieldDidEndEditing(_ textField: UITextField, reason: UITextField.DidEndEditingReason) {
-        print(#function, "Reason: \(reason)")
+        navigationItem.rightBarButtonItem = nil
     }
 }
