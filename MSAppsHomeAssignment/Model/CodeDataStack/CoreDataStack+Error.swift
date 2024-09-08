@@ -9,10 +9,12 @@ extension CoreDataStack {
             case userSave
             case imageLoad
             case imageSave
+            case noteSave
         }
         
         let kind: ErrorKind
         var user: UserEntity?
+        var note: Note?
         
         var localizedDescription: String {
             switch self.kind {
@@ -24,6 +26,8 @@ extension CoreDataStack {
                 return "Failed to load image for user: \(userName)"
             case .imageSave:
                 return "Failed to save image for user: \(userName)"
+            case .noteSave:
+                return "Failed to save the note '\(note?.body?.prefix(10))'."
             }
         }
         

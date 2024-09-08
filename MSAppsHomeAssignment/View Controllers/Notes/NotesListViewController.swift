@@ -34,7 +34,7 @@ class NotesListViewController: UITableViewController {
         let note = fetchResultsController.object(at: indexPath)
         let cell = tableView.dequeueReusableCell(withIdentifier: "NoteCell", for: indexPath) as! NoteTableCell
 
-        cell.title.text = note.title
+        cell.title.text = note.body
         cell.dateModified.text = note.dateModified?.dayAndTimeText
 
         return cell

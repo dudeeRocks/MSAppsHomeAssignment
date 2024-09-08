@@ -14,8 +14,6 @@ class NoteDetailsController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-        setToolbarItems(<#T##toolbarItems: [UIBarButtonItem]?##[UIBarButtonItem]?#>, animated: <#T##Bool#>)
     }
     
     // MARK: - Navigation
@@ -29,7 +27,6 @@ class NoteDetailsController: UIViewController {
     private func setUpToolBar() {
         let toolbarItems: [UIBarButtonItem] = [
             UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveNote)),
-            UIBarButtonItem(barButtonSystemItem: .trash, target: <#T##Any?#>, action: <#T##Selector?#>)
         ]
     }
     
