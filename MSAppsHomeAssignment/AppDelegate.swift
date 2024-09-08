@@ -52,7 +52,7 @@ extension AppDelegate {
         guard !hasLoadedData else { return }
         
         Task(priority: .high) {
-            await CoreDataStack.shared.loadData()
+            await CoreDataStack.shared.loadUsers()
             hasLoadedData = true
         }
     }

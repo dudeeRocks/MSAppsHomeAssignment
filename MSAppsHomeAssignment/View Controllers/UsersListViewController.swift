@@ -41,8 +41,8 @@ class UsersListViewController: UITableViewController {
         let user = fetchResultsController.object(at: indexPath)
         let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath) as! UserTableCell
         
-        cell.userName = user.fullName
-        cell.avatar = UIImage(systemName: "person.fill") // TODO: Add proper image
+        cell.userNameLabel.text = user.fullName
+        cell.avatarView.loadImage(for: user)
 
         return cell
     }
