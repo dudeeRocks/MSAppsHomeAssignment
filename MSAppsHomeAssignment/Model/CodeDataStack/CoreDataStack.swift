@@ -35,23 +35,6 @@ class CoreDataStack {
         print(#function)
         return container
     }()
-    
-    // MARK: - Loading Data
-    
-    func loadUsers() async {
-        do {
-            let users = try await WebAPICaller.shared.fetchUsers()
-            
-            try await persistentContainer.performBackgroundTask { context in
-                try users.forEach { user in
-                    try self.saveUserEntity(for: user, in: context)
-                }
-                print("Loaded data.")
-            }
-        } catch {
-            fatalError("Failed to load data. Error: \(error.localizedDescription)") // TODO: Handle errors here
-        }
-    }
 
     // MARK: - Saving Data
 
@@ -68,39 +51,6 @@ class CoreDataStack {
             }
         }
         print(#function)
-    }
-    
-    private func saveUserEntity(for user: User, in context: NSManagedObjectContext) throws {
-        let userEntity = UserEntity(context: context)
-        userEntity.id = Int64(user.id)
-        userEntity.firstName = user.firstName
-        userEntity.lastName = user.lastName
-        userEntity.email = user.email
-        userEntity.gender = user.gender
-        userEntity.avatarURL = user.avatar
-        
-        do {
-            try context.save()
-            print("Made user entity record for: \(userEntity.fullName)")
-        } catch {
-            throw CoreDataError(kind: .userSave, user: userEntity)
-        }
-    }
-    
-    func saveUserAvatar(for user: UserEntity, data: Data) throws {
-        let context = persistentContainer.viewContext
-        let avatarEntity = UserAvatar(context: context)
-        
-        avatarEntity.url = user.avatarURL
-        avatarEntity.imageData = data
-        user.image = avatarEntity
-        
-        do {
-            try context.save()
-            print("Saved user avatar for: \(user.fullName)")
-        } catch {
-            throw CoreDataError(kind: .imageSave, user: user)
-        }
     }
     
     // MARK: - Initializers

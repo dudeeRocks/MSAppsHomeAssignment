@@ -14,6 +14,7 @@ class NotesListViewController: UITableViewController {
         setTabBarItem(for: .notesList)
         setUpEmptyStateView()
         checkIfNotesExist()
+        navigationItem.title = "Notes"
     }
 
     // MARK: - Table view data source
