@@ -155,8 +155,8 @@
 			children = (
 				FA0D05742C8DD3A3007C5847 /* NotesListViewController.swift */,
 				FA0D059E2C8E7B5C007C5847 /* NotesListViewController+DataSource.swift */,
-				FA0D057E2C8DD688007C5847 /* NotesListViewController+EmptyState.swift */,
 				FA0D058A2C8DFE24007C5847 /* NotesListViewController+Actions.swift */,
+				FA0D057E2C8DD688007C5847 /* NotesListViewController+EmptyState.swift */,
 			);
 			path = "Notes List";
 			sourceTree = "<group>";

@@ -5,7 +5,7 @@ import CoreData
 extension CoreDataStack {
     /// Creates `UserAvatar` entity based on the passed image `Data` and saves it to the `image` attribute of the`UserEntity`.
     func saveUserAvatar(for user: UserEntity, data: Data) throws {
-        let context = persistentContainer.viewContext
+        let context = viewContext
         let avatarEntity = UserAvatar(context: context)
         
         avatarEntity.url = user.avatarURL

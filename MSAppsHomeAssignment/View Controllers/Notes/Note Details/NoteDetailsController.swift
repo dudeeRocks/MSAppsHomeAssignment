@@ -8,6 +8,10 @@ class NoteDetailsController: UIViewController {
     var note: Note!
     var shouldDeleteNote: Bool = false
     var autoSaveTimer: Timer?
+    var isSaveButtonEnabled: Bool {
+        print("is save button enabled: \(textField.hasText)")
+        return textField.hasText
+    }
     
     // MARK: Outlets
     
@@ -25,6 +29,14 @@ class NoteDetailsController: UIViewController {
         UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(deleteNote))
     }
     
+    var saveButton: UIBarButtonItem {
+        UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveNewNote))
+    }
+    
+    var cancelButton: UIBarButtonItem {
+        UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelAddNote))
+    }
+    
     // MARK: - UIViewController Overrides
     
     override func viewDidLoad() {
@@ -32,27 +44,28 @@ class NoteDetailsController: UIViewController {
         setTextFieldDelegate()
         populateViews()
         showDeleteButtonIfNeeded()
+        setUpNavigationBar()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         if shouldDeleteNote {
-            CoreDataStack.shared.persistentContainer.viewContext.delete(note)
-            CoreDataStack.shared.saveContext()
+            CoreDataStack.shared.viewContext.delete(note)
+            CoreDataStack.shared.saveViewContext()
         } else if note != nil {
-            saveNote()
+            autoSaveExistingNote()
         }
     }
     
-    // MARK: - Methods
+    // MARK: - Layout
     
     func populateViews() {
         if note == nil {
-            dateLabel.text = "Last modified: " + Date.now.dayAndTimeText
+            dateLabel.text = "Created: " + Date.now.dayAndTimeText
             textField.text = nil
             mapView.setCenter(mapView.userLocation.coordinate, animated: true)
             mapView.setUserTrackingMode(.follow, animated: true)
         } else {
-            dateLabel.text = note.dateModified?.dayAndTimeText
+            dateLabel.text = "Last modified: " + note.dateModified!.dayAndTimeText
             textField.text = note.body
             
             let coordinate = CLLocationCoordinate2D(latitude: note.location!.latitude, longitude: note.location!.longitude)
@@ -68,6 +81,16 @@ class NoteDetailsController: UIViewController {
     func showDeleteButtonIfNeeded() {
         if note != nil {
             navigationItem.rightBarButtonItem = deleteButton
+        }
+    }
+    
+    func setUpNavigationBar() {
+        if note == nil {
+            navigationController?.navigationBar.backgroundColor = .secondarySystemBackground
+            navigationItem.title = "Add Note"
+            navigationItem.leftBarButtonItem = cancelButton
+            saveButton.isEnabled = isSaveButtonEnabled
+            navigationItem.rightBarButtonItem = saveButton
         }
     }
     

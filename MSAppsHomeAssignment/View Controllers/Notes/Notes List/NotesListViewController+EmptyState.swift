@@ -26,7 +26,7 @@ extension NotesListViewController {
         button.configuration?.buttonSize = .large
         button.contentHorizontalAlignment = .center
         button.contentVerticalAlignment = .center
-        button.addTarget(self, action: #selector(createNewNote), for: .touchUpInside)
+        button.addTarget(self, action: #selector(addNote), for: .touchUpInside)
         
         let stack = UIStackView(arrangedSubviews: [title, subtitle, button])
         stack.axis = .vertical
@@ -53,14 +53,10 @@ extension NotesListViewController {
     }
     
     private func showEmptyState() {
-        navigationItem.rightBarButtonItem = nil
         tableView.backgroundView = emptyStateView
-        print("empty")
     }
     
     private func hideEmptyState() {
-        navigationItem.rightBarButtonItem = editButtonItem
         tableView.backgroundView = nil
-        print("hide. \(notes.count)")
     }
 }

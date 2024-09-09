@@ -37,14 +37,12 @@ extension NotesListViewController {
     }
     
     func fetchNotes() {
-        let context = CoreDataStack.shared.persistentContainer.viewContext
-        
         let fetchRequest: NSFetchRequest<Note> = Note.fetchRequest()
-        let sortDescriptor = NSSortDescriptor(key: "dateModified", ascending: false)
+        let sortDescriptor = NSSortDescriptor(keyPath: \Note.dateModified, ascending: false)
         fetchRequest.sortDescriptors = [sortDescriptor]
         
         do {
-            notes = try context.fetch(fetchRequest)
+            notes = try CoreDataStack.shared.viewContext.fetch(fetchRequest)
         } catch {
             fatalError("Failed to perform fetch: \(error.localizedDescription)")
         }

@@ -3,7 +3,23 @@
 import UIKit
 
 extension NoteDetailsController {
-    @objc func saveNote() {
+    @objc func autoSaveExistingNote() {
+        guard let text = textField.text else {
+            return
+        }
+        
+        let location = mapView.centerCoordinate
+        
+        if note != nil {
+            note.body = textField.text
+            note.location?.latitude = mapView.centerCoordinate.latitude
+            note.location?.longitude = mapView.centerCoordinate.longitude
+            note.dateModified = Date.now
+            CoreDataStack.shared.saveViewContext()
+        }
+    }
+    
+    @objc func saveNewNote() {
         guard let text = textField.text else {
             return
         }
@@ -11,19 +27,16 @@ extension NoteDetailsController {
         let location = mapView.centerCoordinate
         
         do {
-            if note == nil {
-                let newNote = try CoreDataStack.shared.createNote(withText: text, at: location, date: Date.now)
-                note = newNote
-            } else {
-                note.body = textField.text
-                note.location?.latitude = mapView.centerCoordinate.latitude
-                note.location?.longitude = mapView.centerCoordinate.longitude
-                note.dateModified = Date.now
-                CoreDataStack.shared.saveContext()
-            }
+            let newNote = try CoreDataStack.shared.createNote(withText: text, at: location, date: Date.now)
+            note = newNote
+            dismiss(animated: true)
         } catch {
-            fatalError("Failed to save a note. Error: \(error.localizedDescription)")// TODO: Handle errors here
+            fatalError("Failed to save new note")
         }
+    }
+    
+    @objc func cancelAddNote() {
+        dismiss(animated: true)
     }
     
     @objc func deleteNote() {

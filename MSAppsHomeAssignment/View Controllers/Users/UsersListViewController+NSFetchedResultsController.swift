@@ -4,10 +4,10 @@ import CoreData
 
 extension UsersListViewController: NSFetchedResultsControllerDelegate {
     func createFetchResultsController() {
-        let context = CoreDataStack.shared.persistentContainer.viewContext
+        let context = CoreDataStack.shared.viewContext
         
         let fetchRequest: NSFetchRequest<UserEntity> = UserEntity.fetchRequest()
-        let sortDescriptor = NSSortDescriptor(key: "firstName", ascending: true)
+        let sortDescriptor = NSSortDescriptor(keyPath: \UserEntity.firstName, ascending: true)
         fetchRequest.sortDescriptors = [sortDescriptor]
         
         fetchResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)

@@ -13,17 +13,18 @@ extension NoteDetailsController: UITextFieldDelegate {
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         autoSaveTimer?.invalidate()
-        
+        saveButton.isEnabled = isSaveButtonEnabled
         autoSaveTimer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: false, block: { _ in
-            self.saveNote()
+            self.autoSaveExistingNote()
         })
         
         return true
     }
     
     func textFieldDidEndEditing(_ textField: UITextField, reason: UITextField.DidEndEditingReason) {
-        if textField.text?.count == 0 && note == nil {
-            navigationItem.rightBarButtonItem = nil
+        if note == nil {
+            navigationItem.rightBarButtonItem = saveButton
+            saveButton.isEnabled = isSaveButtonEnabled
         } else {
             navigationItem.rightBarButtonItem = deleteButton
         }

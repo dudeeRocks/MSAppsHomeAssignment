@@ -7,7 +7,7 @@ extension CoreDataStack {
     
     /// Saves `Note` entity with passed text and location.
     func createNote(withText body: String, at coordinates: CLLocationCoordinate2D, date: Date) throws -> Note {
-        let context = persistentContainer.viewContext
+        let context = viewContext
         
         let location = NoteLocation(context: context)
         location.latitude = coordinates.latitude
