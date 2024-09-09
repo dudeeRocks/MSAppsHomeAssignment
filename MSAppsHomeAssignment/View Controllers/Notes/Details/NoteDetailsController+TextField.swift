@@ -12,11 +12,20 @@ extension NoteDetailsController: UITextFieldDelegate {
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        print(#function)
+        autoSaveTimer?.invalidate()
+        
+        autoSaveTimer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: false, block: { _ in
+            self.saveNote()
+        })
+        
         return true
     }
     
     func textFieldDidEndEditing(_ textField: UITextField, reason: UITextField.DidEndEditingReason) {
-        navigationItem.rightBarButtonItem = nil
+        if textField.text?.count == 0 && note == nil {
+            navigationItem.rightBarButtonItem = nil
+        } else {
+            navigationItem.rightBarButtonItem = deleteButton
+        }
     }
 }

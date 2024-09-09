@@ -292,10 +292,9 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="body" destination="ih2-Wd-wXX" id="I4y-WT-Eix"/>
-                                    <outlet property="description" destination="ih2-Wd-wXX" id="Ejr-mY-jph"/>
+                                    <outlet property="dateModified" destination="ih2-Wd-wXX" id="ige-1J-tms"/>
                                     <outlet property="title" destination="iMG-R8-F2y" id="HG3-Ny-L05"/>
-                                    <segue destination="J0g-un-leJ" kind="show" identifier="pushNote" trigger="accessoryAction" id="onF-C7-TdP"/>
+                                    <segue destination="J0g-un-leJ" kind="show" id="1CR-TR-gKU"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

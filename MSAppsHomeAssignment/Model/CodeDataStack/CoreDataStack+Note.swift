@@ -6,23 +6,24 @@ import MapKit
 extension CoreDataStack {
     
     /// Saves `Note` entity with passed text and location.
-    func saveNote(withText body: String, at location: CLLocationCoordinate2D) throws {
+    func createNote(withText body: String, at coordinates: CLLocationCoordinate2D, date: Date) throws -> Note {
         let context = persistentContainer.viewContext
         
-        let noteLocation = NoteLocation(context: context)
-        noteLocation.latitude = location.latitude
-        noteLocation.longitude = location.longitude
+        let location = NoteLocation(context: context)
+        location.latitude = coordinates.latitude
+        location.longitude = coordinates.longitude
         
         let note = Note(context: context)
         note.body = body
-        note.dateModified = Date.now
-        note.location = noteLocation
+        note.dateModified = date
+        note.location = location
         
-        noteLocation.note = note
+        location.note = note
         
         do {
             try context.save()
-            print("Saved note: \(note.body?.prefix(10)), last modified \(note.dateModified?.dayAndTimeText).")
+            print("Saved note: \(body.prefix(10)), last modified \(date.dayAndTimeText).")
+            return note
         } catch {
             throw CoreDataError(kind: .noteSave, note: note)
         }
