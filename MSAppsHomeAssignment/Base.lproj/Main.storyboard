@@ -262,38 +262,23 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="NoteCell" id="CN0-Ev-esq" customClass="NoteTableCell" customModule="MSAppsHomeAssignment" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="NoteCell" textLabel="3z5-RX-SHt" style="IBUITableViewCellStyleDefault" id="CN0-Ev-esq">
                                 <rect key="frame" x="0.0" y="50" width="393" height="64"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="CN0-Ev-esq" id="9Xc-hr-eeD">
                                     <rect key="frame" x="0.0" y="0.0" width="393" height="64"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Note title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iMG-R8-F2y">
-                                            <rect key="frame" x="20" y="11" width="353" height="21"/>
-                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="3z5-RX-SHt">
+                                            <rect key="frame" x="20" y="0.0" width="353" height="64"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ih2-Wd-wXX">
-                                            <rect key="frame" x="20" y="38" width="353" height="15"/>
-                                            <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
-                                            <color key="textColor" systemColor="secondaryLabelColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
                                     </subviews>
-                                    <constraints>
-                                        <constraint firstItem="ih2-Wd-wXX" firstAttribute="trailing" secondItem="iMG-R8-F2y" secondAttribute="trailing" id="BUn-Jo-8r0"/>
-                                        <constraint firstItem="ih2-Wd-wXX" firstAttribute="bottom" secondItem="9Xc-hr-eeD" secondAttribute="bottomMargin" id="VNm-Js-eOa"/>
-                                        <constraint firstItem="iMG-R8-F2y" firstAttribute="top" secondItem="9Xc-hr-eeD" secondAttribute="topMargin" id="WH6-hF-B9z"/>
-                                        <constraint firstItem="iMG-R8-F2y" firstAttribute="leading" secondItem="9Xc-hr-eeD" secondAttribute="leadingMargin" id="aAt-PW-4Ie"/>
-                                        <constraint firstItem="iMG-R8-F2y" firstAttribute="trailing" secondItem="9Xc-hr-eeD" secondAttribute="trailingMargin" id="jc2-wE-mzm"/>
-                                        <constraint firstItem="ih2-Wd-wXX" firstAttribute="leading" secondItem="iMG-R8-F2y" secondAttribute="leading" id="vH0-G8-G07"/>
-                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="dateModified" destination="ih2-Wd-wXX" id="ige-1J-tms"/>
-                                    <outlet property="title" destination="iMG-R8-F2y" id="HG3-Ny-L05"/>
                                     <segue destination="J0g-un-leJ" kind="show" id="1CR-TR-gKU"/>
                                 </connections>
                             </tableViewCell>

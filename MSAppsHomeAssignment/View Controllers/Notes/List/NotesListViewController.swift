@@ -9,10 +9,21 @@ class NotesListViewController: UITableViewController {
     var notes: [Note] = []
     var emptyStateView: UIView!
 
+    override func viewWillAppear(_ animated: Bool) {
+        checkIfNotesExist()
+        print("Notes list will appear")
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        fetchNotes()
+        updateSnapshot(reloading: notes)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureDataSource()
         fetchNotes()
+        configureDataSource()
+        updateSnapshot(reloading: notes)
         setTabBarItem(for: .notesList)
         setUpEmptyStateView()
         checkIfNotesExist()
