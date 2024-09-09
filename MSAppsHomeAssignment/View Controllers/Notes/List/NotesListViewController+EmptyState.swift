@@ -45,28 +45,22 @@ extension NotesListViewController {
     }
     
     func checkIfNotesExist() {
-        let fetchRequest = Note.fetchRequest()
-        let context = CoreDataStack.shared.persistentContainer.viewContext
-        do {
-            let notesCount = try context.count(for: fetchRequest)
-            
-            if notesCount == 0 {
-                showEmptyState()
-            } else {
-                hideEmptyState()
-            }
-        } catch {
-            print("Failed to count notes.")
+        if notes.isEmpty {
+            showEmptyState()
+        } else {
+            hideEmptyState()
         }
     }
     
     private func showEmptyState() {
         navigationItem.rightBarButtonItem = nil
         tableView.backgroundView = emptyStateView
+        print("empty")
     }
     
     private func hideEmptyState() {
         navigationItem.rightBarButtonItem = editButtonItem
         tableView.backgroundView = nil
+        print("hide. \(notes.count)")
     }
 }
