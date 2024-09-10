@@ -15,6 +15,8 @@ class NoteDetailsController: UIViewController {
     var shouldDeleteNote: Bool = false
     var autoSaveTimer: Timer?
     
+    let locationManager = CLLocationManager()
+    
     var textViewHeightConstraint: NSLayoutConstraint?
     var textViewPlaceholder: UILabel = {
         let placeholder = UILabel()
@@ -51,10 +53,9 @@ class NoteDetailsController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpNavigationBar()
+        attachTapGesture()
+        prepareMapView()
         populateViews()
-        
-        let tapToDismissKeyboard = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
-        view.addGestureRecognizer(tapToDismissKeyboard)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -75,20 +76,8 @@ class NoteDetailsController: UIViewController {
     func populateViews() {
         if note == nil {
             dateLabel.text = "Created: " + Date.now.dayAndTimeText
-            textView.text = nil
-            mapView.setCenter(mapView.userLocation.coordinate, animated: true)
-            mapView.setUserTrackingMode(.follow, animated: true)
         } else {
             dateLabel.text = "Last modified: " + note.dateModified!.dayAndTimeText
-            textView.text = note.body
-            
-            let coordinate = CLLocationCoordinate2D(latitude: note.location!.latitude, longitude: note.location!.longitude)
-            let pointAnnotation = MKPointAnnotation()
-            pointAnnotation.coordinate = coordinate
-            
-            mapView.setUserTrackingMode(.none, animated: false)
-            mapView.setCenter(coordinate, animated: true)
-            mapView.addAnnotation(pointAnnotation)
         }
     }
     
@@ -107,5 +96,10 @@ class NoteDetailsController: UIViewController {
         } else {
             navigationItem.rightBarButtonItem = deleteButton
         }
+    }
+    
+    func attachTapGesture() {
+        let tapToDismissKeyboard = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        view.addGestureRecognizer(tapToDismissKeyboard)
     }
 }

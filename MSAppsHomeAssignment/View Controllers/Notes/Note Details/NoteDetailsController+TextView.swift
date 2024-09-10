@@ -9,6 +9,8 @@ extension NoteDetailsController: UITextViewDelegate {
     }
     
     func prepareTextView() {
+        textView.text = note != nil ? note.body : nil
+        
         textView.delegate = self
         textView.isEditable = true
         textView.font = .preferredFont(forTextStyle: .body)
