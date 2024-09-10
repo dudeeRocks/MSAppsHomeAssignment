@@ -45,14 +45,16 @@ class NoteDetailsController: UIViewController {
     // MARK: - UIViewController Overrides
     
     override func viewWillAppear(_ animated: Bool) {
-        updatePlaceholder()
+        prepareTextView()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpNavigationBar()
-        prepareTextView()
         populateViews()
+        
+        let tapToDismissKeyboard = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        view.addGestureRecognizer(tapToDismissKeyboard)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
