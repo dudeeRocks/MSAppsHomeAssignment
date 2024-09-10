@@ -4,14 +4,14 @@ import UIKit
 
 extension NoteDetailsController {
     @objc func autoSaveExistingNote() {
-        guard let text = textField.text else {
+        guard let text = textView.text else {
             return
         }
         
         let location = mapView.centerCoordinate
         
         if note != nil {
-            note.body = textField.text
+            note.body = textView.text
             note.location?.latitude = mapView.centerCoordinate.latitude
             note.location?.longitude = mapView.centerCoordinate.longitude
             note.dateModified = Date.now
@@ -19,11 +19,13 @@ extension NoteDetailsController {
             CoreDataStack.shared.saveViewContext()
             
             delegate?.didUpdateNote()
+            
+            dateLabel.text = "Saved: " + note.dateModified!.dayAndTimeText
         }
     }
     
     @objc func saveNewNote() {
-        guard let text = textField.text else {
+        guard let text = textView.text else {
             return
         }
         
@@ -56,7 +58,7 @@ extension NoteDetailsController {
     }
     
     @objc func setSaveButtonState() {
-        if textField.hasText {
+        if textView.hasText {
             saveButton.isEnabled = true
         } else {
             saveButton.isEnabled = false

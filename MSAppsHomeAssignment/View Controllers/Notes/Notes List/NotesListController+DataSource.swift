@@ -8,12 +8,14 @@ extension NotesListController {
     typealias Snapshot = NSDiffableDataSourceSnapshot<Int, Note>
     
     func configureDataSource() {
-        dataSource = DataSource(tableView: tableView, cellProvider: { tableView, indexPath, note in
+        dataSource = DataSource(tableView: tableView, cellProvider: { (tableView: UITableView, indexPath: IndexPath, note: Note) in
             let cell = tableView.dequeueReusableCell(withIdentifier: "NoteCell", for: indexPath)
             
             var content = cell.defaultContentConfiguration()
             content.text = note.body
             content.textProperties.font = .preferredFont(forTextStyle: .body)
+            content.textProperties.lineBreakMode = .byTruncatingTail
+            content.textProperties.numberOfLines = 1
             content.secondaryText = note.dateModified?.dayAndTimeText
             content.secondaryTextProperties.font = .preferredFont(forTextStyle: .caption1)
             content.secondaryTextProperties.color = .secondaryLabel

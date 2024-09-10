@@ -15,10 +15,21 @@ class NoteDetailsController: UIViewController {
     var shouldDeleteNote: Bool = false
     var autoSaveTimer: Timer?
     
+    var textViewHeightConstraint: NSLayoutConstraint?
+    var textViewPlaceholder: UILabel = {
+        let placeholder = UILabel()
+        placeholder.text = "Start typing your note here..."
+        placeholder.textColor = .placeholderText
+        placeholder.textAlignment = .left
+        placeholder.font = .preferredFont(forTextStyle: .body)
+        placeholder.translatesAutoresizingMaskIntoConstraints = false
+        return placeholder
+    }()
+    
     // MARK: Outlets
     
     @IBOutlet weak var dateLabel: UILabel!
-    @IBOutlet weak var textField: UITextField!
+    @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var mapView: MKMapView!
     
     // MARK: - UI
@@ -33,14 +44,22 @@ class NoteDetailsController: UIViewController {
     
     // MARK: - UIViewController Overrides
     
+    override func viewWillAppear(_ animated: Bool) {
+        updatePlaceholder()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpNavigationBar()
-        prepareTextField()
+        prepareTextView()
         populateViews()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
+        if note != nil && !textView.hasText {
+            shouldDeleteNote = true
+        }
+        
         if shouldDeleteNote {
             CoreDataStack.shared.viewContext.delete(note)
             CoreDataStack.shared.saveViewContext()
@@ -54,12 +73,12 @@ class NoteDetailsController: UIViewController {
     func populateViews() {
         if note == nil {
             dateLabel.text = "Created: " + Date.now.dayAndTimeText
-            textField.text = nil
+            textView.text = nil
             mapView.setCenter(mapView.userLocation.coordinate, animated: true)
             mapView.setUserTrackingMode(.follow, animated: true)
         } else {
             dateLabel.text = "Last modified: " + note.dateModified!.dayAndTimeText
-            textField.text = note.body
+            textView.text = note.body
             
             let coordinate = CLLocationCoordinate2D(latitude: note.location!.latitude, longitude: note.location!.longitude)
             let pointAnnotation = MKPointAnnotation()
