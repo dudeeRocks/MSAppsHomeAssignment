@@ -16,6 +16,7 @@ class LoginViewController: UIViewController {
     @IBOutlet var primaryButton: UIButton!
     @IBOutlet var secondaryButton: UIButton!
     @IBOutlet var secondaryButtonLabel: UILabel!
+    @IBOutlet var formContainer: UIStackView!
     
     // MARK: - IBActions
     
@@ -48,6 +49,7 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         attachTapGesture()
+        setKeyboardLayoutGuide()
         setTextFieldDelegates()
         updateUI()
     }
@@ -75,8 +77,12 @@ class LoginViewController: UIViewController {
         view.addGestureRecognizer(tapGesture)
     }
     
-    @objc private func dismissKeyboard() {
-        view.endEditing(true)
+    private func setKeyboardLayoutGuide() {
+        print("Login screen intrinsic content height: \(formContainer.intrinsicContentSize.height)")
+        formContainer.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            view.keyboardLayoutGuide.topAnchor.constraint(equalToSystemSpacingBelow: formContainer.bottomAnchor, multiplier: 1.0)
+        ])
     }
     
     private func showMainScreen() {
@@ -110,6 +116,12 @@ class LoginViewController: UIViewController {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default))
         present(alert, animated: true)
+    }
+    
+    // MARK: - Actions
+    
+    @objc private func dismissKeyboard() {
+        view.endEditing(true)
     }
 }
 

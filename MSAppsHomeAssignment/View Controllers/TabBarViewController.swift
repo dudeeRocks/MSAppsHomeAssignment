@@ -30,7 +30,7 @@ class TabBarViewController: UITabBarController {
             switch navigationController.topViewController {
             case is UsersListViewController:
                 navigationController.setTabBarItem(for: .usersList)
-            case is NotesListViewController:
+            case is NotesListController:
                 navigationController.setTabBarItem(for: .notesList)
             default:
                 navigationController.setTabBarItem(for: .map)

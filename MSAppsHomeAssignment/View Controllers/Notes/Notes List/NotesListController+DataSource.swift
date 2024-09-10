@@ -3,7 +3,7 @@
 import UIKit
 import CoreData
 
-extension NotesListViewController {
+extension NotesListController {
     typealias DataSource = UITableViewDiffableDataSource<Int, Note>
     typealias Snapshot = NSDiffableDataSourceSnapshot<Int, Note>
     
@@ -26,7 +26,12 @@ extension NotesListViewController {
         tableView.dataSource = dataSource
     }
     
-    func updateSnapshot(reloading notes: [Note] = []) {
+    func updateNotesList() {
+        fetchNotes()
+        applySnapshot()
+    }
+    
+    private func applySnapshot() {
         var snapshot = Snapshot()
         snapshot.appendSections([0])
         snapshot.appendItems(notes)
@@ -36,7 +41,7 @@ extension NotesListViewController {
         dataSource.apply(snapshot)
     }
     
-    func fetchNotes() {
+    private func fetchNotes() {
         let fetchRequest: NSFetchRequest<Note> = Note.fetchRequest()
         let sortDescriptor = NSSortDescriptor(keyPath: \Note.dateModified, ascending: false)
         fetchRequest.sortDescriptors = [sortDescriptor]

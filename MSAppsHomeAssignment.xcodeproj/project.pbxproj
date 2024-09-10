@@ -17,10 +17,10 @@
 		FA0D056B2C8D8B60007C5847 /* UserTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0D056A2C8D8B60007C5847 /* UserTableCell.swift */; };
 		FA0D05712C8DC1D5007C5847 /* CoreDataStack+Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0D05702C8DC1D5007C5847 /* CoreDataStack+Error.swift */; };
 		FA0D05732C8DC401007C5847 /* UIImageView+Loader.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0D05722C8DC401007C5847 /* UIImageView+Loader.swift */; };
-		FA0D05752C8DD3A3007C5847 /* NotesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0D05742C8DD3A3007C5847 /* NotesListViewController.swift */; };
-		FA0D057F2C8DD688007C5847 /* NotesListViewController+EmptyState.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0D057E2C8DD688007C5847 /* NotesListViewController+EmptyState.swift */; };
+		FA0D05752C8DD3A3007C5847 /* NotesListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0D05742C8DD3A3007C5847 /* NotesListController.swift */; };
+		FA0D057F2C8DD688007C5847 /* NotesListController+EmptyState.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0D057E2C8DD688007C5847 /* NotesListController+EmptyState.swift */; };
 		FA0D05892C8DF317007C5847 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0D05882C8DF317007C5847 /* TabBarViewController.swift */; };
-		FA0D058B2C8DFE24007C5847 /* NotesListViewController+Actions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0D058A2C8DFE24007C5847 /* NotesListViewController+Actions.swift */; };
+		FA0D058B2C8DFE24007C5847 /* NotesListController+Actions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0D058A2C8DFE24007C5847 /* NotesListController+Actions.swift */; };
 		FA0D058D2C8E02A3007C5847 /* Date+Text.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0D058C2C8E02A3007C5847 /* Date+Text.swift */; };
 		FA0D05912C8E1D33007C5847 /* NoteDetailsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0D05902C8E1D33007C5847 /* NoteDetailsController.swift */; };
 		FA0D05932C8E369B007C5847 /* CoreDataStack+Users.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0D05922C8E369B007C5847 /* CoreDataStack+Users.swift */; };
@@ -28,7 +28,8 @@
 		FA0D05972C8E39C4007C5847 /* CoreDataStack+Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0D05962C8E39C4007C5847 /* CoreDataStack+Note.swift */; };
 		FA0D05992C8E3F7C007C5847 /* NoteDetailsController+TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0D05982C8E3F7C007C5847 /* NoteDetailsController+TextField.swift */; };
 		FA0D059B2C8E52AE007C5847 /* NoteDetailsController+Actions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0D059A2C8E52AE007C5847 /* NoteDetailsController+Actions.swift */; };
-		FA0D059F2C8E7B5C007C5847 /* NotesListViewController+DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0D059E2C8E7B5C007C5847 /* NotesListViewController+DataSource.swift */; };
+		FA0D059F2C8E7B5C007C5847 /* NotesListController+DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0D059E2C8E7B5C007C5847 /* NotesListController+DataSource.swift */; };
+		FA5406462C902D1E0035446C /* NotesListController+NoteDetailsDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5406452C902D1E0035446C /* NotesListController+NoteDetailsDelegate.swift */; };
 		FAA1B3D52C8A616400234C20 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA1B3D42C8A616400234C20 /* User.swift */; };
 		FAC6B96A2C89974A00986F44 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC6B9692C89974A00986F44 /* AppDelegate.swift */; };
 		FAC6B96C2C89974A00986F44 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC6B96B2C89974A00986F44 /* SceneDelegate.swift */; };
@@ -51,10 +52,10 @@
 		FA0D056A2C8D8B60007C5847 /* UserTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableCell.swift; sourceTree = "<group>"; };
 		FA0D05702C8DC1D5007C5847 /* CoreDataStack+Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreDataStack+Error.swift"; sourceTree = "<group>"; };
 		FA0D05722C8DC401007C5847 /* UIImageView+Loader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Loader.swift"; sourceTree = "<group>"; };
-		FA0D05742C8DD3A3007C5847 /* NotesListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesListViewController.swift; sourceTree = "<group>"; };
-		FA0D057E2C8DD688007C5847 /* NotesListViewController+EmptyState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NotesListViewController+EmptyState.swift"; sourceTree = "<group>"; };
+		FA0D05742C8DD3A3007C5847 /* NotesListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesListController.swift; sourceTree = "<group>"; };
+		FA0D057E2C8DD688007C5847 /* NotesListController+EmptyState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NotesListController+EmptyState.swift"; sourceTree = "<group>"; };
 		FA0D05882C8DF317007C5847 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
-		FA0D058A2C8DFE24007C5847 /* NotesListViewController+Actions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NotesListViewController+Actions.swift"; sourceTree = "<group>"; };
+		FA0D058A2C8DFE24007C5847 /* NotesListController+Actions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NotesListController+Actions.swift"; sourceTree = "<group>"; };
 		FA0D058C2C8E02A3007C5847 /* Date+Text.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Text.swift"; sourceTree = "<group>"; };
 		FA0D05902C8E1D33007C5847 /* NoteDetailsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteDetailsController.swift; sourceTree = "<group>"; };
 		FA0D05922C8E369B007C5847 /* CoreDataStack+Users.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreDataStack+Users.swift"; sourceTree = "<group>"; };
@@ -62,7 +63,8 @@
 		FA0D05962C8E39C4007C5847 /* CoreDataStack+Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreDataStack+Note.swift"; sourceTree = "<group>"; };
 		FA0D05982C8E3F7C007C5847 /* NoteDetailsController+TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NoteDetailsController+TextField.swift"; sourceTree = "<group>"; };
 		FA0D059A2C8E52AE007C5847 /* NoteDetailsController+Actions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NoteDetailsController+Actions.swift"; sourceTree = "<group>"; };
-		FA0D059E2C8E7B5C007C5847 /* NotesListViewController+DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NotesListViewController+DataSource.swift"; sourceTree = "<group>"; };
+		FA0D059E2C8E7B5C007C5847 /* NotesListController+DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NotesListController+DataSource.swift"; sourceTree = "<group>"; };
+		FA5406452C902D1E0035446C /* NotesListController+NoteDetailsDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NotesListController+NoteDetailsDelegate.swift"; sourceTree = "<group>"; };
 		FAA1B3D42C8A616400234C20 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		FAC6B9662C89974A00986F44 /* MSAppsHomeAssignment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MSAppsHomeAssignment.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAC6B9692C89974A00986F44 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -153,10 +155,11 @@
 		FA0D059C2C8E52BB007C5847 /* Notes List */ = {
 			isa = PBXGroup;
 			children = (
-				FA0D05742C8DD3A3007C5847 /* NotesListViewController.swift */,
-				FA0D059E2C8E7B5C007C5847 /* NotesListViewController+DataSource.swift */,
-				FA0D058A2C8DFE24007C5847 /* NotesListViewController+Actions.swift */,
-				FA0D057E2C8DD688007C5847 /* NotesListViewController+EmptyState.swift */,
+				FA0D05742C8DD3A3007C5847 /* NotesListController.swift */,
+				FA0D059E2C8E7B5C007C5847 /* NotesListController+DataSource.swift */,
+				FA0D058A2C8DFE24007C5847 /* NotesListController+Actions.swift */,
+				FA0D057E2C8DD688007C5847 /* NotesListController+EmptyState.swift */,
+				FA5406452C902D1E0035446C /* NotesListController+NoteDetailsDelegate.swift */,
 			);
 			path = "Notes List";
 			sourceTree = "<group>";
@@ -290,12 +293,12 @@
 				FA0D05972C8E39C4007C5847 /* CoreDataStack+Note.swift in Sources */,
 				FAC6B9742C89974A00986F44 /* DataModel.xcdatamodeld in Sources */,
 				FA0D05712C8DC1D5007C5847 /* CoreDataStack+Error.swift in Sources */,
-				FA0D059F2C8E7B5C007C5847 /* NotesListViewController+DataSource.swift in Sources */,
+				FA0D059F2C8E7B5C007C5847 /* NotesListController+DataSource.swift in Sources */,
 				FA0D059B2C8E52AE007C5847 /* NoteDetailsController+Actions.swift in Sources */,
-				FA0D05752C8DD3A3007C5847 /* NotesListViewController.swift in Sources */,
+				FA0D05752C8DD3A3007C5847 /* NotesListController.swift in Sources */,
 				FA0D05912C8E1D33007C5847 /* NoteDetailsController.swift in Sources */,
-				FA0D057F2C8DD688007C5847 /* NotesListViewController+EmptyState.swift in Sources */,
-				FA0D058B2C8DFE24007C5847 /* NotesListViewController+Actions.swift in Sources */,
+				FA0D057F2C8DD688007C5847 /* NotesListController+EmptyState.swift in Sources */,
+				FA0D058B2C8DFE24007C5847 /* NotesListController+Actions.swift in Sources */,
 				FA0D055B2C8B274F007C5847 /* UsersListViewController.swift in Sources */,
 				FA0D05932C8E369B007C5847 /* CoreDataStack+Users.swift in Sources */,
 				FAC6B96A2C89974A00986F44 /* AppDelegate.swift in Sources */,
@@ -307,6 +310,7 @@
 				FA0D058D2C8E02A3007C5847 /* Date+Text.swift in Sources */,
 				FA0D05632C8D698E007C5847 /* UserDetailsViewController.swift in Sources */,
 				FA0D056B2C8D8B60007C5847 /* UserTableCell.swift in Sources */,
+				FA5406462C902D1E0035446C /* NotesListController+NoteDetailsDelegate.swift in Sources */,
 				FA0D055F2C8C7110007C5847 /* WebAPICaller.swift in Sources */,
 				FA0D05542C8AEDBF007C5847 /* CoreDataStack.swift in Sources */,
 				FAC6B9842C89BDCA00986F44 /* AuthManager.swift in Sources */,

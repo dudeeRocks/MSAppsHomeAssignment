@@ -2,9 +2,12 @@
 
 import UIKit
 
-extension NotesListViewController {
+extension NotesListController {
     @objc func addNote() {
-        let navigationVC = UINavigationController(rootViewController: .getViewController(withIdentifier: .noteDetails))
+        let detailsVC = UIViewController.getViewController(withIdentifier: .noteDetails) as! NoteDetailsController
+        detailsVC.delegate = self
+        
+        let navigationVC = UINavigationController(rootViewController: detailsVC)
         present(navigationVC, animated: true)
     }
     
@@ -23,7 +26,11 @@ extension NotesListViewController {
         CoreDataStack.shared.viewContext.delete(note)
         CoreDataStack.shared.saveViewContext()
         
-        updateSnapshot()
+        updateNotesList()
+        
+        if notes.isEmpty {
+            showEmptyState()
+        }
     }
 }
 

@@ -3,27 +3,27 @@
 import UIKit
 import CoreData
 
-class NotesListViewController: UITableViewController {
+class NotesListController: UITableViewController {
     
     var dataSource: DataSource!
     var notes: [Note] = []
     var emptyStateView: UIView!
     
+    // MARK: UIViewController Methods
+    
     override func viewWillAppear(_ animated: Bool) {
         checkIfNotesExist()
-        print("Notes list will appear")
+        updateNotesList()
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        fetchNotes()
-        updateSnapshot(reloading: notes)
+        updateNotesList()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        fetchNotes()
         configureDataSource()
-        updateSnapshot(reloading: notes)
+        updateNotesList()
         setTabBarItem(for: .notesList)
         setUpEmptyStateView()
         checkIfNotesExist()
@@ -32,11 +32,7 @@ class NotesListViewController: UITableViewController {
         tableView.delegate = self
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let detailsVC = segue.destination as? NoteDetailsController, let indexPath = tableView.indexPathForSelectedRow {
-            detailsVC.note = dataSource.itemIdentifier(for: indexPath)
-        }
-    }
+    // MARK: - UITableView Methods
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if case .delete = editingStyle {
@@ -52,5 +48,14 @@ class NotesListViewController: UITableViewController {
             })
         ])
         return config
+    }
+    
+    // MARK: - Navigation
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let detailsVC = segue.destination as? NoteDetailsController, let indexPath = tableView.indexPathForSelectedRow {
+            detailsVC.note = dataSource.itemIdentifier(for: indexPath)
+            detailsVC.delegate = self
+        }
     }
 }

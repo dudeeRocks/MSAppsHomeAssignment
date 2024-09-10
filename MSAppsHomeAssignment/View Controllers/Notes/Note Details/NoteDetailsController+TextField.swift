@@ -3,8 +3,12 @@
 import UIKit
 
 extension NoteDetailsController: UITextFieldDelegate {
-    func setTextFieldDelegate() {
+    func prepareTextField() {
         textField.delegate = self
+        textField
+        if note == nil {
+            textField.addTarget(self, action: #selector(setSaveButtonState), for: .editingChanged)
+        }
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
@@ -13,7 +17,6 @@ extension NoteDetailsController: UITextFieldDelegate {
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         autoSaveTimer?.invalidate()
-        saveButton.isEnabled = isSaveButtonEnabled
         autoSaveTimer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: false, block: { _ in
             self.autoSaveExistingNote()
         })
@@ -24,7 +27,6 @@ extension NoteDetailsController: UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField, reason: UITextField.DidEndEditingReason) {
         if note == nil {
             navigationItem.rightBarButtonItem = saveButton
-            saveButton.isEnabled = isSaveButtonEnabled
         } else {
             navigationItem.rightBarButtonItem = deleteButton
         }

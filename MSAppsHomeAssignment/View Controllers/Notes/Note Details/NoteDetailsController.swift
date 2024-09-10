@@ -3,15 +3,17 @@
 import UIKit
 import MapKit
 
+protocol NoteDetailsDelegate: AnyObject {
+    func didUpdateNote()
+}
+
 class NoteDetailsController: UIViewController {
     
     var note: Note!
+    var delegate: NoteDetailsDelegate?
+    
     var shouldDeleteNote: Bool = false
     var autoSaveTimer: Timer?
-    var isSaveButtonEnabled: Bool {
-        print("is save button enabled: \(textField.hasText)")
-        return textField.hasText
-    }
     
     // MARK: Outlets
     
@@ -21,30 +23,21 @@ class NoteDetailsController: UIViewController {
     
     // MARK: - UI
     
-    var doneButton: UIBarButtonItem {
-        UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(dismissKeyboard))
-    }
+    var doneButton: UIBarButtonItem!
     
-    var deleteButton: UIBarButtonItem {
-        UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(deleteNote))
-    }
+    var deleteButton: UIBarButtonItem!
     
-    var saveButton: UIBarButtonItem {
-        UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveNewNote))
-    }
+    var saveButton: UIBarButtonItem!
     
-    var cancelButton: UIBarButtonItem {
-        UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelAddNote))
-    }
+    var cancelButton: UIBarButtonItem!
     
     // MARK: - UIViewController Overrides
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setTextFieldDelegate()
-        populateViews()
-        showDeleteButtonIfNeeded()
         setUpNavigationBar()
+        prepareTextField()
+        populateViews()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -78,23 +71,20 @@ class NoteDetailsController: UIViewController {
         }
     }
     
-    func showDeleteButtonIfNeeded() {
-        if note != nil {
-            navigationItem.rightBarButtonItem = deleteButton
-        }
-    }
-    
     func setUpNavigationBar() {
+        doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(dismissKeyboard))
+        deleteButton = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(deleteNote))
+        saveButton = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveNewNote))
+        cancelButton = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelAddNote))
+        
         if note == nil {
             navigationController?.navigationBar.backgroundColor = .secondarySystemBackground
             navigationItem.title = "Add Note"
             navigationItem.leftBarButtonItem = cancelButton
-            saveButton.isEnabled = isSaveButtonEnabled
             navigationItem.rightBarButtonItem = saveButton
+            saveButton.isEnabled = false
+        } else {
+            navigationItem.rightBarButtonItem = deleteButton
         }
-    }
-    
-    func goBackToNotesList() {
-        navigationController?.popViewController(animated: true)
     }
 }

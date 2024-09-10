@@ -2,7 +2,7 @@
 
 import UIKit
 
-extension NotesListViewController {
+extension NotesListController {
     func setUpEmptyStateView() {
         emptyStateView = UIView(frame: view.bounds)
         emptyStateView.backgroundColor = .systemBackground
@@ -52,11 +52,15 @@ extension NotesListViewController {
         }
     }
     
-    private func showEmptyState() {
-        tableView.backgroundView = emptyStateView
+    func showEmptyState() {
+        UIView.transition(with: emptyStateView, duration: 0.3) {
+            self.tableView.backgroundView = self.emptyStateView
+        }
     }
     
     private func hideEmptyState() {
-        tableView.backgroundView = nil
+        UIView.transition(with: emptyStateView, duration: 0.3) {
+            self.tableView.backgroundView = nil
+        }
     }
 }
