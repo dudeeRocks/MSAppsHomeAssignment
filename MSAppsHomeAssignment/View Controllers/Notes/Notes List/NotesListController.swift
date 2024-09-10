@@ -50,6 +50,15 @@ class NotesListController: UITableViewController {
         return config
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let note = dataSource.itemIdentifier(for: indexPath) else { return }
+        let detailsVC = UIViewController.getViewController(withIdentifier: .noteDetails) as! NoteDetailsController
+        detailsVC.note = note
+        detailsVC.delegate = self
+        navigationController?.pushViewController(detailsVC, animated: true)
+        
+    }
+    
     // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

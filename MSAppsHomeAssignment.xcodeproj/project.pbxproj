@@ -31,6 +31,10 @@
 		FA0D059F2C8E7B5C007C5847 /* NotesListController+DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0D059E2C8E7B5C007C5847 /* NotesListController+DataSource.swift */; };
 		FA5406462C902D1E0035446C /* NotesListController+NoteDetailsDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5406452C902D1E0035446C /* NotesListController+NoteDetailsDelegate.swift */; };
 		FA54064A2C90563D0035446C /* NoteDetailsController+Map.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5406492C90563D0035446C /* NoteDetailsController+Map.swift */; };
+		FA54064C2C905F1C0035446C /* NoteDetailsController+Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA54064B2C905F1C0035446C /* NoteDetailsController+Section.swift */; };
+		FA54064E2C9061C80035446C /* NoteDetailsController+Row.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA54064D2C9061C80035446C /* NoteDetailsController+Row.swift */; };
+		FA5406502C9062EC0035446C /* NoteDetailsController+DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA54064F2C9062EC0035446C /* NoteDetailsController+DataSource.swift */; };
+		FA5406522C90A3CA0035446C /* MapContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5406512C90A3CA0035446C /* MapContentView.swift */; };
 		FAA1B3D52C8A616400234C20 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA1B3D42C8A616400234C20 /* User.swift */; };
 		FAC6B96A2C89974A00986F44 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC6B9692C89974A00986F44 /* AppDelegate.swift */; };
 		FAC6B96C2C89974A00986F44 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC6B96B2C89974A00986F44 /* SceneDelegate.swift */; };
@@ -67,6 +71,10 @@
 		FA0D059E2C8E7B5C007C5847 /* NotesListController+DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NotesListController+DataSource.swift"; sourceTree = "<group>"; };
 		FA5406452C902D1E0035446C /* NotesListController+NoteDetailsDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NotesListController+NoteDetailsDelegate.swift"; sourceTree = "<group>"; };
 		FA5406492C90563D0035446C /* NoteDetailsController+Map.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NoteDetailsController+Map.swift"; sourceTree = "<group>"; };
+		FA54064B2C905F1C0035446C /* NoteDetailsController+Section.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NoteDetailsController+Section.swift"; sourceTree = "<group>"; };
+		FA54064D2C9061C80035446C /* NoteDetailsController+Row.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NoteDetailsController+Row.swift"; sourceTree = "<group>"; };
+		FA54064F2C9062EC0035446C /* NoteDetailsController+DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NoteDetailsController+DataSource.swift"; sourceTree = "<group>"; };
+		FA5406512C90A3CA0035446C /* MapContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapContentView.swift; sourceTree = "<group>"; };
 		FAA1B3D42C8A616400234C20 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		FAC6B9662C89974A00986F44 /* MSAppsHomeAssignment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MSAppsHomeAssignment.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAC6B9692C89974A00986F44 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -131,6 +139,7 @@
 			isa = PBXGroup;
 			children = (
 				FA0D056A2C8D8B60007C5847 /* UserTableCell.swift */,
+				FA5406512C90A3CA0035446C /* MapContentView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -170,6 +179,9 @@
 			isa = PBXGroup;
 			children = (
 				FA0D05902C8E1D33007C5847 /* NoteDetailsController.swift */,
+				FA54064F2C9062EC0035446C /* NoteDetailsController+DataSource.swift */,
+				FA54064B2C905F1C0035446C /* NoteDetailsController+Section.swift */,
+				FA54064D2C9061C80035446C /* NoteDetailsController+Row.swift */,
 				FA5406492C90563D0035446C /* NoteDetailsController+Map.swift */,
 				FA0D059A2C8E52AE007C5847 /* NoteDetailsController+Actions.swift */,
 				FA0D05982C8E3F7C007C5847 /* NoteDetailsController+TextView.swift */,
@@ -298,6 +310,7 @@
 				FA0D05712C8DC1D5007C5847 /* CoreDataStack+Error.swift in Sources */,
 				FA0D059F2C8E7B5C007C5847 /* NotesListController+DataSource.swift in Sources */,
 				FA0D059B2C8E52AE007C5847 /* NoteDetailsController+Actions.swift in Sources */,
+				FA5406502C9062EC0035446C /* NoteDetailsController+DataSource.swift in Sources */,
 				FA0D05752C8DD3A3007C5847 /* NotesListController.swift in Sources */,
 				FA0D05912C8E1D33007C5847 /* NoteDetailsController.swift in Sources */,
 				FA0D057F2C8DD688007C5847 /* NotesListController+EmptyState.swift in Sources */,
@@ -313,12 +326,15 @@
 				FA0D05892C8DF317007C5847 /* TabBarViewController.swift in Sources */,
 				FA0D058D2C8E02A3007C5847 /* Date+Text.swift in Sources */,
 				FA0D05632C8D698E007C5847 /* UserDetailsViewController.swift in Sources */,
+				FA5406522C90A3CA0035446C /* MapContentView.swift in Sources */,
 				FA0D056B2C8D8B60007C5847 /* UserTableCell.swift in Sources */,
+				FA54064C2C905F1C0035446C /* NoteDetailsController+Section.swift in Sources */,
 				FA5406462C902D1E0035446C /* NotesListController+NoteDetailsDelegate.swift in Sources */,
 				FA0D055F2C8C7110007C5847 /* WebAPICaller.swift in Sources */,
 				FA0D05542C8AEDBF007C5847 /* CoreDataStack.swift in Sources */,
 				FAC6B9842C89BDCA00986F44 /* AuthManager.swift in Sources */,
 				FAA1B3D52C8A616400234C20 /* User.swift in Sources */,
+				FA54064E2C9061C80035446C /* NoteDetailsController+Row.swift in Sources */,
 				FA0D05682C8D80BB007C5847 /* UIViewController+CommonSetup.swift in Sources */,
 				FA0D05952C8E36FE007C5847 /* CoreDataStack+Avatar.swift in Sources */,
 			);

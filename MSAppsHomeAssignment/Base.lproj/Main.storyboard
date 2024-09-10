@@ -278,7 +278,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="J0g-un-leJ" kind="show" id="1CR-TR-gKU"/>
+                                    <segue destination="Vub-y6-ZbC" kind="show" trigger="accessoryAction" id="mhO-Ec-6bb"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -292,6 +292,32 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YcK-SA-2CM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3340" y="-2"/>
+        </scene>
+        <!--Note Details Controller-->
+        <scene sceneID="hgq-cM-BtN">
+            <objects>
+                <collectionViewController storyboardIdentifier="NoteDetails" id="Vub-y6-ZbC" customClass="NoteDetailsController" customModule="MSAppsHomeAssignment" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="lZU-OX-I6Z">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="bRU-i5-4hz">
+                            <size key="itemSize" width="128" height="128"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells/>
+                        <connections>
+                            <outlet property="dataSource" destination="Vub-y6-ZbC" id="7Zd-k6-gwX"/>
+                            <outlet property="delegate" destination="Vub-y6-ZbC" id="3ja-H9-wmA"/>
+                        </connections>
+                    </collectionView>
+                    <navigationItem key="navigationItem" id="edC-PE-2Uv"/>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FBZ-O3-Sy0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4218" y="-2"/>
         </scene>
         <!--Item-->
         <scene sceneID="Lc2-Bs-PDa">
@@ -342,75 +368,8 @@
             </objects>
             <point key="canvasLocation" x="3340" y="744"/>
         </scene>
-        <!--Note Details Controller-->
-        <scene sceneID="pek-QV-kLP">
-            <objects>
-                <viewController storyboardIdentifier="NoteDetails" id="J0g-un-leJ" customClass="NoteDetailsController" customModule="MSAppsHomeAssignment" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="ImV-f8-5N7">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="fet-AO-9Vc">
-                                <rect key="frame" x="20" y="175" width="353" height="452.66666666666674"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JGd-A3-r9K">
-                                        <rect key="frame" x="0.0" y="0.0" width="353" height="14.333333333333334"/>
-                                        <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
-                                        <color key="textColor" systemColor="secondaryLabelColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="8yK-3g-2Hp">
-                                        <rect key="frame" x="0.0" y="54.333333333333329" width="353" height="158.33333333333337"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Note:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hg1-xg-0YL">
-                                                <rect key="frame" x="0.0" y="0.0" width="353" height="20.333333333333332"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" showsHorizontalScrollIndicator="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="r9D-H8-j8I">
-                                                <rect key="frame" x="0.0" y="30.333333333333343" width="353" height="128"/>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                                <color key="textColor" systemColor="labelColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                            </textView>
-                                        </subviews>
-                                    </stackView>
-                                    <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="w7D-3G-uJ7">
-                                        <rect key="frame" x="0.0" y="252.66666666666669" width="353" height="200"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="200" id="kQ0-TF-bMS"/>
-                                        </constraints>
-                                        <standardMapConfiguration key="preferredConfiguration"/>
-                                    </mapView>
-                                </subviews>
-                            </stackView>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="7h7-HT-W6E"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="fet-AO-9Vc" firstAttribute="leading" secondItem="7h7-HT-W6E" secondAttribute="leading" constant="20" id="6j2-n6-83Y"/>
-                            <constraint firstItem="7h7-HT-W6E" firstAttribute="trailing" secondItem="fet-AO-9Vc" secondAttribute="trailing" constant="20" id="HMJ-v1-uLF"/>
-                            <constraint firstItem="fet-AO-9Vc" firstAttribute="top" secondItem="7h7-HT-W6E" secondAttribute="top" constant="20" id="ahm-4w-4mV"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" id="KO9-ZN-6cH"/>
-                    <connections>
-                        <outlet property="dateLabel" destination="JGd-A3-r9K" id="roi-ua-GK0"/>
-                        <outlet property="mapView" destination="w7D-3G-uJ7" id="d65-9T-7hJ"/>
-                        <outlet property="textView" destination="r9D-H8-j8I" id="a8t-G3-xB5"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="GSL-lZ-iFp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="4217.5572519083971" y="-2.1126760563380285"/>
-        </scene>
     </scenes>
     <resources>
-        <systemColor name="labelColor">
-            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
         <systemColor name="secondaryLabelColor">
             <color red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
