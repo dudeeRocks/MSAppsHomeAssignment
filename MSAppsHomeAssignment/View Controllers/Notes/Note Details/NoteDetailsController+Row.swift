@@ -9,7 +9,7 @@ extension NoteDetailsController {
         case viewLocation
         case editNote
         case editLocation
-        case editLocationResult(MKMapItem)
+        case editLocationResult(MKLocalSearchCompletion)
         case date
         case map
         case deleteButton

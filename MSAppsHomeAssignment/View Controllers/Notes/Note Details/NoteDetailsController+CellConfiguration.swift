@@ -48,35 +48,15 @@ extension NoteDetailsController {
         var content = cell.locationSearchFieldConfiguration()
         content.text = isNewNote ? nil : note.location!.displayName
         content.coordinate = isNewNote ? CLLocationCoordinate2D(latitude: 0, longitude: 0) : note.coordinate
-        content.onChange = { [weak self] response, error in
+        content.onResultsUpdate = { [weak self] results in
             guard let self = self else { return }
-            guard let response = response, error == nil else {
-                Log.main.log(error: "Failed location search. Error: \(error?.localizedDescription)")
-                
-                if let searchError = error as? MKError {
-                    switch searchError.code {
-                    case .decodingFailed:
-                        print("decoding failed")
-                    case .placemarkNotFound:
-                        print("placemarkNotFound")
-                    case .serverFailure:
-                        print("serverFailure")
-                    default:
-                        print("unknown error")
-                    }
-                }
-                return // TODO: Show alert here
+            let cappedResults = results.prefix(5)
+            var searchResultsRows: [Row] = []
+            for result in cappedResults {
+                let newRow = Row.editLocationResult(result)
+                searchResultsRows.append(newRow)
             }
-            
-            let mapItems = response.mapItems.prefix(5)
-            var locationSearchResultsRows: [Row] = []
-            
-            for item in mapItems {
-                let row = Row.editLocationResult(item)
-                locationSearchResultsRows.append(row)
-            }
-            
-            updateUI(for: .edit, animated: true, locationResults: locationSearchResultsRows)
+            updateUI(for: .edit, animated: true, locationResults: searchResultsRows)
         }
         cell.contentConfiguration = content
     }

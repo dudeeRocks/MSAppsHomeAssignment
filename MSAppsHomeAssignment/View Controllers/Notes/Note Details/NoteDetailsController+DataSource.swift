@@ -33,7 +33,7 @@ extension NoteDetailsController {
             updateSnapshotForViewing(animated: animated)
         case .edit:
             isEditing = true
-            updateSnapshotForEditing(animated: animated)
+            updateSnapshotForEditing(animated: animated, locationResults: locationResults)
         }
     }
     

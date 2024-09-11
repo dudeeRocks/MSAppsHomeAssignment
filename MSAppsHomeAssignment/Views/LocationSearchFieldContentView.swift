@@ -21,6 +21,7 @@ class LocationSearchFieldContentView: UIView, UIContentView {
         self.configuration = configuration
         super.init(frame: .zero)
         setUpTextField()
+        setUpSearchCompleter()
     }
     
     required init?(coder: NSCoder) {
@@ -47,9 +48,9 @@ class LocationSearchFieldContentView: UIView, UIContentView {
         NSLayoutConstraint.activate([
             textField.topAnchor.constraint(equalTo: topAnchor),
             textField.bottomAnchor.constraint(equalTo: bottomAnchor),
-            textField.leftAnchor.constraint(equalTo: leftAnchor),
+            textField.leftAnchor.constraint(equalTo: leftAnchor, constant: 8),
             textField.rightAnchor.constraint(equalTo: rightAnchor),
-            textField.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 1.0)
+            textField.heightAnchor.constraint(equalToConstant: 48)
         ])
     }
     
@@ -59,24 +60,12 @@ class LocationSearchFieldContentView: UIView, UIContentView {
         searchCompleter.region = MKCoordinateRegion(.world)
     }
     
-    func searchFor(_ string: String) {
-        let searchRequest = MKLocalSearch.Request()
-        searchRequest.naturalLanguageQuery = string
-        searchRequest.region = MKCoordinateRegion(.world)
-        let search = MKLocalSearch(request: searchRequest)
-        search.start { response, error in
-            guard let config = self.configuration as? LocationSearchFieldContentView.Configuration else { return }
-            config.onChange(response, error)
-        }
-        
-    }
-    
     // MARK: - Configuration
     
     struct Configuration: UIContentConfiguration {
         var text: String? = nil
         var coordinate: CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: 0, longitude: 0)
-        var onChange: MKLocalSearch.CompletionHandler = { _, _ in }
+        var onResultsUpdate: ([MKLocalSearchCompletion]) -> Void = { _ in }
         
         func makeContentView() -> UIView & UIContentView {
             return LocationSearchFieldContentView(configuration: self)
@@ -88,6 +77,14 @@ class LocationSearchFieldContentView: UIView, UIContentView {
     }
 }
 
+extension UICollectionViewListCell {
+    func locationSearchFieldConfiguration() -> LocationSearchFieldContentView.Configuration {
+        LocationSearchFieldContentView.Configuration()
+    }
+}
+
+// MARK: - UITextFieldDelegate
+
 extension LocationSearchFieldContentView: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         if let text = textField.text {
@@ -95,16 +92,17 @@ extension LocationSearchFieldContentView: UITextFieldDelegate {
         }
         return true
     }
-}
-
-extension LocationSearchFieldContentView: MKLocalSearchCompleterDelegate {
-    func completerDidUpdateResults(_ completer: MKLocalSearchCompleter) {
-        completer.results
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        print("search end editing")
     }
 }
 
-extension UICollectionViewListCell {
-    func locationSearchFieldConfiguration() -> LocationSearchFieldContentView.Configuration {
-        LocationSearchFieldContentView.Configuration()
+// MARK: - MKLocalSearchCompleterDelegate
+
+extension LocationSearchFieldContentView: MKLocalSearchCompleterDelegate {
+    func completerDidUpdateResults(_ completer: MKLocalSearchCompleter) {
+        guard let configuration = configuration as? Configuration else { return }
+        configuration.onResultsUpdate(completer.results)
     }
 }
