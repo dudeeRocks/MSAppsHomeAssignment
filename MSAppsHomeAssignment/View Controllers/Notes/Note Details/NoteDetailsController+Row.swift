@@ -5,13 +5,13 @@ import Foundation
 extension NoteDetailsController {
     enum Row: Hashable {
         case header(String)
+        case viewNote
+        case viewLocation
+        case editNote(String?)
+        case editLocation(String?)
+        case editLocationResult(String)
         case date
-        case note
-        case location
         case map
         case deleteButton
-        case editNote(String?)
-        case locationSearchField(String?)
-        case locationResult(String)
     }
 }

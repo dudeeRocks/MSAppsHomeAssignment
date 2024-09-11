@@ -5,9 +5,10 @@ import MapKit
 
 extension NoteDetailsController {
     
+    /// Used for view mode.
     func defaultConfiguration(cell: UICollectionViewListCell, at row: Row) {
         var content = cell.defaultContentConfiguration()
-        content.text = getTextFor(row)
+        content.text = getTextForViewing(row)
         cell.contentConfiguration = content
     }
     
@@ -49,26 +50,14 @@ extension NoteDetailsController {
         cell.contentConfiguration = content
     }
     
-    private func getTextFor(_ row: Row) -> String? {
+    private func getTextForViewing(_ row: Row) -> String? {
         switch row {
-        case .header(let string):
-            return string
-        case .note:
-            return isNewNote ? nil : note.body
-        case .date:
-            return ""
-        case .map:
-            return "Insert map here"
-        case .deleteButton:
-            return NSLocalizedString("Delete note", comment: "Delete note button text")
-        case .locationSearchField:
-            return "Edit location goes here"
-        case .editNote(let note):
-            return "This should edit note"
-        case .location:
-            return "Insert location here"
-        case .locationResult(let autoCompleteResult):
-            return autoCompleteResult
+        case .viewNote:
+            return note.body
+        case .viewLocation:
+            // TODO: get location here. async busts my balls
+        default:
+            return nil
         }
     }
 }

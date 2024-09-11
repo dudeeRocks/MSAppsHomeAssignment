@@ -36,6 +36,8 @@
 		FA5406502C9062EC0035446C /* NoteDetailsController+DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA54064F2C9062EC0035446C /* NoteDetailsController+DataSource.swift */; };
 		FA5406522C90A3CA0035446C /* MapContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5406512C90A3CA0035446C /* MapContentView.swift */; };
 		FA5406542C90EDC70035446C /* NoteDetailsController+CellConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5406532C90EDC70035446C /* NoteDetailsController+CellConfiguration.swift */; };
+		FA5406562C919FBF0035446C /* Note+Map.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5406552C919FBF0035446C /* Note+Map.swift */; };
+		FA5406582C91A7DA0035446C /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5406572C91A7DA0035446C /* Log.swift */; };
 		FAA1B3D52C8A616400234C20 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA1B3D42C8A616400234C20 /* User.swift */; };
 		FAC6B96A2C89974A00986F44 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC6B9692C89974A00986F44 /* AppDelegate.swift */; };
 		FAC6B96C2C89974A00986F44 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC6B96B2C89974A00986F44 /* SceneDelegate.swift */; };
@@ -77,6 +79,8 @@
 		FA54064F2C9062EC0035446C /* NoteDetailsController+DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NoteDetailsController+DataSource.swift"; sourceTree = "<group>"; };
 		FA5406512C90A3CA0035446C /* MapContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapContentView.swift; sourceTree = "<group>"; };
 		FA5406532C90EDC70035446C /* NoteDetailsController+CellConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NoteDetailsController+CellConfiguration.swift"; sourceTree = "<group>"; };
+		FA5406552C919FBF0035446C /* Note+Map.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Note+Map.swift"; sourceTree = "<group>"; };
+		FA5406572C91A7DA0035446C /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 		FAA1B3D42C8A616400234C20 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		FAC6B9662C89974A00986F44 /* MSAppsHomeAssignment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MSAppsHomeAssignment.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAC6B9692C89974A00986F44 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -111,6 +115,7 @@
 				FA0D05942C8E36FE007C5847 /* CoreDataStack+Avatar.swift */,
 				FA0D05702C8DC1D5007C5847 /* CoreDataStack+Error.swift */,
 				FA0D05602C8CE739007C5847 /* UserEntity+Unwrapped.swift */,
+				FA5406552C919FBF0035446C /* Note+Map.swift */,
 				FAC6B9722C89974A00986F44 /* DataModel.xcdatamodeld */,
 			);
 			path = CodeDataStack;
@@ -133,6 +138,7 @@
 				FA0D05672C8D80BB007C5847 /* UIViewController+CommonSetup.swift */,
 				FA0D05722C8DC401007C5847 /* UIImageView+Loader.swift */,
 				FA0D058C2C8E02A3007C5847 /* Date+Text.swift */,
+				FA5406572C91A7DA0035446C /* Log.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -306,6 +312,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA5406582C91A7DA0035446C /* Log.swift in Sources */,
 				FA0D05992C8E3F7C007C5847 /* NoteDetailsController+TextView.swift in Sources */,
 				FA0D05732C8DC401007C5847 /* UIImageView+Loader.swift in Sources */,
 				FA0D05972C8E39C4007C5847 /* CoreDataStack+Note.swift in Sources */,
@@ -319,6 +326,7 @@
 				FA0D057F2C8DD688007C5847 /* NotesListController+EmptyState.swift in Sources */,
 				FA0D058B2C8DFE24007C5847 /* NotesListController+Actions.swift in Sources */,
 				FA54064A2C90563D0035446C /* NoteDetailsController+Map.swift in Sources */,
+				FA5406562C919FBF0035446C /* Note+Map.swift in Sources */,
 				FA0D055B2C8B274F007C5847 /* UsersListViewController.swift in Sources */,
 				FA0D05932C8E369B007C5847 /* CoreDataStack+Users.swift in Sources */,
 				FAC6B96A2C89974A00986F44 /* AppDelegate.swift in Sources */,

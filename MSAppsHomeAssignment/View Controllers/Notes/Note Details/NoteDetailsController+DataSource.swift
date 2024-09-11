@@ -56,11 +56,11 @@ extension NoteDetailsController {
         snapshot.appendItems([
             .header(Section.viewNote.title),
             .date,
-            .note
+            .viewNote
         ], toSection: .viewNote)
         snapshot.appendItems([
             .header(Section.viewLocation.title),
-            .location,
+            .viewLocation,
             .map
         ], toSection: .viewLocation)
         dataSource.apply(snapshot, animatingDifferences: animated)
@@ -75,7 +75,7 @@ extension NoteDetailsController {
         ], toSection: .editNote)
         snapshot.appendItems([
             .header(Section.editLocation.title),
-            .locationSearchField("120 Derech nam|"),
+            .editLocation("120 Derech nam|"),
         ], toSection: .editLocation)
         if let locationResults = locationResults {
             snapshot.appendItems(locationResults, toSection: .editLocation)
