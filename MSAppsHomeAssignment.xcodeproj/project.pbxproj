@@ -35,6 +35,7 @@
 		FA54064E2C9061C80035446C /* NoteDetailsController+Row.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA54064D2C9061C80035446C /* NoteDetailsController+Row.swift */; };
 		FA5406502C9062EC0035446C /* NoteDetailsController+DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA54064F2C9062EC0035446C /* NoteDetailsController+DataSource.swift */; };
 		FA5406522C90A3CA0035446C /* MapContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5406512C90A3CA0035446C /* MapContentView.swift */; };
+		FA5406542C90EDC70035446C /* NoteDetailsController+CellConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5406532C90EDC70035446C /* NoteDetailsController+CellConfiguration.swift */; };
 		FAA1B3D52C8A616400234C20 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA1B3D42C8A616400234C20 /* User.swift */; };
 		FAC6B96A2C89974A00986F44 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC6B9692C89974A00986F44 /* AppDelegate.swift */; };
 		FAC6B96C2C89974A00986F44 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC6B96B2C89974A00986F44 /* SceneDelegate.swift */; };
@@ -75,6 +76,7 @@
 		FA54064D2C9061C80035446C /* NoteDetailsController+Row.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NoteDetailsController+Row.swift"; sourceTree = "<group>"; };
 		FA54064F2C9062EC0035446C /* NoteDetailsController+DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NoteDetailsController+DataSource.swift"; sourceTree = "<group>"; };
 		FA5406512C90A3CA0035446C /* MapContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapContentView.swift; sourceTree = "<group>"; };
+		FA5406532C90EDC70035446C /* NoteDetailsController+CellConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NoteDetailsController+CellConfiguration.swift"; sourceTree = "<group>"; };
 		FAA1B3D42C8A616400234C20 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		FAC6B9662C89974A00986F44 /* MSAppsHomeAssignment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MSAppsHomeAssignment.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAC6B9692C89974A00986F44 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -180,6 +182,7 @@
 			children = (
 				FA0D05902C8E1D33007C5847 /* NoteDetailsController.swift */,
 				FA54064F2C9062EC0035446C /* NoteDetailsController+DataSource.swift */,
+				FA5406532C90EDC70035446C /* NoteDetailsController+CellConfiguration.swift */,
 				FA54064B2C905F1C0035446C /* NoteDetailsController+Section.swift */,
 				FA54064D2C9061C80035446C /* NoteDetailsController+Row.swift */,
 				FA5406492C90563D0035446C /* NoteDetailsController+Map.swift */,
@@ -322,6 +325,7 @@
 				FAC6B9812C89AAE400986F44 /* LoginViewController.swift in Sources */,
 				FAC6B96C2C89974A00986F44 /* SceneDelegate.swift in Sources */,
 				FA0D05612C8CE739007C5847 /* UserEntity+Unwrapped.swift in Sources */,
+				FA5406542C90EDC70035446C /* NoteDetailsController+CellConfiguration.swift in Sources */,
 				FA0D055D2C8B4F0B007C5847 /* UsersListViewController+NSFetchedResultsController.swift in Sources */,
 				FA0D05892C8DF317007C5847 /* TabBarViewController.swift in Sources */,
 				FA0D058D2C8E02A3007C5847 /* Date+Text.swift in Sources */,

@@ -1,6 +1,7 @@
 // Abstract: methods for configuring diffable data source and snapshots for note details view
 
 import UIKit
+import MapKit
 
 extension NoteDetailsController {
     typealias DataSource = UICollectionViewDiffableDataSource<Section, Row>
@@ -28,83 +29,67 @@ extension NoteDetailsController {
         updateNavigationBar(for: updateCase)
         switch updateCase {
         case .view:
+            isEditing = false
             updateSnapshotForViewing(animated: animated)
         case .edit:
+            isEditing = true
             updateSnapshotForEditing(animated: animated)
         }
     }
     
     private func cellRegistrationHandler(cell: UICollectionViewListCell, indexPath: IndexPath, row: Row) {
-        var content = cell.defaultContentConfiguration()
-        content.text = getTextFor(row)
-        cell.contentConfiguration = content
+        switch row {
+        case .header(let title):
+            headerConfiguration(cell: cell, at: indexPath, title: title)
+        case .map:
+            if isNewNote {
+                mapConfiguration(cell: cell, location: CLLocationCoordinate2D(latitude: 0.0, longitude: 0.0))
+            } else {
+                mapConfiguration(cell: cell, location: CLLocationCoordinate2D(latitude: note.location!.latitude, longitude: note.location!.longitude))
+            }
+        default:
+            defaultConfiguration(cell: cell, at: row)
+        }
     }
     
     private func updateSnapshotForViewing(animated: Bool = true) {
         var snapshot = Snapshot()
-        snapshot.appendSections([.view, .location])
+        snapshot.appendSections([.viewNote, .viewLocation])
         snapshot.appendItems([
-            .header(Section.view.name),
+            .header(Section.viewNote.title),
             .date,
             .note
-        ], toSection: .view)
+        ], toSection: .viewNote)
         snapshot.appendItems([
-            .header(Section.location.name),
+            .header(Section.viewLocation.title),
             .location,
             .map
-        ], toSection: .location)
+        ], toSection: .viewLocation)
         dataSource.apply(snapshot, animatingDifferences: animated)
     }
     
     private func updateSnapshotForEditing(animated: Bool = true, locationResults: [Row]? = nil) {
         var snapshot = Snapshot()
-        snapshot.appendSections([.note, .editLocation, .map, .delete])
+        snapshot.appendSections([.editNote, .editLocation, .map, .delete])
         snapshot.appendItems([
-            .header(Section.note.name),
+            .header(Section.editNote.title),
             .editNote(note?.body)
-        ], toSection: .note)
+        ], toSection: .editNote)
         snapshot.appendItems([
-            .header(Section.editLocation.name),
+            .header(Section.editLocation.title),
             .locationSearchField("120 Derech nam|"),
         ], toSection: .editLocation)
         if let locationResults = locationResults {
             snapshot.appendItems(locationResults, toSection: .editLocation)
         }
         snapshot.appendItems([
-            .header(Section.map.name),
+            .header(Section.map.title),
             .map
         ], toSection: .map)
         snapshot.appendItems([
-            .header(Section.delete.name),
+            .header(Section.delete.title),
             .deleteButton
         ], toSection: .delete)
         dataSource.apply(snapshot, animatingDifferences: animated)
-    }
-    
-    private func getTextFor(_ row: Row) -> String? {
-        switch row {
-        case .header(let string):
-            return string
-        case .note:
-            return isNewNote ? nil : note.body
-        case .date:
-            if isNewNote {
-                return NSLocalizedString("Created: \(Date.now.dayAndTimeText)", comment: "Date created title.")
-            } else {
-                return NSLocalizedString("Last edited: \(note.dateModified!.dayAndTimeText)", comment: "Date modified title.")
-            }
-        case .map:
-            return "Insert map here"
-        case .deleteButton:
-            return NSLocalizedString("Delete note", comment: "Delete note button text")
-        case .locationSearchField:
-            return "Edit location goes here"
-        case .editNote(let note):
-            return "This should edit note"
-        case .location:
-            return "Insert location here"
-        case .locationResult(let autoCompleteResult):
-            return autoCompleteResult
-        }
     }
 }

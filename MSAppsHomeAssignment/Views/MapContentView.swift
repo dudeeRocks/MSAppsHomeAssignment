@@ -38,7 +38,8 @@ class MapContentView: UIView, UIContentView {
             mapView.topAnchor.constraint(equalTo: topAnchor),
             mapView.bottomAnchor.constraint(equalTo: bottomAnchor),
             mapView.leftAnchor.constraint(equalTo: leftAnchor),
-            mapView.rightAnchor.constraint(equalTo: rightAnchor)
+            mapView.rightAnchor.constraint(equalTo: rightAnchor),
+            mapView.heightAnchor.constraint(equalToConstant: 200)
         ])
     }
     
