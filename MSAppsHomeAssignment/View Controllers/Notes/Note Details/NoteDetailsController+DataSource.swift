@@ -45,6 +45,8 @@ extension NoteDetailsController {
             dateConfiguration(cell: cell)
         case .editNote:
             textViewConfiguration(cell: cell)
+        case .editLocation:
+            locationTextFieldConfiguration(cell: cell)
         case .map:
             mapConfiguration(cell: cell)
         case .deleteButton:
@@ -79,7 +81,7 @@ extension NoteDetailsController {
         ], toSection: .editNote)
         snapshot.appendItems([
             .header(Section.editLocation.title),
-            .editLocation("120 Derech nam|"),
+            .editLocation,
         ], toSection: .editLocation)
         
         if let locationResults = locationResults {
