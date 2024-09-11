@@ -7,7 +7,7 @@ extension NoteDetailsController {
         case header(String)
         case viewNote
         case viewLocation
-        case editNote(String?)
+        case editNote
         case editLocation(String?)
         case editLocationResult(String)
         case date

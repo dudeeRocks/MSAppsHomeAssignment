@@ -43,10 +43,12 @@ extension NoteDetailsController {
             headerConfiguration(cell: cell, at: indexPath, title: title)
         case .date:
             dateConfiguration(cell: cell)
+        case .editNote:
+            textViewConfiguration(cell: cell)
         case .map:
             mapConfiguration(cell: cell)
         default:
-            defaultConfiguration(cell: cell, at: row)
+            viewConfiguration(cell: cell, at: row)
         }
     }
     
@@ -71,7 +73,7 @@ extension NoteDetailsController {
         snapshot.appendSections([.editNote, .editLocation, .map, .delete])
         snapshot.appendItems([
             .header(Section.editNote.title),
-            .editNote(note?.body)
+            .editNote
         ], toSection: .editNote)
         snapshot.appendItems([
             .header(Section.editLocation.title),

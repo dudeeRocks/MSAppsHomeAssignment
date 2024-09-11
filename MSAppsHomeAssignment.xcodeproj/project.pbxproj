@@ -38,6 +38,7 @@
 		FA5406542C90EDC70035446C /* NoteDetailsController+CellConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5406532C90EDC70035446C /* NoteDetailsController+CellConfiguration.swift */; };
 		FA5406562C919FBF0035446C /* Note+Map.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5406552C919FBF0035446C /* Note+Map.swift */; };
 		FA5406582C91A7DA0035446C /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5406572C91A7DA0035446C /* Log.swift */; };
+		FA54065A2C91CCCC0035446C /* TextViewContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5406592C91CCCC0035446C /* TextViewContentView.swift */; };
 		FAA1B3D52C8A616400234C20 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA1B3D42C8A616400234C20 /* User.swift */; };
 		FAC6B96A2C89974A00986F44 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC6B9692C89974A00986F44 /* AppDelegate.swift */; };
 		FAC6B96C2C89974A00986F44 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC6B96B2C89974A00986F44 /* SceneDelegate.swift */; };
@@ -81,6 +82,7 @@
 		FA5406532C90EDC70035446C /* NoteDetailsController+CellConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NoteDetailsController+CellConfiguration.swift"; sourceTree = "<group>"; };
 		FA5406552C919FBF0035446C /* Note+Map.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Note+Map.swift"; sourceTree = "<group>"; };
 		FA5406572C91A7DA0035446C /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
+		FA5406592C91CCCC0035446C /* TextViewContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViewContentView.swift; sourceTree = "<group>"; };
 		FAA1B3D42C8A616400234C20 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		FAC6B9662C89974A00986F44 /* MSAppsHomeAssignment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MSAppsHomeAssignment.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAC6B9692C89974A00986F44 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -148,6 +150,7 @@
 			children = (
 				FA0D056A2C8D8B60007C5847 /* UserTableCell.swift */,
 				FA5406512C90A3CA0035446C /* MapContentView.swift */,
+				FA5406592C91CCCC0035446C /* TextViewContentView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -340,6 +343,7 @@
 				FA0D05632C8D698E007C5847 /* UserDetailsViewController.swift in Sources */,
 				FA5406522C90A3CA0035446C /* MapContentView.swift in Sources */,
 				FA0D056B2C8D8B60007C5847 /* UserTableCell.swift in Sources */,
+				FA54065A2C91CCCC0035446C /* TextViewContentView.swift in Sources */,
 				FA54064C2C905F1C0035446C /* NoteDetailsController+Section.swift in Sources */,
 				FA5406462C902D1E0035446C /* NotesListController+NoteDetailsDelegate.swift in Sources */,
 				FA0D055F2C8C7110007C5847 /* WebAPICaller.swift in Sources */,

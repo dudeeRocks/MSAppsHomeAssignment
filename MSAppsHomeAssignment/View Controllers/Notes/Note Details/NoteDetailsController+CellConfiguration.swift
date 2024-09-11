@@ -6,7 +6,7 @@ import MapKit
 extension NoteDetailsController {
     
     /// Used for view mode.
-    func defaultConfiguration(cell: UICollectionViewListCell, at row: Row) {
+    func viewConfiguration(cell: UICollectionViewListCell, at row: Row) {
         var content = cell.defaultContentConfiguration()
         content.text = getTextForViewing(row)
         cell.contentConfiguration = content
@@ -26,6 +26,12 @@ extension NoteDetailsController {
             content.text = title
         }
         
+        cell.contentConfiguration = content
+    }
+    
+    func textViewConfiguration(cell: UICollectionViewListCell) {
+        var content = cell.textViewConfiguration()
+        content.text = isNewNote ? nil : note.body
         cell.contentConfiguration = content
     }
     
@@ -55,7 +61,7 @@ extension NoteDetailsController {
         case .viewNote:
             return note.body
         case .viewLocation:
-            // TODO: get location here. async busts my balls
+            return note.location?.displayName
         default:
             return nil
         }
