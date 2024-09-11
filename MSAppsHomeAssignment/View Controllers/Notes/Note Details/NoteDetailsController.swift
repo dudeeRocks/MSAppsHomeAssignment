@@ -13,6 +13,8 @@ class NoteDetailsController: UICollectionViewController {
     var dataSource: DataSource!
     var delegate: NoteDetailsDelegate?
     
+    var newNoteText: String = ""
+    
     var shouldDeleteNote: Bool = false
     var isNewNote: Bool { note == nil }
     

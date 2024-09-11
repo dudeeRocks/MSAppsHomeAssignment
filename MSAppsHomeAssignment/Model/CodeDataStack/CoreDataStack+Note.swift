@@ -10,7 +10,7 @@ extension CoreDataStack {
     }
     
     /// Saves `Note` entity with passed text and location.
-    func createNote(withText body: String, at coordinates: CLLocationCoordinate2D, date: Date) async throws -> Note {
+    func createNote(withText body: String, at coordinates: CLLocationCoordinate2D, date: Date) async throws {
         let context = viewContext
         
         let location = NoteLocation(context: context)
@@ -28,7 +28,6 @@ extension CoreDataStack {
         do {
             try context.save()
             print("Saved note: \(body.prefix(10)), last modified \(date.dayAndTimeText).")
-            return note
         } catch {
             throw CoreDataError(kind: .noteSave, note: note)
         }

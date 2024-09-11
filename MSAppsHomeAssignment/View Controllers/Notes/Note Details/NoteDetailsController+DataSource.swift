@@ -72,7 +72,7 @@ extension NoteDetailsController {
     
     private func updateSnapshotForEditing(animated: Bool = true, locationResults: [Row]? = nil) {
         var snapshot = Snapshot()
-        snapshot.appendSections([.editNote, .editLocation, .map, .delete])
+        snapshot.appendSections([.editNote, .editLocation, .map])
         snapshot.appendItems([
             .header(Section.editNote.title),
             .editNote
@@ -81,17 +81,24 @@ extension NoteDetailsController {
             .header(Section.editLocation.title),
             .editLocation("120 Derech nam|"),
         ], toSection: .editLocation)
+        
         if let locationResults = locationResults {
             snapshot.appendItems(locationResults, toSection: .editLocation)
         }
+        
         snapshot.appendItems([
             .header(Section.map.title),
             .map
         ], toSection: .map)
-        snapshot.appendItems([
-            .header(Section.delete.title),
-            .deleteButton
-        ], toSection: .delete)
+        
+        if !isNewNote {
+            snapshot.appendSections([.delete])
+            snapshot.appendItems([
+                .header(Section.delete.title),
+                .deleteButton
+            ], toSection: .delete)
+        }
+
         dataSource.apply(snapshot, animatingDifferences: animated)
     }
 }

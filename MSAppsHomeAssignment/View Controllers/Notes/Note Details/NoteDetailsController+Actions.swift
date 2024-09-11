@@ -1,6 +1,7 @@
 // Abstract: @objc selectors for actions
 
 import UIKit
+import MapKit
 
 extension NoteDetailsController {
     @objc func saveExistingNote() {
@@ -8,7 +9,28 @@ extension NoteDetailsController {
     }
     
     @objc func saveNewNote() {
-        updateUI(for: .view)
+        let location = CLLocationCoordinate2D(latitude: 0, longitude: 0) // TODO: get actual location from map or location field
+        if isNewNote {
+            Task { @MainActor in
+                do {
+                    try await CoreDataStack.shared.createNote(withText: newNoteText, at: location, date: Date.now)
+                    delegate?.didUpdateNote()
+                    dismiss(animated: true)
+                } catch {
+                    fatalError("failed to save new note") // TODO: Handle error here.
+                }
+            }
+        } else {
+            note.body = newNoteText
+            // TODO: Make sure to set to correct values here
+            note.location?.latitude = location.latitude
+            note.location?.longitude = location.longitude
+            note.dateModified = Date.now
+            
+            CoreDataStack.shared.saveViewContext()
+            delegate?.didUpdateNote()
+            updateUI(for: .view)
+        }
     }
     
     @objc func cancelAddNote() {

@@ -32,6 +32,15 @@ extension NoteDetailsController {
     func textViewConfiguration(cell: UICollectionViewListCell) {
         var content = cell.textViewConfiguration()
         content.text = isNewNote ? nil : note.body
+        content.onChange = { [weak self] text in
+            guard let self = self else { return }
+            newNoteText = text
+            if text.isEmpty {
+                saveButton.isEnabled = false
+            } else {
+                saveButton.isEnabled = true
+            }
+        }
         cell.contentConfiguration = content
     }
     

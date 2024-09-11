@@ -67,6 +67,7 @@ class TextViewContentView: UIView, UIContentView {
     
     struct Configuration: UIContentConfiguration {
         var text: String?
+        var onChange: (String) -> Void = { _ in }
         
         func makeContentView() -> any UIView & UIContentView {
             return TextViewContentView(configuration: self)
@@ -89,6 +90,8 @@ extension TextViewContentView: UITextViewDelegate {
                 self.placeholder.isHidden = false
             }
         }
+        guard let config = configuration as? TextViewContentView.Configuration else { return }
+        config.onChange(textView.text)
     }
 }
 
