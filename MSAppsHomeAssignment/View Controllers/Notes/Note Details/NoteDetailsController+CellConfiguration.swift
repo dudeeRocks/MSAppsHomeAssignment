@@ -61,6 +61,13 @@ extension NoteDetailsController {
         cell.contentConfiguration = content
     }
     
+    func locationSearchResultConfiguration(cell: UICollectionViewListCell, searchCompletion: MKLocalSearchCompletion) {
+        var content = cell.defaultContentConfiguration()
+        content.attributedText = createHighlightedString(text: searchCompletion.title, rangeValues: searchCompletion.titleHighlightRanges)
+        content.secondaryAttributedText = createHighlightedString(text: searchCompletion.subtitle, rangeValues: searchCompletion.subtitleHighlightRanges)
+        cell.contentConfiguration = content
+    }
+    
     func dateConfiguration(cell: UICollectionViewListCell) {
         var content = cell.defaultContentConfiguration()
         if isNewNote {
@@ -98,5 +105,20 @@ extension NoteDetailsController {
         default:
             return nil
         }
+    }
+    
+    private func createHighlightedString(text: String, rangeValues: [NSValue]) -> NSAttributedString {
+        let attributes = [NSAttributedString.Key.backgroundColor: UIColor.systemYellow ]
+        let highlightedString = NSMutableAttributedString(string: text)
+
+
+        // Each `NSValue` wraps an `NSRange` that functions as a style attribute's range with `NSAttributedString`.
+        let ranges = rangeValues.map { $0.rangeValue }
+        ranges.forEach { (range) in
+            highlightedString.addAttributes(attributes, range: range)
+        }
+
+
+        return highlightedString
     }
 }

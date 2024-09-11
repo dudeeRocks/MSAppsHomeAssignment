@@ -47,6 +47,8 @@ extension NoteDetailsController {
             textViewConfiguration(cell: cell)
         case .editLocation:
             locationTextFieldConfiguration(cell: cell)
+        case .editLocationResult(let searchResult):
+            locationSearchResultConfiguration(cell: cell, searchCompletion: searchResult)
         case .map:
             mapConfiguration(cell: cell)
         case .deleteButton:

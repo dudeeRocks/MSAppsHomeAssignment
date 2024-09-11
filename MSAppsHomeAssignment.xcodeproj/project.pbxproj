@@ -41,6 +41,7 @@
 		FA54065A2C91CCCC0035446C /* TextViewContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5406592C91CCCC0035446C /* TextViewContentView.swift */; };
 		FA54065C2C91DC020035446C /* DeleteButtonContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA54065B2C91DC020035446C /* DeleteButtonContentView.swift */; };
 		FA54065E2C91F1FB0035446C /* LocationSearchFieldContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA54065D2C91F1FB0035446C /* LocationSearchFieldContentView.swift */; };
+		FA5406602C9213CD0035446C /* LocationSearchResultContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA54065F2C9213CD0035446C /* LocationSearchResultContentView.swift */; };
 		FAA1B3D52C8A616400234C20 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA1B3D42C8A616400234C20 /* User.swift */; };
 		FAC6B96A2C89974A00986F44 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC6B9692C89974A00986F44 /* AppDelegate.swift */; };
 		FAC6B96C2C89974A00986F44 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC6B96B2C89974A00986F44 /* SceneDelegate.swift */; };
@@ -87,6 +88,7 @@
 		FA5406592C91CCCC0035446C /* TextViewContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViewContentView.swift; sourceTree = "<group>"; };
 		FA54065B2C91DC020035446C /* DeleteButtonContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteButtonContentView.swift; sourceTree = "<group>"; };
 		FA54065D2C91F1FB0035446C /* LocationSearchFieldContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchFieldContentView.swift; sourceTree = "<group>"; };
+		FA54065F2C9213CD0035446C /* LocationSearchResultContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchResultContentView.swift; sourceTree = "<group>"; };
 		FAA1B3D42C8A616400234C20 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		FAC6B9662C89974A00986F44 /* MSAppsHomeAssignment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MSAppsHomeAssignment.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAC6B9692C89974A00986F44 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -156,6 +158,7 @@
 				FA5406512C90A3CA0035446C /* MapContentView.swift */,
 				FA5406592C91CCCC0035446C /* TextViewContentView.swift */,
 				FA54065D2C91F1FB0035446C /* LocationSearchFieldContentView.swift */,
+				FA54065F2C9213CD0035446C /* LocationSearchResultContentView.swift */,
 				FA54065B2C91DC020035446C /* DeleteButtonContentView.swift */,
 			);
 			path = Views;
@@ -343,6 +346,7 @@
 				FAC6B96A2C89974A00986F44 /* AppDelegate.swift in Sources */,
 				FAC6B9812C89AAE400986F44 /* LoginViewController.swift in Sources */,
 				FAC6B96C2C89974A00986F44 /* SceneDelegate.swift in Sources */,
+				FA5406602C9213CD0035446C /* LocationSearchResultContentView.swift in Sources */,
 				FA0D05612C8CE739007C5847 /* UserEntity+Unwrapped.swift in Sources */,
 				FA5406542C90EDC70035446C /* NoteDetailsController+CellConfiguration.swift in Sources */,
 				FA0D055D2C8B4F0B007C5847 /* UsersListViewController+NSFetchedResultsController.swift in Sources */,
