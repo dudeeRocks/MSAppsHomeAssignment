@@ -47,6 +47,8 @@ extension NoteDetailsController {
             textViewConfiguration(cell: cell)
         case .map:
             mapConfiguration(cell: cell)
+        case .deleteButton:
+            deleteButtonConfiguration(cell: cell)
         default:
             viewConfiguration(cell: cell, at: row)
         }

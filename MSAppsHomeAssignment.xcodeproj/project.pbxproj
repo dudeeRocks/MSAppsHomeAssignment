@@ -39,6 +39,7 @@
 		FA5406562C919FBF0035446C /* Note+Map.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5406552C919FBF0035446C /* Note+Map.swift */; };
 		FA5406582C91A7DA0035446C /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5406572C91A7DA0035446C /* Log.swift */; };
 		FA54065A2C91CCCC0035446C /* TextViewContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5406592C91CCCC0035446C /* TextViewContentView.swift */; };
+		FA54065C2C91DC020035446C /* DeleteButtonContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA54065B2C91DC020035446C /* DeleteButtonContentView.swift */; };
 		FAA1B3D52C8A616400234C20 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA1B3D42C8A616400234C20 /* User.swift */; };
 		FAC6B96A2C89974A00986F44 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC6B9692C89974A00986F44 /* AppDelegate.swift */; };
 		FAC6B96C2C89974A00986F44 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC6B96B2C89974A00986F44 /* SceneDelegate.swift */; };
@@ -83,6 +84,7 @@
 		FA5406552C919FBF0035446C /* Note+Map.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Note+Map.swift"; sourceTree = "<group>"; };
 		FA5406572C91A7DA0035446C /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 		FA5406592C91CCCC0035446C /* TextViewContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViewContentView.swift; sourceTree = "<group>"; };
+		FA54065B2C91DC020035446C /* DeleteButtonContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteButtonContentView.swift; sourceTree = "<group>"; };
 		FAA1B3D42C8A616400234C20 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		FAC6B9662C89974A00986F44 /* MSAppsHomeAssignment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MSAppsHomeAssignment.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAC6B9692C89974A00986F44 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -151,6 +153,7 @@
 				FA0D056A2C8D8B60007C5847 /* UserTableCell.swift */,
 				FA5406512C90A3CA0035446C /* MapContentView.swift */,
 				FA5406592C91CCCC0035446C /* TextViewContentView.swift */,
+				FA54065B2C91DC020035446C /* DeleteButtonContentView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -332,6 +335,7 @@
 				FA5406562C919FBF0035446C /* Note+Map.swift in Sources */,
 				FA0D055B2C8B274F007C5847 /* UsersListViewController.swift in Sources */,
 				FA0D05932C8E369B007C5847 /* CoreDataStack+Users.swift in Sources */,
+				FA54065C2C91DC020035446C /* DeleteButtonContentView.swift in Sources */,
 				FAC6B96A2C89974A00986F44 /* AppDelegate.swift in Sources */,
 				FAC6B9812C89AAE400986F44 /* LoginViewController.swift in Sources */,
 				FAC6B96C2C89974A00986F44 /* SceneDelegate.swift in Sources */,

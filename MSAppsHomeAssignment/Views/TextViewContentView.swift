@@ -78,12 +78,6 @@ class TextViewContentView: UIView, UIContentView {
     }
 }
 
-extension UICollectionViewListCell {
-    func textViewConfiguration() -> TextViewContentView.Configuration {
-        TextViewContentView.Configuration()
-    }
-}
-
 extension TextViewContentView: UITextViewDelegate {
     func textViewDidChange(_ textView: UITextView) {
         if textView.hasText {
@@ -95,5 +89,11 @@ extension TextViewContentView: UITextViewDelegate {
                 self.placeholder.isHidden = false
             }
         }
+    }
+}
+
+extension UICollectionViewListCell {
+    func textViewConfiguration() -> TextViewContentView.Configuration {
+        TextViewContentView.Configuration()
     }
 }

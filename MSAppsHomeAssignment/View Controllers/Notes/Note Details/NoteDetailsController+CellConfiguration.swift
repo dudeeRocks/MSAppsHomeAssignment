@@ -56,6 +56,13 @@ extension NoteDetailsController {
         cell.contentConfiguration = content
     }
     
+    func deleteButtonConfiguration(cell: UICollectionViewListCell) {
+        var content = cell.deleteButtonConfiguration()
+        content.text = NSLocalizedString("Delete note", comment: "Delete button on edit note.")
+        content.onTap = deleteNote
+        cell.contentConfiguration = content
+    }
+    
     private func getTextForViewing(_ row: Row) -> String? {
         switch row {
         case .viewNote:
