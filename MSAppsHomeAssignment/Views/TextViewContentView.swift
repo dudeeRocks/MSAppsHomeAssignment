@@ -52,9 +52,9 @@ class TextViewContentView: UIView, UIContentView {
         textView.delegate = self
         
         NSLayoutConstraint.activate([
-            textView.topAnchor.constraint(equalTo: topAnchor),
+            textView.topAnchor.constraint(equalTo: topAnchor, constant: 8),
             textView.bottomAnchor.constraint(equalTo: bottomAnchor),
-            textView.leftAnchor.constraint(equalTo: leftAnchor),
+            textView.leftAnchor.constraint(equalTo: leftAnchor,  constant: 14),
             textView.rightAnchor.constraint(equalTo: rightAnchor),
             textView.heightAnchor.constraint(equalToConstant: 200),
             placeholder.topAnchor.constraint(equalTo: textView.topAnchor, constant: 8),

@@ -48,7 +48,7 @@ class LocationSearchFieldContentView: UIView, UIContentView {
         NSLayoutConstraint.activate([
             textField.topAnchor.constraint(equalTo: topAnchor),
             textField.bottomAnchor.constraint(equalTo: bottomAnchor),
-            textField.leftAnchor.constraint(equalTo: leftAnchor, constant: 8),
+            textField.leftAnchor.constraint(equalTo: leftAnchor, constant: 20),
             textField.rightAnchor.constraint(equalTo: rightAnchor),
             textField.heightAnchor.constraint(equalToConstant: 48)
         ])
@@ -91,10 +91,6 @@ extension LocationSearchFieldContentView: UITextFieldDelegate {
             searchCompleter.queryFragment = text
         }
         return true
-    }
-    
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        print("search end editing")
     }
 }
 

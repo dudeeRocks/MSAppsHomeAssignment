@@ -35,11 +35,7 @@ extension NoteDetailsController {
         content.onChange = { [weak self] text in
             guard let self = self else { return }
             newNoteText = text
-            if text.isEmpty {
-                saveButton.isEnabled = false
-            } else {
-                saveButton.isEnabled = true
-            }
+            updateSaveButton()
         }
         cell.contentConfiguration = content
     }
@@ -47,7 +43,7 @@ extension NoteDetailsController {
     func locationTextFieldConfiguration(cell: UICollectionViewListCell) {
         var content = cell.locationSearchFieldConfiguration()
         content.text = isNewNote ? nil : note.location!.displayName
-        content.coordinate = isNewNote ? CLLocationCoordinate2D(latitude: 0, longitude: 0) : note.coordinate
+        content.coordinate = isNewNote ? CLLocationCoordinate2D(latitude: 0, longitude: 0) : note.location!.coordinate
         content.onResultsUpdate = { [weak self] results in
             guard let self = self else { return }
             let cappedResults = results.prefix(5)
@@ -81,10 +77,9 @@ extension NoteDetailsController {
     
     func mapConfiguration(cell: UICollectionViewListCell) {
         var content = cell.mapConfiguration()
-        if isNewNote {
-            content.location = CLLocationCoordinate2D(latitude: 0.0, longitude: 0.0)
-        } else {
-            content.location = CLLocationCoordinate2D(latitude: note.location!.latitude, longitude: note.location!.longitude)
+        content.location = note?.location
+        content.onLocationUpdate = { coordinate in
+            self.newLocation = coordinate
         }
         cell.contentConfiguration = content
     }

@@ -4,16 +4,11 @@ import UIKit
 import MapKit
 
 extension NoteDetailsController {
-    @objc func saveExistingNote() {
-        
-    }
-    
     @objc func saveNewNote() {
-        let location = CLLocationCoordinate2D(latitude: 0, longitude: 0) // TODO: get actual location from map or location field
         if isNewNote {
             Task { @MainActor in
                 do {
-                    try await CoreDataStack.shared.createNote(withText: newNoteText, at: location, date: Date.now)
+                    try await CoreDataStack.shared.createNote(withText: newNoteText, at: newLocation, date: Date.now)
                     delegate?.didUpdateNote()
                     dismiss(animated: true)
                 } catch {
@@ -23,8 +18,8 @@ extension NoteDetailsController {
         } else {
             note.body = newNoteText
             // TODO: Make sure to set to correct values here
-            note.location?.latitude = location.latitude
-            note.location?.longitude = location.longitude
+            note.location?.latitude = newLocation.latitude
+            note.location?.longitude = newLocation.longitude
             note.dateModified = Date.now
             
             CoreDataStack.shared.saveViewContext()

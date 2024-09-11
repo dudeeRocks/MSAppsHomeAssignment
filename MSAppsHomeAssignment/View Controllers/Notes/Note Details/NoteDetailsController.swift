@@ -14,6 +14,8 @@ class NoteDetailsController: UICollectionViewController {
     var delegate: NoteDetailsDelegate?
     
     var newNoteText: String = ""
+    var newLocation: CLLocationCoordinate2D = .init()
+    var isSaveEnabled: Bool { newNoteText.isEmpty }
     
     var shouldDeleteNote: Bool = false
     var isNewNote: Bool { note == nil }
@@ -74,6 +76,14 @@ class NoteDetailsController: UICollectionViewController {
         case .edit:
             navigationItem.leftBarButtonItem = isNewNote ? cancelAddButton : cancelEditButton
             navigationItem.rightBarButtonItem = saveButton
+        }
+    }
+    
+    func updateSaveButton() {
+        if isSaveEnabled {
+            self.saveButton.isEnabled = false
+        } else {
+            self.saveButton.isEnabled = true
         }
     }
     
