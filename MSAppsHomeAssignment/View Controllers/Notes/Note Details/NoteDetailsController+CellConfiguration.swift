@@ -13,9 +13,11 @@ extension NoteDetailsController {
     
     func headerConfiguration(cell: UICollectionViewListCell, at indexPath: IndexPath, title: String) {
         var content = cell.defaultContentConfiguration()
+        
         /// This number is used to determine content of the header.
         /// It's derived from the `indexPath.section` number, and on `isEditing` adjusted by the number of extra sections in edit mode.
         let adjustedSectionNumber = isEditing ? indexPath.section + 2 : indexPath.section
+        
         switch adjustedSectionNumber {
         case Section.viewNote.rawValue, Section.viewLocation.rawValue, Section.map.rawValue, Section.delete.rawValue:
             content.text = nil
@@ -23,14 +25,27 @@ extension NoteDetailsController {
             content.text = title
         }
         
-        print("AdjustedNumber: \(adjustedSectionNumber) || Index.section = \(indexPath.section) ||| Title: \(title) ||| Delete section: \(Section.delete.rawValue)")
-        
         cell.contentConfiguration = content
     }
     
-    func mapConfiguration(cell: UICollectionViewListCell, location: CLLocationCoordinate2D) {
+    func dateConfiguration(cell: UICollectionViewListCell) {
+        var content = cell.defaultContentConfiguration()
+        if isNewNote {
+            content.secondaryText = NSLocalizedString("Created: \(Date.now.dayAndTimeText)", comment: "Date created title.")
+        } else {
+            content.secondaryText = NSLocalizedString("Last edited: \(note.dateModified!.dayAndTimeText)", comment: "Date modified title.")
+        }
+        content.secondaryTextProperties.color = .secondaryLabel
+        cell.contentConfiguration = content
+    }
+    
+    func mapConfiguration(cell: UICollectionViewListCell) {
         var content = cell.mapConfiguration()
-        content.location = location
+        if isNewNote {
+            content.location = CLLocationCoordinate2D(latitude: 0.0, longitude: 0.0)
+        } else {
+            content.location = CLLocationCoordinate2D(latitude: note.location!.latitude, longitude: note.location!.longitude)
+        }
         cell.contentConfiguration = content
     }
     
@@ -41,11 +56,7 @@ extension NoteDetailsController {
         case .note:
             return isNewNote ? nil : note.body
         case .date:
-            if isNewNote {
-                return NSLocalizedString("Created: \(Date.now.dayAndTimeText)", comment: "Date created title.")
-            } else {
-                return NSLocalizedString("Last edited: \(note.dateModified!.dayAndTimeText)", comment: "Date modified title.")
-            }
+            return ""
         case .map:
             return "Insert map here"
         case .deleteButton:

@@ -18,7 +18,7 @@ extension NoteDetailsController {
     
     func configureCollectionViewLayout() {
         var listConfiguration = UICollectionLayoutListConfiguration(appearance: .insetGrouped)
-        listConfiguration.showsSeparators = false
+        listConfiguration.showsSeparators = true
         listConfiguration.headerMode = .firstItemInSection
         
         let listLayout = UICollectionViewCompositionalLayout.list(using: listConfiguration)
@@ -41,12 +41,10 @@ extension NoteDetailsController {
         switch row {
         case .header(let title):
             headerConfiguration(cell: cell, at: indexPath, title: title)
+        case .date:
+            dateConfiguration(cell: cell)
         case .map:
-            if isNewNote {
-                mapConfiguration(cell: cell, location: CLLocationCoordinate2D(latitude: 0.0, longitude: 0.0))
-            } else {
-                mapConfiguration(cell: cell, location: CLLocationCoordinate2D(latitude: note.location!.latitude, longitude: note.location!.longitude))
-            }
+            mapConfiguration(cell: cell)
         default:
             defaultConfiguration(cell: cell, at: row)
         }
