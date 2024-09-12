@@ -12,6 +12,8 @@ extension NoteDetailsController {
         cell.contentConfiguration = content
     }
     
+    // MARK: - Header Configuration
+    
     func headerConfiguration(cell: UICollectionViewListCell, at indexPath: IndexPath, title: String) {
         var content = cell.defaultContentConfiguration()
         
@@ -29,6 +31,8 @@ extension NoteDetailsController {
         cell.contentConfiguration = content
     }
     
+    // MARK: - Text View Configuration
+    /// Configuration for note text input,
     func textViewConfiguration(cell: UICollectionViewListCell) {
         var content = cell.textViewConfiguration()
         content.text = isNewNote ? nil : note.body
@@ -39,6 +43,8 @@ extension NoteDetailsController {
         }
         cell.contentConfiguration = content
     }
+    
+    // MARK: - Location Search Field Configuration
     
     func locationTextFieldConfiguration(cell: UICollectionViewListCell) {
         var content = cell.locationSearchFieldConfiguration()
@@ -56,12 +62,16 @@ extension NoteDetailsController {
         cell.contentConfiguration = content
     }
     
+    // MARK: - Location Auto-complete Configuration
+    
     func locationSearchResultConfiguration(cell: UICollectionViewListCell, searchCompletion: MKLocalSearchCompletion) {
         var content = cell.defaultContentConfiguration()
         content.attributedText = createHighlightedString(text: searchCompletion.title, rangeValues: searchCompletion.titleHighlightRanges)
         content.secondaryAttributedText = createHighlightedString(text: searchCompletion.subtitle, rangeValues: searchCompletion.subtitleHighlightRanges)
         cell.contentConfiguration = content
     }
+    
+    // MARK: - Date Configuration
     
     func dateConfiguration(cell: UICollectionViewListCell) {
         var content = cell.defaultContentConfiguration()
@@ -74,6 +84,8 @@ extension NoteDetailsController {
         cell.contentConfiguration = content
     }
     
+    // MARK: - Map Configuration
+    
     func mapConfiguration(cell: UICollectionViewListCell) {
         var content = cell.mapConfiguration()
         content.location = note?.location
@@ -83,12 +95,16 @@ extension NoteDetailsController {
         cell.contentConfiguration = content
     }
     
+    // MARK: - Delete Button Configuration
+    
     func deleteButtonConfiguration(cell: UICollectionViewListCell) {
         var content = cell.deleteButtonConfiguration()
         content.text = NSLocalizedString("Delete note", comment: "Delete button on edit note.")
         content.onTap = deleteNote
         cell.contentConfiguration = content
     }
+    
+    // MARK: - Helpers
     
     private func getTextForViewing(_ row: Row) -> String? {
         switch row {

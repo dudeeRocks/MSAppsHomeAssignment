@@ -35,20 +35,7 @@ class MapContentView: UIView, UIContentView {
     // MARK: - Methods
     
     func configure(configuration: UIContentConfiguration) {
-        guard let configuration = configuration as? Configuration else { return }
-        var coordinate = CLLocationCoordinate2D()
-        
-        if let location = configuration.location {
-            coordinate = location.coordinate
-        } else {
-            if case .authorizedWhenInUse = locationManager.authorizationStatus {
-                coordinate = mapView.userLocation.coordinate
-            } else {
-                coordinate = CLLocationCoordinate2D(latitude: 0, longitude: 0)
-            }
-        }
-        
-        centerMap(to: coordinate)
+        setCenterToDefault()
     }
     
     func setUpMap() {
@@ -83,19 +70,42 @@ class MapContentView: UIView, UIContentView {
             if let searchCompletion = userInfo[NSNotification.searchCompletionKey] as? MKLocalSearchCompletion {
                 let searchRequest = MKLocalSearch.Request(completion: searchCompletion)
                 localSearch = MKLocalSearch(request: searchRequest)
-                localSearch?.start(completionHandler: { response, error in
-                    guard error == nil, let response = response else {
+                localSearch?.start { [weak self] response, error in
+                    guard
+                        let self = self,
+                        let response = response,
+                        let configuration = configuration as? Configuration,
+                        error == nil
+                    else {
                         fatalError("search failed") // TODO: handle error here
                     }
                     if let coordinate = response.mapItems.first?.placemark.coordinate {
-                        self.centerMap(to: coordinate)
+                        setCenter(to: coordinate)
+                        configuration.onLocationUpdate(coordinate)
                     }
-                })
+                }
             }
         }
     }
     
-    func centerMap(to coordinate: CLLocationCoordinate2D) {
+    func setCenterToDefault() {
+        if let configuration = configuration as? Configuration {
+            var coordinate = CLLocationCoordinate2D()
+            if let location = configuration.location {
+                coordinate = location.coordinate
+            } else {
+                if case .authorizedWhenInUse = locationManager.authorizationStatus {
+                    coordinate = mapView.userLocation.coordinate
+                } else {
+                    coordinate = CLLocationCoordinate2D(latitude: 0, longitude: 0)
+                }
+            }
+            
+            setCenter(to: coordinate)
+        }
+    }
+    
+    func setCenter(to coordinate: CLLocationCoordinate2D) {
         let allAnnotations = mapView.annotations
         mapView.removeAnnotations(allAnnotations)
         let annotation = MKPointAnnotation()
@@ -143,5 +153,9 @@ extension MapContentView: MKMapViewDelegate {
         annotation.animatesWhenAdded = true
         annotation.markerTintColor = .systemBlue
         return annotation
+    }
+    
+    func mapViewDidFinishLoadingMap(_ mapView: MKMapView) {
+        setCenterToDefault()
     }
 }

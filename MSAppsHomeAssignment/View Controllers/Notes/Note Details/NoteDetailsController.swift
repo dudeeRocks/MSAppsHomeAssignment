@@ -101,7 +101,7 @@ class NoteDetailsController: UICollectionViewController {
         
         if case .editLocationResult(let searchCompletion) = row {
             NotificationCenter.default.post(name: .didTapSearchResult, object: nil, userInfo: [NSNotification.searchCompletionKey: searchCompletion])
-            isEditing = false
+            updateUI(for: .searchResults([]), animated: true)
         }
     }
 }

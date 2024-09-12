@@ -69,6 +69,7 @@ class LocationSearchFieldContentView: UIView, UIContentView {
     @objc func updateTextField(_ notification: Notification) {
         if let userInfo = notification.userInfo {
             if let searchCompletion = userInfo[NSNotification.searchCompletionKey] as? MKLocalSearchCompletion {
+                endEditing(true)
                 textField.text = searchCompletion.title
             }
         }
