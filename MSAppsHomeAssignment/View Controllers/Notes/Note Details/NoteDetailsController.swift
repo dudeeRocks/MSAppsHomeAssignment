@@ -13,9 +13,15 @@ class NoteDetailsController: UICollectionViewController {
     var dataSource: DataSource!
     var delegate: NoteDetailsDelegate?
     
-    var newNoteText: String = ""
+    var newNoteText: String? = nil
     var newLocation: CLLocationCoordinate2D = .init()
-    var isSaveEnabled: Bool { newNoteText.isEmpty }
+    var isSaveEnabled: Bool {
+        if let newText = newNoteText {
+            return newText.isEmpty
+        } else {
+            return false
+        }
+    }
     
     var shouldDeleteNote: Bool = false
     var isNewNote: Bool { note == nil }

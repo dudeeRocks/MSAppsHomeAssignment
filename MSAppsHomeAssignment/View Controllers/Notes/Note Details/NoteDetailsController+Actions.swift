@@ -8,7 +8,8 @@ extension NoteDetailsController {
         if isNewNote {
             Task { @MainActor in
                 do {
-                    try await CoreDataStack.shared.createNote(withText: newNoteText, at: newLocation, date: Date.now)
+                    /// It's safe to force unwrap `newNoteText`here, because the `saveButton` that calls the `saveNewNote()` function only if `isSaveEnabled` is `true`.
+                    try await CoreDataStack.shared.createNote(withText: newNoteText!, at: newLocation, date: Date.now)
                     delegate?.didUpdateNote()
                     dismiss(animated: true)
                 } catch {
@@ -16,7 +17,9 @@ extension NoteDetailsController {
                 }
             }
         } else {
-            note.body = newNoteText
+            if let body = newNoteText {
+                note.body = body
+            }
             // TODO: Make sure to set to correct values here
             note.location?.latitude = newLocation.latitude
             note.location?.longitude = newLocation.longitude
