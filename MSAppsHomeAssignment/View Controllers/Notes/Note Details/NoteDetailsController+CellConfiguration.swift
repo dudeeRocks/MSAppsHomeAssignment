@@ -43,7 +43,6 @@ extension NoteDetailsController {
     func locationTextFieldConfiguration(cell: UICollectionViewListCell) {
         var content = cell.locationSearchFieldConfiguration()
         content.text = isNewNote ? nil : note.location!.displayName
-        content.coordinate = isNewNote ? CLLocationCoordinate2D(latitude: 0, longitude: 0) : note.location!.coordinate
         content.onResultsUpdate = { [weak self] results in
             guard let self = self else { return }
             let cappedResults = results.prefix(5)

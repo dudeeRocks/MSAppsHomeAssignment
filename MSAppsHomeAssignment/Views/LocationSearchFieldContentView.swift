@@ -22,6 +22,7 @@ class LocationSearchFieldContentView: UIView, UIContentView {
         super.init(frame: .zero)
         setUpTextField()
         setUpSearchCompleter()
+        subscribeToNotifications()
     }
     
     required init?(coder: NSCoder) {
@@ -61,11 +62,22 @@ class LocationSearchFieldContentView: UIView, UIContentView {
         searchCompleter.resultTypes = .address
     }
     
+    func subscribeToNotifications() {
+        NotificationCenter.default.addObserver(self, selector: #selector(updateTextField), name: .didTapSearchResult, object: nil)
+    }
+    
+    @objc func updateTextField(_ notification: Notification) {
+        if let userInfo = notification.userInfo {
+            if let searchCompletion = userInfo[NSNotification.searchCompletionKey] as? MKLocalSearchCompletion {
+                textField.text = searchCompletion.title
+            }
+        }
+    }
+    
     // MARK: - Configuration
     
     struct Configuration: UIContentConfiguration {
         var text: String? = nil
-        var coordinate: CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: 0, longitude: 0)
         var onResultsUpdate: ([MKLocalSearchCompletion]) -> Void = { _ in }
         
         func makeContentView() -> UIView & UIContentView {

@@ -100,7 +100,15 @@ class NoteDetailsController: UICollectionViewController {
         let row = dataSource.itemIdentifier(for: indexPath)
         
         if case .editLocationResult(let searchCompletion) = row {
-            print(searchCompletion)
+            NotificationCenter.default.post(name: .didTapSearchResult, object: nil, userInfo: [NSNotification.searchCompletionKey: searchCompletion])
         }
     }
+}
+
+extension NSNotification.Name {
+    static let didTapSearchResult = Notification.Name("didTapSearchResult")
+}
+
+extension NSNotification {
+    static let searchCompletionKey: String = "searchCompletion"
 }
