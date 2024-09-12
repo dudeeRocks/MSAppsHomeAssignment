@@ -6,7 +6,6 @@ import MapKit
 class MapContentView: UIView, UIContentView {
     
     let mapView = MKMapView()
-    let locationManager = CLLocationManager()
     var configuration: UIContentConfiguration {
         didSet {
             configure(configuration: configuration)
@@ -54,11 +53,7 @@ class MapContentView: UIView, UIContentView {
     }
     
     func setUpLocationManager() {
-        locationManager.delegate = self
-        locationManager.requestWhenInUseAuthorization()
-        if locationManager.authorizationStatus == .authorizedWhenInUse {
-            locationManager.startUpdatingLocation()
-        }
+        LocationManager.shared.setUpLocationManager(on: self)
     }
     
     func subscribeToNotifications() {
@@ -94,7 +89,7 @@ class MapContentView: UIView, UIContentView {
             if let location = configuration.location {
                 coordinate = location.coordinate
             } else {
-                if case .authorizedWhenInUse = locationManager.authorizationStatus {
+                if case .authorizedWhenInUse = LocationManager.shared.authorizationStatus {
                     coordinate = mapView.userLocation.coordinate
                 } else {
                     coordinate = CLLocationCoordinate2D(latitude: 0, longitude: 0)
@@ -139,11 +134,7 @@ extension UICollectionViewListCell {
 
 extension MapContentView: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        guard let location = locations.last else { return }
-        mapView.setCenter(location.coordinate, animated: true)
-        
-        guard let configuration = configuration as? Configuration else { return }
-        configuration.onLocationUpdate(location.coordinate)
+
     }
 }
 
@@ -153,9 +144,5 @@ extension MapContentView: MKMapViewDelegate {
         annotation.animatesWhenAdded = true
         annotation.markerTintColor = .systemBlue
         return annotation
-    }
-    
-    func mapViewDidFinishLoadingMap(_ mapView: MKMapView) {
-        setCenterToDefault()
     }
 }

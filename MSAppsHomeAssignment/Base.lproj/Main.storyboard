@@ -353,16 +353,19 @@
             </objects>
             <point key="canvasLocation" x="2436" y="745"/>
         </scene>
-        <!--View Controller-->
+        <!--Map View Controller-->
         <scene sceneID="lHh-DT-w3N">
             <objects>
-                <viewController storyboardIdentifier="Map" id="6Cy-rT-OZs" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Map" id="6Cy-rT-OZs" customClass="MapViewController" customModule="MSAppsHomeAssignment" customModuleProvider="target" sceneMemberID="viewController">
                     <mapView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="JdZ-p4-HW6">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <standardMapConfiguration key="preferredConfiguration"/>
                     </mapView>
                     <navigationItem key="navigationItem" id="i2H-1K-kDZ"/>
+                    <connections>
+                        <outlet property="mapView" destination="JdZ-p4-HW6" id="ln2-HC-abe"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tqu-0X-kbZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
