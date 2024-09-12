@@ -12,6 +12,11 @@ class MapContentView: UIView, UIContentView {
             configure(configuration: configuration)
         }
     }
+    var localSearch: MKLocalSearch? {
+        willSet {
+            localSearch?.cancel()
+        }
+    }
     
     // MARK: - Initializers
     
@@ -20,6 +25,7 @@ class MapContentView: UIView, UIContentView {
         super.init(frame: .zero)
         setUpLocationManager()
         setUpMap()
+        subscribeToNotifications()
     }
     
     required init?(coder: NSCoder) {
@@ -30,15 +36,19 @@ class MapContentView: UIView, UIContentView {
     
     func configure(configuration: UIContentConfiguration) {
         guard let configuration = configuration as? Configuration else { return }
+        var coordinate = CLLocationCoordinate2D()
+        
         if let location = configuration.location {
-            mapView.setCenter(location.coordinate, animated: true)
+            coordinate = location.coordinate
         } else {
             if case .authorizedWhenInUse = locationManager.authorizationStatus {
-                mapView.setCenter((mapView.userLocation.coordinate), animated: true)
+                coordinate = mapView.userLocation.coordinate
             } else {
-                mapView.setCenter(CLLocationCoordinate2D(latitude: 0, longitude: 0), animated: false)
+                coordinate = CLLocationCoordinate2D(latitude: 0, longitude: 0)
             }
         }
+        
+        centerMap(to: coordinate)
     }
     
     func setUpMap() {
@@ -62,6 +72,37 @@ class MapContentView: UIView, UIContentView {
         if locationManager.authorizationStatus == .authorizedWhenInUse {
             locationManager.startUpdatingLocation()
         }
+    }
+    
+    func subscribeToNotifications() {
+        NotificationCenter.default.addObserver(self, selector: #selector(updateMap), name: .didTapSearchResult, object: nil)
+    }
+    
+    @objc func updateMap(_ notification: Notification) {
+        if let userInfo = notification.userInfo {
+            if let searchCompletion = userInfo[NSNotification.searchCompletionKey] as? MKLocalSearchCompletion {
+                let searchRequest = MKLocalSearch.Request(completion: searchCompletion)
+                localSearch = MKLocalSearch(request: searchRequest)
+                localSearch?.start(completionHandler: { response, error in
+                    guard error == nil, let response = response else {
+                        fatalError("search failed") // TODO: handle error here
+                    }
+                    if let coordinate = response.mapItems.first?.placemark.coordinate {
+                        self.centerMap(to: coordinate)
+                    }
+                })
+            }
+        }
+    }
+    
+    func centerMap(to coordinate: CLLocationCoordinate2D) {
+        let allAnnotations = mapView.annotations
+        mapView.removeAnnotations(allAnnotations)
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = coordinate
+        
+        mapView.setCenter(coordinate, animated: true)
+        mapView.addAnnotation(annotation)
     }
     
     // MARK: - Configuration
@@ -97,5 +138,10 @@ extension MapContentView: CLLocationManagerDelegate {
 }
 
 extension MapContentView: MKMapViewDelegate {
-    
+    func mapView(_ mapView: MKMapView, viewFor annotation: any MKAnnotation) -> MKAnnotationView? {
+        let annotation = MKMarkerAnnotationView(frame: .zero)
+        annotation.animatesWhenAdded = true
+        annotation.markerTintColor = .systemBlue
+        return annotation
+    }
 }
