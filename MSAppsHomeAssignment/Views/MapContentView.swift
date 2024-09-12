@@ -39,6 +39,7 @@ class MapContentView: UIView, UIContentView {
     
     func setUpMap() {
         addSubview(mapView)
+        mapView.setCameraZoomRange(MKMapView.CameraZoomRange(maxCenterCoordinateDistance: 10_000), animated: false)
         mapView.isUserInteractionEnabled = false
         mapView.showsUserLocation = false
         mapView.delegate = self
