@@ -56,7 +56,7 @@ class MapViewController: UIViewController {
     
     private func updateAnnotations() {
         guard !notes.isEmpty else { return }
-        
+        // TODO: get back here! :)
 //        let oldAnnotations = mapView.annotations
 //        mapView.removeAnnotations(oldAnnotations)
         

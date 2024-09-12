@@ -10,6 +10,7 @@ extension NoteDetailsController {
         case viewLocation
         case editNote
         case editLocation
+        case locationResults
         case map
         case delete
         
@@ -29,6 +30,8 @@ extension NoteDetailsController {
                 return "map"
             case .viewLocation:
                 return "location"
+            case .locationResults:
+                return "locationResults"
             }
         }
     }

@@ -105,15 +105,21 @@ extension NoteDetailsController {
     
     private func updateSnapshotWithSearchResults(_ searchResults: [Row], animated: Bool = true) {
         var updatedSnapshot = dataSource.snapshot()
-        let oldResults = updatedSnapshot.itemIdentifiers(inSection: .editLocation).filter { row in
-            if case .editLocationResult = row {
-                return true
-            } else {
-                return false
+        
+        if searchResults.isEmpty {
+            updatedSnapshot.deleteSections([.locationResults])
+        } else {
+            if !updatedSnapshot.sectionIdentifiers.contains(.locationResults) {
+                updatedSnapshot.insertSections([.locationResults], afterSection: .editLocation)
             }
+            let oldResults = updatedSnapshot.itemIdentifiers(inSection: .locationResults)
+            var newResults = [Row.header(Section.locationResults.title)]
+            newResults.append(contentsOf: searchResults)
+            
+            updatedSnapshot.deleteItems(oldResults)
+            updatedSnapshot.appendItems(newResults, toSection: .locationResults)
         }
-        updatedSnapshot.deleteItems(oldResults)
-        updatedSnapshot.appendItems(searchResults, toSection: .editLocation)
+        
         dataSource.apply(updatedSnapshot, animatingDifferences: animated)
     }
 }

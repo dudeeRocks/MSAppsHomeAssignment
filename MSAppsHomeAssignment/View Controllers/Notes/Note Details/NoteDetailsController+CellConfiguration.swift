@@ -22,7 +22,7 @@ extension NoteDetailsController {
         let adjustedSectionNumber = isEditing ? indexPath.section + 2 : indexPath.section
         
         switch adjustedSectionNumber {
-        case Section.viewNote.rawValue, Section.viewLocation.rawValue, Section.map.rawValue, Section.delete.rawValue:
+        case Section.viewNote.rawValue, Section.viewLocation.rawValue, Section.locationResults.rawValue, Section.map.rawValue, Section.delete.rawValue:
             content.text = nil
         default:
             content.text = title
