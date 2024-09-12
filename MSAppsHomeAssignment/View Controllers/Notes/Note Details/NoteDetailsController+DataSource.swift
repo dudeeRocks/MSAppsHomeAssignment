@@ -7,7 +7,7 @@ extension NoteDetailsController {
     typealias DataSource = UICollectionViewDiffableDataSource<Section, Row>
     typealias Snapshot = NSDiffableDataSourceSnapshot<Section, Row>
     
-    enum UpdateCase { case view, edit }
+    enum UpdateCase { case view, edit, searchResults([Row]) }
     
     func configureDataSource() {
         let cellRegistration = UICollectionView.CellRegistration(handler: cellRegistrationHandler)
@@ -25,7 +25,7 @@ extension NoteDetailsController {
         collectionView.collectionViewLayout = listLayout
     }
     
-    func updateUI(for updateCase: UpdateCase, animated: Bool = true, locationResults: [Row]? = nil) {
+    func updateUI(for updateCase: UpdateCase, animated: Bool = true) {
         updateNavigationBar(for: updateCase)
         switch updateCase {
         case .view:
@@ -33,7 +33,9 @@ extension NoteDetailsController {
             updateSnapshotForViewing(animated: animated)
         case .edit:
             isEditing = true
-            updateSnapshotForEditing(animated: animated, locationResults: locationResults)
+            updateSnapshotForEditing(animated: animated)
+        case .searchResults(let results):
+            updateSnapshotWithSearchResults(results, animated: animated)
         }
     }
     
@@ -74,7 +76,7 @@ extension NoteDetailsController {
         dataSource.apply(snapshot, animatingDifferences: animated)
     }
     
-    private func updateSnapshotForEditing(animated: Bool = true, locationResults: [Row]? = nil) {
+    private func updateSnapshotForEditing(animated: Bool = true) {
         var snapshot = Snapshot()
         snapshot.appendSections([.editNote, .editLocation, .map])
         snapshot.appendItems([
@@ -85,11 +87,6 @@ extension NoteDetailsController {
             .header(Section.editLocation.title),
             .editLocation,
         ], toSection: .editLocation)
-        
-        if let locationResults = locationResults {
-            snapshot.appendItems(locationResults, toSection: .editLocation)
-        }
-        
         snapshot.appendItems([
             .header(Section.map.title),
             .map
@@ -104,5 +101,19 @@ extension NoteDetailsController {
         }
 
         dataSource.apply(snapshot, animatingDifferences: animated)
+    }
+    
+    private func updateSnapshotWithSearchResults(_ searchResults: [Row], animated: Bool = true) {
+        var updatedSnapshot = dataSource.snapshot()
+        let oldResults = updatedSnapshot.itemIdentifiers(inSection: .editLocation).filter { row in
+            if case .editLocationResult = row {
+                return true
+            } else {
+                return false
+            }
+        }
+        updatedSnapshot.deleteItems(oldResults)
+        updatedSnapshot.appendItems(searchResults, toSection: .editLocation)
+        dataSource.apply(updatedSnapshot, animatingDifferences: animated)
     }
 }

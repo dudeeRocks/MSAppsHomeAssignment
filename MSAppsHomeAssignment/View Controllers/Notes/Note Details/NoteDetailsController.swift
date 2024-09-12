@@ -34,7 +34,7 @@ class NoteDetailsController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpNavigationBar()
-        attachTapGesture()
+//        attachTapGesture() // FIXME: This interferes with row selection
         configureDataSource()
         configureCollectionViewLayout()
         updateUI(for: isNewNote ? .edit : .view, animated: false)
@@ -76,6 +76,8 @@ class NoteDetailsController: UICollectionViewController {
         case .edit:
             navigationItem.leftBarButtonItem = isNewNote ? cancelAddButton : cancelEditButton
             navigationItem.rightBarButtonItem = saveButton
+        case .searchResults:
+            return
         }
     }
     
@@ -90,5 +92,15 @@ class NoteDetailsController: UICollectionViewController {
     func attachTapGesture() {
         let tapToDismissKeyboard = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         view.addGestureRecognizer(tapToDismissKeyboard)
+    }
+    
+    // MARK: - UICollectionViewDelegate
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let row = dataSource.itemIdentifier(for: indexPath)
+        
+        if case .editLocationResult(let searchCompletion) = row {
+            print(searchCompletion)
+        }
     }
 }

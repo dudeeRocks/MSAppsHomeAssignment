@@ -58,6 +58,7 @@ class LocationSearchFieldContentView: UIView, UIContentView {
         searchCompleter = MKLocalSearchCompleter()
         searchCompleter.delegate = self
         searchCompleter.region = MKCoordinateRegion(.world)
+        searchCompleter.resultTypes = .address
     }
     
     // MARK: - Configuration

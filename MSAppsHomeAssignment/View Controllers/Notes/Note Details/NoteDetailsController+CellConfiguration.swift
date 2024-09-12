@@ -52,7 +52,7 @@ extension NoteDetailsController {
                 let newRow = Row.editLocationResult(result)
                 searchResultsRows.append(newRow)
             }
-            updateUI(for: .edit, animated: true, locationResults: searchResultsRows)
+            updateUI(for: .searchResults(searchResultsRows))
         }
         cell.contentConfiguration = content
     }
