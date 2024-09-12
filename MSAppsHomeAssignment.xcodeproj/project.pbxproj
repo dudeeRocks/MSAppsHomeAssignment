@@ -42,6 +42,7 @@
 		FA54065C2C91DC020035446C /* DeleteButtonContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA54065B2C91DC020035446C /* DeleteButtonContentView.swift */; };
 		FA54065E2C91F1FB0035446C /* LocationSearchFieldContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA54065D2C91F1FB0035446C /* LocationSearchFieldContentView.swift */; };
 		FA5406622C92E0310035446C /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5406612C92E0310035446C /* MapViewController.swift */; };
+		FA5406642C931FCA0035446C /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5406632C931FCA0035446C /* LocationManager.swift */; };
 		FAA1B3D52C8A616400234C20 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA1B3D42C8A616400234C20 /* User.swift */; };
 		FAC6B96A2C89974A00986F44 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC6B9692C89974A00986F44 /* AppDelegate.swift */; };
 		FAC6B96C2C89974A00986F44 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC6B96B2C89974A00986F44 /* SceneDelegate.swift */; };
@@ -89,6 +90,7 @@
 		FA54065B2C91DC020035446C /* DeleteButtonContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteButtonContentView.swift; sourceTree = "<group>"; };
 		FA54065D2C91F1FB0035446C /* LocationSearchFieldContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchFieldContentView.swift; sourceTree = "<group>"; };
 		FA5406612C92E0310035446C /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		FA5406632C931FCA0035446C /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		FAA1B3D42C8A616400234C20 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		FAC6B9662C89974A00986F44 /* MSAppsHomeAssignment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MSAppsHomeAssignment.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAC6B9692C89974A00986F44 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -249,6 +251,7 @@
 				FA0D05522C8AEDA9007C5847 /* CodeDataStack */,
 				FAC6B9832C89BDCA00986F44 /* AuthManager.swift */,
 				FA0D055E2C8C7110007C5847 /* WebAPICaller.swift */,
+				FA5406632C931FCA0035446C /* LocationManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -362,6 +365,7 @@
 				FA0D05542C8AEDBF007C5847 /* CoreDataStack.swift in Sources */,
 				FAC6B9842C89BDCA00986F44 /* AuthManager.swift in Sources */,
 				FAA1B3D52C8A616400234C20 /* User.swift in Sources */,
+				FA5406642C931FCA0035446C /* LocationManager.swift in Sources */,
 				FA54064E2C9061C80035446C /* NoteDetailsController+Row.swift in Sources */,
 				FA0D05682C8D80BB007C5847 /* UIViewController+CommonSetup.swift in Sources */,
 				FA0D05952C8E36FE007C5847 /* CoreDataStack+Avatar.swift in Sources */,
