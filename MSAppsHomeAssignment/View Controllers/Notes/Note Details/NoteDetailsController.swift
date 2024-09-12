@@ -14,7 +14,7 @@ class NoteDetailsController: UICollectionViewController {
     var delegate: NoteDetailsDelegate?
     
     var newNoteText: String? = nil
-    var newLocation: CLLocationCoordinate2D = .init()
+    var newLocation: CLLocationCoordinate2D? = nil
     var isSaveEnabled: Bool {
         if let newText = newNoteText {
             return newText.isEmpty
@@ -25,8 +25,6 @@ class NoteDetailsController: UICollectionViewController {
     
     var shouldDeleteNote: Bool = false
     var isNewNote: Bool { note == nil }
-    
-    let locationManager = CLLocationManager()
     
     // MARK: - UI
     

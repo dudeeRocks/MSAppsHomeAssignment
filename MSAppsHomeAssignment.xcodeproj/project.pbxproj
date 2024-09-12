@@ -26,11 +26,9 @@
 		FA0D05932C8E369B007C5847 /* CoreDataStack+Users.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0D05922C8E369B007C5847 /* CoreDataStack+Users.swift */; };
 		FA0D05952C8E36FE007C5847 /* CoreDataStack+Avatar.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0D05942C8E36FE007C5847 /* CoreDataStack+Avatar.swift */; };
 		FA0D05972C8E39C4007C5847 /* CoreDataStack+Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0D05962C8E39C4007C5847 /* CoreDataStack+Note.swift */; };
-		FA0D05992C8E3F7C007C5847 /* NoteDetailsController+TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0D05982C8E3F7C007C5847 /* NoteDetailsController+TextView.swift */; };
 		FA0D059B2C8E52AE007C5847 /* NoteDetailsController+Actions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0D059A2C8E52AE007C5847 /* NoteDetailsController+Actions.swift */; };
 		FA0D059F2C8E7B5C007C5847 /* NotesListController+DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0D059E2C8E7B5C007C5847 /* NotesListController+DataSource.swift */; };
 		FA5406462C902D1E0035446C /* NotesListController+NoteDetailsDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5406452C902D1E0035446C /* NotesListController+NoteDetailsDelegate.swift */; };
-		FA54064A2C90563D0035446C /* NoteDetailsController+Map.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5406492C90563D0035446C /* NoteDetailsController+Map.swift */; };
 		FA54064C2C905F1C0035446C /* NoteDetailsController+Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA54064B2C905F1C0035446C /* NoteDetailsController+Section.swift */; };
 		FA54064E2C9061C80035446C /* NoteDetailsController+Row.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA54064D2C9061C80035446C /* NoteDetailsController+Row.swift */; };
 		FA5406502C9062EC0035446C /* NoteDetailsController+DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA54064F2C9062EC0035446C /* NoteDetailsController+DataSource.swift */; };
@@ -74,11 +72,9 @@
 		FA0D05922C8E369B007C5847 /* CoreDataStack+Users.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreDataStack+Users.swift"; sourceTree = "<group>"; };
 		FA0D05942C8E36FE007C5847 /* CoreDataStack+Avatar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreDataStack+Avatar.swift"; sourceTree = "<group>"; };
 		FA0D05962C8E39C4007C5847 /* CoreDataStack+Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreDataStack+Note.swift"; sourceTree = "<group>"; };
-		FA0D05982C8E3F7C007C5847 /* NoteDetailsController+TextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NoteDetailsController+TextView.swift"; sourceTree = "<group>"; };
 		FA0D059A2C8E52AE007C5847 /* NoteDetailsController+Actions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NoteDetailsController+Actions.swift"; sourceTree = "<group>"; };
 		FA0D059E2C8E7B5C007C5847 /* NotesListController+DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NotesListController+DataSource.swift"; sourceTree = "<group>"; };
 		FA5406452C902D1E0035446C /* NotesListController+NoteDetailsDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NotesListController+NoteDetailsDelegate.swift"; sourceTree = "<group>"; };
-		FA5406492C90563D0035446C /* NoteDetailsController+Map.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NoteDetailsController+Map.swift"; sourceTree = "<group>"; };
 		FA54064B2C905F1C0035446C /* NoteDetailsController+Section.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NoteDetailsController+Section.swift"; sourceTree = "<group>"; };
 		FA54064D2C9061C80035446C /* NoteDetailsController+Row.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NoteDetailsController+Row.swift"; sourceTree = "<group>"; };
 		FA54064F2C9062EC0035446C /* NoteDetailsController+DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NoteDetailsController+DataSource.swift"; sourceTree = "<group>"; };
@@ -205,9 +201,7 @@
 				FA5406532C90EDC70035446C /* NoteDetailsController+CellConfiguration.swift */,
 				FA54064B2C905F1C0035446C /* NoteDetailsController+Section.swift */,
 				FA54064D2C9061C80035446C /* NoteDetailsController+Row.swift */,
-				FA5406492C90563D0035446C /* NoteDetailsController+Map.swift */,
 				FA0D059A2C8E52AE007C5847 /* NoteDetailsController+Actions.swift */,
-				FA0D05982C8E3F7C007C5847 /* NoteDetailsController+TextView.swift */,
 			);
 			path = "Note Details";
 			sourceTree = "<group>";
@@ -328,7 +322,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA5406582C91A7DA0035446C /* Log.swift in Sources */,
-				FA0D05992C8E3F7C007C5847 /* NoteDetailsController+TextView.swift in Sources */,
 				FA0D05732C8DC401007C5847 /* UIImageView+Loader.swift in Sources */,
 				FA0D05972C8E39C4007C5847 /* CoreDataStack+Note.swift in Sources */,
 				FAC6B9742C89974A00986F44 /* DataModel.xcdatamodeld in Sources */,
@@ -341,7 +334,6 @@
 				FA0D05912C8E1D33007C5847 /* NoteDetailsController.swift in Sources */,
 				FA0D057F2C8DD688007C5847 /* NotesListController+EmptyState.swift in Sources */,
 				FA0D058B2C8DFE24007C5847 /* NotesListController+Actions.swift in Sources */,
-				FA54064A2C90563D0035446C /* NoteDetailsController+Map.swift in Sources */,
 				FA5406562C919FBF0035446C /* Note+Map.swift in Sources */,
 				FA0D055B2C8B274F007C5847 /* UsersListViewController.swift in Sources */,
 				FA0D05932C8E369B007C5847 /* CoreDataStack+Users.swift in Sources */,

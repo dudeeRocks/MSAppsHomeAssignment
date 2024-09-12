@@ -12,8 +12,8 @@ class NotesListController: UITableViewController {
     // MARK: UIViewController Methods
     
     override func viewWillAppear(_ animated: Bool) {
-        checkIfNotesExist()
         updateNotesList()
+        checkIfNotesExist()
     }
     
     override func viewDidAppear(_ animated: Bool) {

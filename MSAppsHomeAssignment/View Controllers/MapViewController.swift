@@ -36,6 +36,7 @@ class MapViewController: UIViewController {
         
         do {
             let notes = try CoreDataStack.shared.viewContext.fetch(fetchRequest)
+            noteAnnotations.removeAll()
             notes.forEach { note in
                 let annotation = MKPointAnnotation()
                 annotation.coordinate = note.location!.coordinate
@@ -60,20 +61,23 @@ class MapViewController: UIViewController {
     
     private func updateAnnotations() {
         guard !noteAnnotations.isEmpty else { return }
+        let oldAnnotations = mapView.annotations
+        mapView.removeAnnotations(oldAnnotations)
         
-        var annotations: [MKPointAnnotation] = Array<MKPointAnnotation>(noteAnnotations.values)
+        let annotations: [MKPointAnnotation] = Array<MKPointAnnotation>(noteAnnotations.values)
         mapView.addAnnotations(annotations)
     }
     
     private func setDefaultCenterPoint() {
         var coordinate = CLLocationCoordinate2D()
-        if let firstNote = noteAnnotations.first {
-            coordinate = firstNote.key.location!.coordinate
+        if let firstNote = noteAnnotations.keys.sorted(by: { $0.dateModified! > $1.dateModified! }).first {
+            coordinate = firstNote.location!.coordinate
+            print("Center locaiton on note: \(firstNote.body)")
         } else {
             if case .authorizedWhenInUse = LocationManager.shared.authorizationStatus {
                 coordinate = mapView.userLocation.coordinate
             } else {
-                coordinate = CLLocationCoordinate2D(latitude: 0, longitude: 0)
+                coordinate = CLLocationCoordinate2D(latitude: 32.0853, longitude: 34.7818)
             }
         }
         mapView.setCenter(coordinate, animated: false)
@@ -126,5 +130,28 @@ extension MapViewController: MKMapViewDelegate, CLLocationManagerDelegate {
         annotationView.detailCalloutAccessoryView = detailCalloutAccessoryView
         annotationView.rightCalloutAccessoryView = rightCalloutAccessoryView
         return annotationView
+    }
+    
+    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+        guard
+            let pointAnnotation = view.annotation as? MKPointAnnotation,
+            let note: Note = noteAnnotations.first(where: { $0.value == pointAnnotation })?.key
+        else {
+            return
+        }
+        
+        if let noteDetailsVC = UIViewController.getViewController(withIdentifier: .noteDetails) as? NoteDetailsController {
+            noteDetailsVC.note = note
+            noteDetailsVC.delegate = self
+            navigationController?.pushViewController(noteDetailsVC, animated: true)
+        }
+    }
+}
+
+extension MapViewController: NoteDetailsDelegate {
+    func didUpdateNote() {
+        fetchNotes()
+        updateAnnotations()
+        setDefaultCenterPoint()
     }
 }
