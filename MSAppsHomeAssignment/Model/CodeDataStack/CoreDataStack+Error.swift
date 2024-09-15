@@ -19,15 +19,15 @@ extension CoreDataStack {
         var localizedDescription: String {
             switch self.kind {
             case .allUsersLoad:
-                return String(localized: "Failed to load users to persistent storage.")
+                return "Failed to load users to persistent storage."
             case .userSave:
-                return String(localized: "Failed to save user: \(userName)")
+                return "Failed to save user: \(userName)"
             case .imageLoad:
-                return String(localized: "Failed to load image for user: \(userName)")
+                return "Failed to load image for user: \(userName)"
             case .imageSave:
-                return String(localized: "Failed to save image for user: \(userName)")
+                return "Failed to save image for user: \(userName)"
             case .noteSave:
-                return String(localized: "Failed to save the note.")
+                return "Failed to save the note."
             }
         }
         

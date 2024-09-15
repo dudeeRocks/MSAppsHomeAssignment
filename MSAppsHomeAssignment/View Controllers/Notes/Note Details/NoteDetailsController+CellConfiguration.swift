@@ -76,9 +76,9 @@ extension NoteDetailsController {
     func dateConfiguration(cell: UICollectionViewListCell) {
         var content = cell.defaultContentConfiguration()
         if isNewNote {
-            content.secondaryText = NSLocalizedString("Created: \(Date.now.dayAndTimeText)", comment: "Date created title.")
+            content.secondaryText = "Created: \(Date.now.dayAndTimeText)"
         } else {
-            content.secondaryText = NSLocalizedString("Last edited: \(note.dateModified!.dayAndTimeText)", comment: "Date modified title.")
+            content.secondaryText = "Last edited: \(note.dateModified!.dayAndTimeText)"
         }
         content.secondaryTextProperties.color = .secondaryLabel
         cell.contentConfiguration = content
@@ -100,7 +100,7 @@ extension NoteDetailsController {
     
     func deleteButtonConfiguration(cell: UICollectionViewListCell) {
         var content = cell.deleteButtonConfiguration()
-        content.text = NSLocalizedString("Delete note", comment: "Delete button on edit note.")
+        content.text = "Delete note"
         content.onTap = deleteNote
         cell.contentConfiguration = content
     }

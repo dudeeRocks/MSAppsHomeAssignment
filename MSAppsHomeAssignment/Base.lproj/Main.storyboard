@@ -18,26 +18,32 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="330" verticalCompressionResistancePriority="330" axis="vertical" distribution="equalSpacing" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="rTP-DN-vpx">
-                                <rect key="frame" x="30" y="159" width="333" height="327"/>
+                                <rect key="frame" x="30" y="159" width="333" height="407"/>
                                 <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="Ovt-dd-5B8">
+                                        <rect key="frame" x="0.0" y="0.0" width="333" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="Yv0-4S-G9k"/>
+                                        </constraints>
+                                    </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Ea-QP-zc7">
-                                        <rect key="frame" x="0.0" y="0.0" width="333" height="40.666666666666664"/>
+                                        <rect key="frame" x="0.0" y="80" width="333" height="40.666666666666657"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="User name" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="c3m-TW-lnW">
-                                        <rect key="frame" x="0.0" y="70.666666666666657" width="333" height="34"/>
+                                        <rect key="frame" x="0.0" y="150.66666666666669" width="333" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="next" textContentType="username"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="GjN-mP-0yh">
-                                        <rect key="frame" x="0.0" y="134.66666666666669" width="333" height="34"/>
+                                        <rect key="frame" x="0.0" y="214.66666666666669" width="333" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="done" secureTextEntry="YES" textContentType="password"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" role="primary" translatesAutoresizingMaskIntoConstraints="NO" id="wPG-0Z-9ey">
-                                        <rect key="frame" x="0.0" y="198.66666666666669" width="333" height="64"/>
+                                        <rect key="frame" x="0.0" y="278.66666666666669" width="333" height="64"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="64" id="cHq-LB-pF5"/>
                                         </constraints>
@@ -50,7 +56,7 @@
                                         </connections>
                                     </button>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="ozZ-Xd-qw7">
-                                        <rect key="frame" x="0.0" y="292.66666666666669" width="333" height="34.333333333333314"/>
+                                        <rect key="frame" x="0.0" y="372.66666666666663" width="333" height="34.333333333333314"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Not registered?" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H5F-yr-2is">
                                                 <rect key="frame" x="0.0" y="6.9999999999999982" width="196.33333333333334" height="20.333333333333329"/>
@@ -71,9 +77,10 @@
                                         </subviews>
                                     </stackView>
                                 </subviews>
+                                <keyboardLayoutGuide key="keyboard" id="339-pq-fsp"/>
                                 <rect key="contentStretch" x="0.0" y="0.0" width="1" height="0.0"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="340" id="3NN-sO-CjO"/>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="407" id="lNc-l8-yzo"/>
                                 </constraints>
                             </stackView>
                         </subviews>
@@ -373,6 +380,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Logo" width="3849" height="1137"/>
         <systemColor name="secondaryLabelColor">
             <color red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

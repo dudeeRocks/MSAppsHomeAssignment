@@ -65,10 +65,10 @@ class NoteDetailsController: UICollectionViewController {
         navigationItem.style = .navigator
         navigationItem.largeTitleDisplayMode = .never
         if isNewNote {
-            navigationItem.title = NSLocalizedString("Add note", comment: "Title for add note screen.")
+            navigationItem.title = "Add note"
             saveButton.isEnabled = false
         } else {
-            navigationItem.title = NSLocalizedString("Note", comment: "Title for existing note.")
+            navigationItem.title = "Note"
             navigationItem.rightBarButtonItem = editButton
         }
     }

@@ -49,7 +49,6 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         attachTapGesture()
-        setKeyboardLayoutGuide()
         setTextFieldDelegates()
         updateUI()
     }
@@ -60,12 +59,12 @@ class LoginViewController: UIViewController {
         if isRegisterMode {
             titleLabel.text = "Register"
             primaryButton.titleLabel?.text = "Sign Up"
-            secondaryButton.titleLabel?.text = "Sing In"
+            secondaryButton.titleLabel?.text = "Sign In"
             secondaryButtonLabel.text = "Already registered?"
         } else {
             titleLabel.text = "Login"
             primaryButton.titleLabel?.text = "Sign In"
-            secondaryButton.titleLabel?.text = "Sing Up"
+            secondaryButton.titleLabel?.text = "Sign Up"
             secondaryButtonLabel.text = "Not registered?"
         }
         userNameTextField.text = ""
@@ -75,14 +74,6 @@ class LoginViewController: UIViewController {
     private func attachTapGesture() {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         view.addGestureRecognizer(tapGesture)
-    }
-    
-    private func setKeyboardLayoutGuide() {
-        print("Login screen intrinsic content height: \(formContainer.intrinsicContentSize.height)")
-        formContainer.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            view.keyboardLayoutGuide.topAnchor.constraint(equalToSystemSpacingBelow: formContainer.bottomAnchor, multiplier: 1.0)
-        ])
     }
     
     private func showMainScreen() {
@@ -123,6 +114,8 @@ class LoginViewController: UIViewController {
     @objc private func dismissKeyboard() {
         view.endEditing(true)
     }
+    
+    
 }
 
 extension LoginViewController: UITextFieldDelegate {

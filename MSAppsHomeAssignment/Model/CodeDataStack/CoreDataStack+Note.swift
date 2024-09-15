@@ -6,7 +6,7 @@ import MapKit
 extension CoreDataStack {
     
     private var unknownLocationString: String {
-        NSLocalizedString("Unknown location", comment: "Description for unknown location")
+        "Unknown location"
     }
     
     /// Saves `Note` entity with passed text and location.

@@ -42,7 +42,7 @@ class LocationSearchFieldContentView: UIView, UIContentView {
         textField.textContentType = .streetAddressLine1
         textField.clearButtonMode = .unlessEditing
         textField.returnKeyType = .search
-        textField.placeholder = NSLocalizedString("Search for a location", comment: "Location search field placeholder.")
+        textField.placeholder = "Search for a location"
         textField.background = nil
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.delegate = self

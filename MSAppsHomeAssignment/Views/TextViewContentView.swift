@@ -13,7 +13,7 @@ class TextViewContentView: UIView, UIContentView {
     
     private let placeholder: UILabel = {
         let label = UILabel(frame: .zero)
-        label.text = NSLocalizedString("Start typing your thoughts here...", comment: "Note text field placeholder text.")
+        label.text = "Start typing your thoughts here..."
         label.font = .preferredFont(forTextStyle: .body)
         label.textColor = .placeholderText
         label.textAlignment = .left

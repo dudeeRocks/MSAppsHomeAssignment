@@ -19,9 +19,9 @@ extension NoteDetailsController {
         var title: String {
             switch self {
             case .editNote:
-                return NSLocalizedString("Note", comment: "Title for note on note edit.")
+                return "Note"
             case .editLocation:
-                return NSLocalizedString("Location", comment: "Title for location on note edit.")
+                return "Location"
             case .viewNote:
                 return "view"
             case .delete:
