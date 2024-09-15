@@ -41,6 +41,7 @@
 		FA54065E2C91F1FB0035446C /* LocationSearchFieldContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA54065D2C91F1FB0035446C /* LocationSearchFieldContentView.swift */; };
 		FA5406622C92E0310035446C /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5406612C92E0310035446C /* MapViewController.swift */; };
 		FA5406642C931FCA0035446C /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5406632C931FCA0035446C /* LocationManager.swift */; };
+		FA5406662C969C3F0035446C /* NoteDetailsController+Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5406652C969C3F0035446C /* NoteDetailsController+Error.swift */; };
 		FAA1B3D52C8A616400234C20 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA1B3D42C8A616400234C20 /* User.swift */; };
 		FAC6B96A2C89974A00986F44 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC6B9692C89974A00986F44 /* AppDelegate.swift */; };
 		FAC6B96C2C89974A00986F44 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC6B96B2C89974A00986F44 /* SceneDelegate.swift */; };
@@ -87,6 +88,7 @@
 		FA54065D2C91F1FB0035446C /* LocationSearchFieldContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchFieldContentView.swift; sourceTree = "<group>"; };
 		FA5406612C92E0310035446C /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		FA5406632C931FCA0035446C /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		FA5406652C969C3F0035446C /* NoteDetailsController+Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NoteDetailsController+Error.swift"; sourceTree = "<group>"; };
 		FAA1B3D42C8A616400234C20 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		FAC6B9662C89974A00986F44 /* MSAppsHomeAssignment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MSAppsHomeAssignment.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAC6B9692C89974A00986F44 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -202,6 +204,7 @@
 				FA54064B2C905F1C0035446C /* NoteDetailsController+Section.swift */,
 				FA54064D2C9061C80035446C /* NoteDetailsController+Row.swift */,
 				FA0D059A2C8E52AE007C5847 /* NoteDetailsController+Actions.swift */,
+				FA5406652C969C3F0035446C /* NoteDetailsController+Error.swift */,
 			);
 			path = "Note Details";
 			sourceTree = "<group>";
@@ -360,6 +363,7 @@
 				FA5406642C931FCA0035446C /* LocationManager.swift in Sources */,
 				FA54064E2C9061C80035446C /* NoteDetailsController+Row.swift in Sources */,
 				FA0D05682C8D80BB007C5847 /* UIViewController+CommonSetup.swift in Sources */,
+				FA5406662C969C3F0035446C /* NoteDetailsController+Error.swift in Sources */,
 				FA0D05952C8E36FE007C5847 /* CoreDataStack+Avatar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

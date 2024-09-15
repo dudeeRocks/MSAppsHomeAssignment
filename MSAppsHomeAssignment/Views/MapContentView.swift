@@ -5,17 +5,17 @@ import MapKit
 
 class MapContentView: UIView, UIContentView {
     
+    typealias LocationUpdateHandler = (_ coordinate: CLLocationCoordinate2D, _ displayName: String) -> Void
+    
     let mapView = MKMapView()
-    var configuration: UIContentConfiguration {
-        didSet {
-            configure(configuration: configuration)
-        }
-    }
+    var configuration: UIContentConfiguration
     var localSearch: MKLocalSearch? {
         willSet {
             localSearch?.cancel()
         }
     }
+    
+    private let defaultLocationName: String = "Unknown location"
     
     // MARK: - Initializers
     
@@ -24,6 +24,7 @@ class MapContentView: UIView, UIContentView {
         super.init(frame: .zero)
         setUpLocationManager()
         setUpMap()
+        setCenterToDefault()
         subscribeToNotifications()
     }
     
@@ -32,10 +33,6 @@ class MapContentView: UIView, UIContentView {
     }
     
     // MARK: - Methods
-    
-    func configure(configuration: UIContentConfiguration) {
-        setCenterToDefault()
-    }
     
     func setUpMap() {
         addSubview(mapView)
@@ -75,9 +72,12 @@ class MapContentView: UIView, UIContentView {
                     else {
                         fatalError("search failed") // TODO: handle error here
                     }
-                    if let coordinate = response.mapItems.first?.placemark.coordinate {
-                        setCenter(to: coordinate)
-                        configuration.onLocationUpdate(coordinate)
+                    if let placemark = response.mapItems.first?.placemark {
+                        let coordintate = placemark.coordinate
+                        let displayName = getAddressDescription(placemark: placemark)
+                        
+                        setCenter(to: coordintate)
+                        configuration.onLocationUpdate(coordintate, displayName)
                     }
                 }
             }
@@ -85,20 +85,29 @@ class MapContentView: UIView, UIContentView {
     }
     
     func setCenterToDefault() {
-        if let configuration = configuration as? Configuration {
-            var coordinate = CLLocationCoordinate2D()
-            if let location = configuration.location {
-                coordinate = location.coordinate
-            } else {
-                if case .authorizedWhenInUse = LocationManager.shared.authorizationStatus {
-                    coordinate = mapView.userLocation.coordinate
+        guard let configuration = configuration as? Configuration else { return }
+        
+        var coordinate = CLLocationCoordinate2D()
+        
+        if let location = configuration.location {
+            coordinate = location.coordinate
+        } else {
+            switch LocationManager.shared.authorizationStatus {
+            case .authorizedWhenInUse, .authorizedAlways:
+                if let userCoordinate = LocationManager.shared.getUserLocationCoordinate() {
+                    coordinate = userCoordinate
+                    getLocationName(for: userCoordinate, completionHandler: configuration.onLocationUpdate)
                 } else {
-                    coordinate = CLLocationCoordinate2D(latitude: 0, longitude: 0)
+                    fallthrough
                 }
+            default:
+                mapView.setCameraZoomRange(MKMapView.CameraZoomRange(maxCenterCoordinateDistance: 10_000), animated: false)
+                coordinate = CLLocationCoordinate2D(latitude: 0, longitude: 0)
+                configuration.onLocationUpdate(coordinate, defaultLocationName)
             }
-            
-            setCenter(to: coordinate)
         }
+        
+        setCenter(to: coordinate)
     }
     
     func setCenter(to coordinate: CLLocationCoordinate2D) {
@@ -111,11 +120,42 @@ class MapContentView: UIView, UIContentView {
         mapView.addAnnotation(annotation)
     }
     
+    func getLocationName(for coordinate: CLLocationCoordinate2D, completionHandler: @escaping LocationUpdateHandler) {
+        let location = CLLocation(latitude: coordinate.latitude, longitude: coordinate.longitude)
+        let geocoder = CLGeocoder()
+        geocoder.reverseGeocodeLocation(location) { [weak self] placemarks, error in
+            guard
+                let self = self,
+                let placemark = placemarks?.first,
+                error == nil
+            else {
+                completionHandler(coordinate, "Unknown location")
+                return
+            }
+            let locationName = getAddressDescription(placemark: placemark)
+            completionHandler(coordinate, locationName)
+        }
+    }
+    
+    private func getAddressDescription(placemark: CLPlacemark) -> String {
+        if let streetAddress = placemark.thoroughfare {
+            return streetAddress
+        } else if let locality = placemark.locality {
+            return locality
+        } else if let inLandWater = placemark.inlandWater {
+            return inLandWater
+        } else if let ocean = placemark.ocean {
+            return ocean
+        } else {
+            return defaultLocationName
+        }
+    }
+    
     // MARK: - Configuration
     
     struct Configuration: UIContentConfiguration {
         var location: NoteLocation? = nil
-        var onLocationUpdate: (CLLocationCoordinate2D) -> Void = { _ in }
+        var onLocationUpdate: LocationUpdateHandler = { _, _ in }
         
         func makeContentView() -> UIView & UIContentView {
             return MapContentView(configuration: self)

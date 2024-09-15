@@ -15,6 +15,7 @@ class NoteDetailsController: UICollectionViewController {
     
     var newNoteText: String? = nil
     var newLocation: CLLocationCoordinate2D? = nil
+    var newLocationName: String? = nil
     var isSaveEnabled: Bool {
         if let newText = newNoteText {
             return newText.isEmpty

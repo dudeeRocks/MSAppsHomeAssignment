@@ -18,6 +18,11 @@ class LocationManager {
         }
     }
     
+    func getUserLocationCoordinate() -> CLLocationCoordinate2D? {
+        locationManager.startUpdatingLocation()
+        return locationManager.location?.coordinate
+    }
+    
     private init() {
         
     }

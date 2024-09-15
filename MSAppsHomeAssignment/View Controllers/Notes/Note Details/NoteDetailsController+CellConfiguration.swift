@@ -89,8 +89,9 @@ extension NoteDetailsController {
     func mapConfiguration(cell: UICollectionViewListCell) {
         var content = cell.mapConfiguration()
         content.location = note?.location
-        content.onLocationUpdate = { coordinate in
+        content.onLocationUpdate = { coordinate, locationName in
             self.newLocation = coordinate
+            self.newLocationName = locationName
         }
         cell.contentConfiguration = content
     }

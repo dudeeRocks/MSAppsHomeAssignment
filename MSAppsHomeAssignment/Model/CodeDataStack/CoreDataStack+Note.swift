@@ -10,13 +10,13 @@ extension CoreDataStack {
     }
     
     /// Saves `Note` entity with passed text and location.
-    func createNote(withText body: String, at coordinates: CLLocationCoordinate2D, date: Date) async throws {
+    func createNote(withText body: String, at coordinates: CLLocationCoordinate2D, locationName: String, date: Date) throws {
         let context = viewContext
         
         let location = NoteLocation(context: context)
         location.latitude = coordinates.latitude
         location.longitude = coordinates.longitude
-        location.displayName = await getDisplayName(for: coordinates)
+        location.displayName = locationName
         
         let note = Note(context: context)
         note.body = body
@@ -30,37 +30,6 @@ extension CoreDataStack {
             print("Saved note: \(body.prefix(10)), last modified \(date.dayAndTimeText).")
         } catch {
             throw CoreDataError(kind: .noteSave, note: note)
-        }
-    }
-    
-    func getDisplayName(for coordinate: CLLocationCoordinate2D) async -> String {
-        let location = CLLocation(latitude: coordinate.latitude, longitude: coordinate.longitude)
-        let geocoder = CLGeocoder()
-        do {
-            let placemarks = try await geocoder.reverseGeocodeLocation(location)
-            
-            if let placemark = placemarks.first {
-                return getAddressDescription(placemark: placemark)
-            } else {
-                return unknownLocationString
-            }
-        } catch {
-            Log.main.log(error: "Failed to get decription for location: \(location)")
-            return unknownLocationString
-        }
-    }
-    
-    private func getAddressDescription(placemark: CLPlacemark) -> String {
-        if let streetAddress = placemark.thoroughfare {
-            return streetAddress
-        } else if let locality = placemark.locality {
-            return locality
-        } else if let inLandWater = placemark.inlandWater {
-            return inLandWater
-        } else if let ocean = placemark.ocean {
-            return ocean
-        } else {
-            return unknownLocationString
         }
     }
 }

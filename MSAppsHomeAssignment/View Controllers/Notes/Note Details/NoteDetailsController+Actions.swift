@@ -6,15 +6,18 @@ import MapKit
 extension NoteDetailsController {
     @objc func saveNewNote() {
         if isNewNote {
-            Task { @MainActor in
-                do {
-                    /// It's safe to force unwrap `newNoteText`here, because the `saveButton` that calls the `saveNewNote()` function only if `isSaveEnabled` is `true`.
-                    try await CoreDataStack.shared.createNote(withText: newNoteText!, at: newLocation ?? CLLocationCoordinate2D(latitude: 0, longitude: 0), date: Date.now)
-                    delegate?.didUpdateNote()
-                    dismiss(animated: true)
-                } catch {
-                    fatalError("failed to save new note") // TODO: Handle error here.
-                }
+            do {
+                /// It's safe to force unwrap `newNoteText`here, because the `saveButton` that calls the `saveNewNote()` function only if `isSaveEnabled` is `true`.
+                try CoreDataStack.shared.createNote(
+                    withText: newNoteText!,
+                    at: newLocation ?? CLLocationCoordinate2D(latitude: 0, longitude: 0),
+                    locationName: newLocationName ?? "Nowhere",
+                    date: Date.now
+                )
+                delegate?.didUpdateNote()
+                dismiss(animated: true)
+            } catch {
+                showAlert(for: error)
             }
         } else {
             if let body = newNoteText {
@@ -23,6 +26,9 @@ extension NoteDetailsController {
             if let location = newLocation {
                 note.location?.latitude = location.latitude
                 note.location?.longitude = location.longitude
+            }
+            if let locationName = newLocationName {
+                note.location?.displayName = newLocationName
             }
             note.dateModified = Date.now
             

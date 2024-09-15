@@ -23,6 +23,7 @@ class MapViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setUpNavigationBar()
         setUpLocationManager()
         prepareMapView()
     }
@@ -47,15 +48,28 @@ class MapViewController: UIViewController {
         }
     }
     
+    private func setUpNavigationBar() {
+        let addNoteButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addNote))
+        navigationItem.rightBarButtonItem = addNoteButton
+        navigationItem.title = "Notes Map"
+        let navBarAppearance = UINavigationBarAppearance()
+        navBarAppearance.configureWithOpaqueBackground()
+        navBarAppearance.backgroundColor = .systemBackground
+        navigationController?.navigationBar.standardAppearance = navBarAppearance
+        navigationController?.navigationBar.compactAppearance = navBarAppearance
+        navigationController?.navigationBar.scrollEdgeAppearance = navBarAppearance
+
+    }
+    
     private func setUpLocationManager() {
         LocationManager.shared.setUpLocationManager(on: self)
     }
     
     private func prepareMapView() {
         mapView.isUserInteractionEnabled = true
-        mapView.showsUserLocation = false
+        mapView.showsUserLocation = true
         mapView.showsCompass = true
-        mapView.setCameraZoomRange(MKMapView.CameraZoomRange(maxCenterCoordinateDistance: 10_000), animated: false)
+        mapView.showsScale = true
         mapView.delegate = self
     }
     
@@ -70,17 +84,35 @@ class MapViewController: UIViewController {
     
     private func setDefaultCenterPoint() {
         var coordinate = CLLocationCoordinate2D()
+        let ditance: CLLocationDistance = 10000
+        let region: MKCoordinateRegion
+
         if let firstNote = noteAnnotations.keys.sorted(by: { $0.dateModified! > $1.dateModified! }).first {
             coordinate = firstNote.location!.coordinate
-            print("Center locaiton on note: \(firstNote.body)")
         } else {
-            if case .authorizedWhenInUse = LocationManager.shared.authorizationStatus {
-                coordinate = mapView.userLocation.coordinate
-            } else {
-                coordinate = CLLocationCoordinate2D(latitude: 32.0853, longitude: 34.7818)
+            switch LocationManager.shared.authorizationStatus {
+            case .authorizedWhenInUse, .authorizedAlways:
+                if let userCoordinate = LocationManager.shared.getUserLocationCoordinate() {
+                    coordinate = userCoordinate
+                } else {
+                    fallthrough
+                }
+            default:
+                coordinate = CLLocationCoordinate2D(latitude: 0, longitude: 0)
             }
         }
-        mapView.setCenter(coordinate, animated: false)
+        region = MKCoordinateRegion(center: coordinate, latitudinalMeters: ditance, longitudinalMeters: ditance)
+        
+        mapView.setRegion(region, animated: true)
+    }
+    
+    @objc func addNote() {
+        if let noteDetailsVC = UIViewController.getViewController(withIdentifier: .noteDetails) as? NoteDetailsController {
+            noteDetailsVC.delegate = self
+            
+            let navigationVC = UINavigationController(rootViewController: noteDetailsVC)
+            present(navigationVC, animated: true)
+        }
     }
 }
 
@@ -145,6 +177,10 @@ extension MapViewController: MKMapViewDelegate, CLLocationManagerDelegate {
             noteDetailsVC.delegate = self
             navigationController?.pushViewController(noteDetailsVC, animated: true)
         }
+    }
+    
+    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
+        setDefaultCenterPoint()
     }
 }
 
