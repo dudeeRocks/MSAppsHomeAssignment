@@ -58,13 +58,13 @@ class LoginViewController: UIViewController {
     private func updateUI() {
         if isRegisterMode {
             titleLabel.text = "Register"
-            primaryButton.titleLabel?.text = "Sign Up"
-            secondaryButton.titleLabel?.text = "Sign In"
+            primaryButton.setTitle("Sign Up", for: .normal)
+            secondaryButton.setTitle("Sign In", for: .normal)
             secondaryButtonLabel.text = "Already registered?"
         } else {
             titleLabel.text = "Login"
-            primaryButton.titleLabel?.text = "Sign In"
-            secondaryButton.titleLabel?.text = "Sign Up"
+            primaryButton.setTitle("Sign In", for: .normal)
+            secondaryButton.setTitle("Sign Up", for: .normal)
             secondaryButtonLabel.text = "Not registered?"
         }
         userNameTextField.text = ""
