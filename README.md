@@ -13,7 +13,7 @@ Create a notes app with ability to view notes on the map, fetch and store data f
 ## Table of contents:
 
 1. [Overview](##Overview)
-2. [App Structure](##App Structure)
+2. [App Structure](##App-Structure)
 3. Data Structure
     - Users
     - Notes
