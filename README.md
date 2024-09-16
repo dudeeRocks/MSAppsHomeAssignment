@@ -21,9 +21,7 @@ Create a notes app with ability to view notes on the map, fetch and store data f
 
 App navigation is layed out in *Main.storyboard* with behaviors provided by custom view controllers. View controllers fetch data with the help of shared `CoreDataStack` object that handles data in `DataModel` on their behalf. All web API calls are managed by singleton `WebAPICaller` object. `LocationManager` class serves as a single point of access to user location for UI that displays a map. Login and registration logic is defined within `AuthManager`.
 
-<p align="center">
-    <img src="Images/02_app_structure_diagram.png" alt="Notes app structure diagram" />
-</p>
+<img src="Images/02_app_structure_diagram.png" alt="Notes app structure diagram" />
 
 ## Data Structure
 
@@ -33,9 +31,7 @@ The app relies on Core Data for persistent storage. There are two main entities 
 
 User data is defined as `UserEntity` with `UserAvatar` representing cached data image.
 
-<p align="center">
-    <img src="Images/03_users_data.png" alt="Users data diagram" width="600" />
-</p>
+<img src="Images/03_users_data.png" alt="Users data diagram" height="400" />
 
 On first app launch the users data is fetched by `WebAPICaller` that decodes JSON into `User` objects, which are then used by `CoreDataStack` to create `UserEntity` for every fetched `User`.
 
@@ -77,9 +73,7 @@ extension UIImageView {
 
 Note data is described as `Note` entity with `NoteLocation` entity defining the location of the note on map. 
 
-<p align="center">
-    <img src="Images/04_notes_data.png" alt="Notes data diagram" width="600" />
-</p>
+<img src="Images/04_notes_data.png" alt="Notes data diagram" height="400" />
 
 `Note` entities are created by the user in `NoteDetailsController` view controller on save action. `NoteLocation` entities are created automatically during `Note` creation.
 
@@ -113,11 +107,9 @@ The app's navigation is layed out in *Main.storyboard* with custom view controll
 
 ### Login: `LoginViewController`
 
-Login and registration UI is managed by `LoginViewController` that uses `AuthManager` to model authentication logic. For simplicity, this home assignment project uses `UserDefaults` to store registered user credantials.
+<img src="Images/05_login_screen.png" alt="Login screen" height="600" />
 
-<p align="center">
-    <img src="Images/05_login_screen.png" alt="Login screen" />
-</p>
+Login and registration UI is managed by `LoginViewController` that uses `AuthManager` to model authentication logic. For simplicity, this home assignment project uses `UserDefaults` to store registered user credantials.
 
 The `SceneDelegate` determines whether to show the login screen on app launch.
 
@@ -135,11 +127,9 @@ func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options conn
 
 ### Notes List: `NotesListController`
 
-Because notes are a dynamic user-generated data they’re displayed using `UITableViewController` with `UITableViewDiffableDataSource` for dynamic list updates. Empty state is shown when notes list is empty.
+<img src="Images/06_notes_list.png" alt="Notes list screen" height="600" />
 
-<p align="center">
-    <img src="Images/06_notes_list.png" alt="Login screen" />
-</p>
+Because notes are a dynamic user-generated data they’re displayed using `UITableViewController` with `UITableViewDiffableDataSource` for dynamic list updates. Empty state is shown when notes list is empty.
 
 `NotesListController` view controller serves as a `NoteDetailsDelegate` delegate for `NoteDetailsController` in order to update notes list if a new note was created or an existing note was deleted from note details screen.
 
@@ -151,6 +141,52 @@ extension NotesListController: NoteDetailsDelegate {
     }
 }
 ```
+
+### Note Details: `NoteDetailsController`
+
+<img src="Images/07_note_details.png" alt="Note details screen" height="600" />
+
+Note details screen is implemented as `UICollectionViewController` and utilizes `UICollectionViewDiffableDataSource` for dynamic switching between note editing and viewing modes, and for location search results fetching during editing.
+
+```swift
+func updateUI(for updateCase: UpdateCase, animated: Bool = true) {
+    updateNavigationBar(for: updateCase)
+    switch updateCase {
+    case .view:
+        isEditing = false
+        updateSnapshotForViewing(animated: animated)
+    case .edit:
+        isEditing = true
+        updateSnapshotForEditing(animated: animated)
+    case .searchResults(let results):
+        updateSnapshotWithSearchResults(results, animated: animated)
+    }
+}
+```
+
+Most cells are defined as custom views using `UIContentView` protocol. Some custom cells accept completion handlers during cell configuration, which are used by `NoteDetailsController` to communicate between cells.
+
+```swift
+func mapConfiguration(cell: UICollectionViewListCell) {
+    var content = cell.mapConfiguration()
+    content.location = note?.location
+    content.onLocationUpdate = { coordinate, locationName in
+        self.newLocation = coordinate
+        self.newLocationName = locationName
+    }
+    cell.contentConfiguration = content
+}
+```
+
+When a note is saved or deleted, `NoteDetailsController` calls `didUpdateNote()` method on its `NoteDetailsDelegate`, that depends on which view controller has presented the `NoteDetailsController`.
+
+```swift
+CoreDataStack.shared.saveViewContext()
+delegate?.didUpdateNote()
+updateUI(for: .view)
+```
+
+
 
 
 
