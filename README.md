@@ -22,7 +22,7 @@ Create a notes app with ability to view notes on the map, fetch and store data f
 App navigation is layed out in *Main.storyboard* with behaviors provided by custom view controllers. View controllers fetch data with the help of shared `CoreDataStack` object that handles data in `DataModel` on their behalf. All web API calls are managed by singleton `WebAPICaller` object. `LocationManager` class serves as a single point of access to user location for UI that displays a map. Login and registration logic is defined within `AuthManager`.
 
 <p align="center">
-    <img src="Images/02_app_structure_diagram.png" alt="Notes app structure" />
+    <img src="Images/02_app_structure_diagram.png" alt="Notes app structure diagram" />
 </p>
 
 ## Data Structure
@@ -34,7 +34,7 @@ The app relies on Core Data for persistent storage. There are two main entities 
 User data is defined as `UserEntity` with `UserAvatar` representing cached data image.
 
 <p align="center">
-    <img src="Images/03_users_data.png" alt="Notes app structure" width="600" />
+    <img src="Images/03_users_data.png" alt="Users data diagram" width="600" />
 </p>
 
 On first app launch the users data is fetched by `WebAPICaller` that decodes JSON into `User` objects, which are then used by `CoreDataStack` to create `UserEntity` for every fetched `User`.
@@ -72,3 +72,85 @@ extension UIImageView {
     }
 }
 ```
+
+### Notes
+
+Note data is described as `Note` entity with `NoteLocation` entity defining the location of the note on map. 
+
+<p align="center">
+    <img src="Images/04_notes_data.png" alt="Notes data diagram" width="600" />
+</p>
+
+`Note` entities are created by the user in `NoteDetailsController` view controller on save action. `NoteLocation` entities are created automatically during `Note` creation.
+
+```swift
+func createNote(withText body: String, at coordinates: CLLocationCoordinate2D, locationName: String, date: Date) throws {
+    let context = viewContext
+    
+    let location = NoteLocation(context: context)
+    location.latitude = coordinates.latitude
+    location.longitude = coordinates.longitude
+    location.displayName = locationName
+    
+    let note = Note(context: context)
+    note.body = body
+    note.dateModified = date
+    note.location = location
+    
+    location.note = note
+    
+    do {
+        try context.save()
+    } catch {
+        throw CoreDataError(kind: .noteSave, note: note)
+    }
+}
+```
+
+## User Interface
+
+The app's navigation is layed out in *Main.storyboard* with custom view controllers providing behaviors.
+
+### Login: `LoginViewController`
+
+Login and registration UI is managed by `LoginViewController` that uses `AuthManager` to model authentication logic. For simplicity, this home assignment project uses `UserDefaults` to store registered user credantials.
+
+<p align="center">
+    <img src="Images/05_login_screen.png" alt="Login screen" />
+</p>
+
+The `SceneDelegate` determines whether to show the login screen on app launch.
+
+```swift
+func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
+    guard let _ = (scene as? UIWindowScene) else { return }
+        
+    if AuthManager.isLoggedIn {
+        window?.rootViewController = .getViewController(withIdentifier: .main)
+    } else {
+        window?.rootViewController = .getViewController(withIdentifier: .login)
+    }
+}
+```
+
+### Notes List: `NotesListController`
+
+Because notes are a dynamic user-generated data they’re displayed using `UITableViewController` with `UITableViewDiffableDataSource` for dynamic list updates. Empty state is shown when notes list is empty.
+
+<p align="center">
+    <img src="Images/06_notes_list.png" alt="Login screen" />
+</p>
+
+`NotesListController` view controller serves as a `NoteDetailsDelegate` delegate for `NoteDetailsController` in order to update notes list if a new note was created or an existing note was deleted from note details screen.
+
+```swift
+extension NotesListController: NoteDetailsDelegate {
+    func didUpdateNote() {
+        updateNotesList()
+        checkIfNotesExist()
+    }
+}
+```
+
+
+
