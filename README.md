@@ -229,3 +229,33 @@ override func collectionView(_ collectionView: UICollectionView, didSelectItemAt
 }
 ```
 
+### Notes Map: `MapViewController`
+
+<img src="Images/09_map.png" alt="Note details screen" height="600" />
+
+Notes are represented on the map as pin annotations, with callouts containing basic note information. 
+
+Notes fetched during the `viewWillAppear()` call on `MapViewController` and are stored in a dictionary paired with `MKPointAnnotation` to be retrieved during `mapView(_:viewFor annotation:)` call. 
+
+```swift
+var noteAnnotations: [Note: MKPointAnnotation] = [:]
+
+override func viewWillAppear(_ animated: Bool) {
+    fetchNotes()
+    updateAnnotations()
+    setDefaultCenterPoint()
+}
+
+func mapView(_ mapView: MKMapView, viewFor annotation: any MKAnnotation) -> MKAnnotationView? {
+    guard 
+        let pointAnnotation = annotation as? MKPointAnnotation,
+        let note: Note = noteAnnotations.first(where: { $0.value == pointAnnotation })?.key,
+        let noteText: String = note.body
+    else { return nil }
+    // Define annotation view for notes...
+}
+```
+
+Default map center is set to the location of the latest note, or to the user location if there are no notes. If user location is not available the center is set to zero coordinate. Updates to user location are managed through `LocationManager` shared object.
+
+Similarly to `NotesListController`, the `MapViewController` view controller serves as a `NoteDetailsDelegate` delegate for `NoteDetailsController` in order to update the map if a new note was created or an existing note was deleted from note details screen.
