@@ -10,6 +10,21 @@ Home assignment project for iOS Developer role.
 
 Create a notes app with ability to view notes on the map, fetch and store data from web API, and basic login.
 
+## Table of contents:
+
+1. [Overview](##Overview)
+2. [App Structure](##App Structure)
+3. Data Structure
+    - Users
+    - Notes
+4. User Interface
+    - Login
+    - Notes List
+    - Note Details
+    - Location Search
+    - Notes Map
+    - Users List & User Details
+
 ## Overview
 
 - Interface: **UIKit**
@@ -190,7 +205,7 @@ updateUI(for: .view)
 
 During location search custom cells in `NoteDetailsController` communicate with each other through combination of completion handlers defined during cell registration and publishing notifications to `NotificationCenter`.
 
-<img src="Images/08_location_search.png" alt="Note details screen" height="600" />
+<img src="Images/08_location_search.png" alt="Location Search screen" height="600" />
 
 As user types in text field in `LocationSearchFieldContentView`, it sends `MKLocalSearchCompletion` to `NoteDetailsController` which is then used to update UI with location search results.
 
@@ -231,7 +246,7 @@ override func collectionView(_ collectionView: UICollectionView, didSelectItemAt
 
 ### Notes Map: `MapViewController`
 
-<img src="Images/09_map.png" alt="Note details screen" height="600" />
+<img src="Images/09_map.png" alt="Notes Map screen" height="600" />
 
 Notes are represented on the map as pin annotations, with callouts containing basic note information. 
 
@@ -259,3 +274,11 @@ func mapView(_ mapView: MKMapView, viewFor annotation: any MKAnnotation) -> MKAn
 Default map center is set to the location of the latest note, or to the user location if there are no notes. If user location is not available the center is set to zero coordinate. Updates to user location are managed through `LocationManager` shared object.
 
 Similarly to `NotesListController`, the `MapViewController` view controller serves as a `NoteDetailsDelegate` delegate for `NoteDetailsController` in order to update the map if a new note was created or an existing note was deleted from note details screen.
+
+### Users list and User Details: `UsersListViewController` & `UserDetailsViewController`
+
+<img src="Images/10_users_list+user_details.png" alt="Users list and User Details" height="600" />
+
+Users list screen is implemented as a simple `UITableViewController`. Since users data is not expected to be changed after it was fetched from web API, it can be fetched from data using `NSFetchedResultsController` and there's no need for diffable data source usage here. 
+
+Log out button in the list’s navigation bar allows users to log out.
