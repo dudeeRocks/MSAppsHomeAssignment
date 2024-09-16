@@ -14,16 +14,16 @@ Create a notes app with ability to view notes on the map, fetch and store data f
 
 1. [Overview](#overview)
 2. [App Structure](#app-structure)
-3. Data Structure
-    - Users
-    - Notes
-4. User Interface
-    - Login
-    - Notes List
-    - Note Details
-    - Location Search
-    - Notes Map
-    - Users List & User Details
+3. [Data Structure](#data-structure)
+    - [Users](#users)
+    - [Notes](#notes)
+4. [User Interface](#user-interface)
+    - [Login](#login)
+    - [Notes List](#notes-list)
+    - [Note Details](#note-details)
+    - [Location Search](#location-search)
+    - [Notes Map](#notes-map)
+    - [Users List & User Details](#users-list-and-user-details)
 
 ## Overview
 
@@ -120,7 +120,8 @@ func createNote(withText body: String, at coordinates: CLLocationCoordinate2D, l
 
 The app's navigation is layed out in *Main.storyboard* with custom view controllers providing behaviors.
 
-### Login: `LoginViewController`
+### Login
+#### `LoginViewController`
 
 <img src="Images/05_login_screen.png" alt="Login screen" height="600" />
 
@@ -140,7 +141,8 @@ func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options conn
 }
 ```
 
-### Notes List: `NotesListController`
+### Notes List
+#### `NotesListController`
 
 <img src="Images/06_notes_list.png" alt="Notes list screen" height="600" />
 
@@ -157,7 +159,8 @@ extension NotesListController: NoteDetailsDelegate {
 }
 ```
 
-### Note Details: `NoteDetailsController`
+### Note Details
+#### `NoteDetailsController`
 
 <img src="Images/07_note_details.png" alt="Note details screen" height="600" />
 
@@ -201,7 +204,8 @@ delegate?.didUpdateNote()
 updateUI(for: .view)
 ```
 
-### Location Search: `LocationSearchFieldContentView`
+### Location Search
+#### `LocationSearchFieldContentView`
 
 During location search custom cells in `NoteDetailsController` communicate with each other through combination of completion handlers defined during cell registration and publishing notifications to `NotificationCenter`.
 
@@ -244,7 +248,8 @@ override func collectionView(_ collectionView: UICollectionView, didSelectItemAt
 }
 ```
 
-### Notes Map: `MapViewController`
+### Notes Map
+#### `MapViewController`
 
 <img src="Images/09_map.png" alt="Notes Map screen" height="600" />
 
@@ -275,7 +280,8 @@ Default map center is set to the location of the latest note, or to the user loc
 
 Similarly to `NotesListController`, the `MapViewController` view controller serves as a `NoteDetailsDelegate` delegate for `NoteDetailsController` in order to update the map if a new note was created or an existing note was deleted from note details screen.
 
-### Users list and User Details: `UsersListViewController` & `UserDetailsViewController`
+### Users list and User Details
+#### `UsersListViewController` & `UserDetailsViewController`
 
 <img src="Images/10_users_list+user_details.png" alt="Users list and User Details" height="600" />
 
