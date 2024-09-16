@@ -186,7 +186,46 @@ delegate?.didUpdateNote()
 updateUI(for: .view)
 ```
 
+### Location Search: `LocationSearchFieldContentView`
 
+During location search custom cells in `NoteDetailsController` communicate with each other through combination of completion handlers defined during cell registration and publishing notifications to `NotificationCenter`.
 
+<img src="Images/08_location_search.png" alt="Note details screen" height="600" />
 
+As user types in text field in `LocationSearchFieldContentView`, it sends `MKLocalSearchCompletion` to `NoteDetailsController` which is then used to update UI with location search results.
+
+```swift
+// MARK: - UITextFieldDelegate
+
+extension LocationSearchFieldContentView: UITextFieldDelegate {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if let text = textField.text {
+            searchCompleter.queryFragment = text
+        }
+        return true
+    }
+}
+
+// MARK: - MKLocalSearchCompleterDelegate
+
+extension LocationSearchFieldContentView: MKLocalSearchCompleterDelegate {
+    func completerDidUpdateResults(_ completer: MKLocalSearchCompleter) {
+        guard let configuration = configuration as? Configuration else { return }
+        configuration.onResultsUpdate(completer.results)
+    }
+}
+```
+
+Tap on a location result updates the map with new coordinate and location search field with completed text through NotificationCenter.
+
+```swift
+override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    let row = dataSource.itemIdentifier(for: indexPath)
+    
+    if case .editLocationResult(let searchCompletion) = row {
+        NotificationCenter.default.post(name: .didTapSearchResult, object: nil, userInfo: [NSNotification.searchCompletionKey: searchCompletion])
+        updateUI(for: .searchResults([]), animated: true)
+    }
+}
+```
 
